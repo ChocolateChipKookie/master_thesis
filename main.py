@@ -1,6 +1,6 @@
 import util
 
-dataset = util.ImageDataset("/hdd/imagenet/val")
+dataset = util.ImageDataset("/hdd/imagenet/train")
 
 print(len(dataset))
 
