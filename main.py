@@ -1,6 +1,6 @@
 import util
 
-dataset = util.ImageDataset("/media/kookie/DE9AF7459AF718AB/Pictures")
+dataset = util.ImageDataset("/hdd/imagenet/val")
 
 print(len(dataset))
 
