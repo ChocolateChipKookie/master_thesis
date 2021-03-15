@@ -4,8 +4,15 @@ from typing import Union, List, Tuple, Callable
 
 
 class ImageDataset(Dataset):
-    def __init__(self, path: str, recursive: bool = True, suffixes:Union[Tuple[str], str] = None):
+    def __init__(self,
+                 path: str,
+                 recursive: bool = True,
+                 transform: Callable = None,
+                 suffixes: Union[Tuple[str], str] = None
+                 ):
         self.item_paths = []
+        self.root_path = path
+        self.transform = transform
 
         # Set check if extension is valid
         if suffixes and isinstance(suffixes, str):
@@ -37,5 +44,9 @@ class ImageDataset(Dataset):
     def __len__(self):
         return len(self.item_paths)
 
-    def __getitem__(self, index):
+    def __getitem__(self, idx):
+        filepath = os.path.join(self.root_path, self.item_paths[idx])
+
+
+
         return None
