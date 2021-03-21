@@ -117,7 +117,7 @@ class Solver:
             loss.backward()
             """
 
-            print(f"Iter\t{i}\tLoss: {loss}")
+            print(f"Iter\t{i}\tLoss: {loss/batch.shape[0]}")
 
 
 
