@@ -6,6 +6,9 @@ from torch.nn import functional
 import torchvision
 from torch.utils.data import DataLoader
 from colorful import cielab, encoders, CELoss
+from colorful.log.loss import LossLogger
+from colorful.log.out import OutputLogger
+
 
 class Solver:
     def __init__(self, config):
@@ -87,6 +90,11 @@ class Solver:
         # Encoder
         self.encoder = encoders.SoftEncoder(self.cielab, device=self.device)
 
+        self.loggers = []
+        #self.loggers.append(LossLogger())
+        self.loggers.append(OutputLogger(self.iterations, self.batch_size))
+
+
     def train(self):
         self.network.train()
         for i, batch in enumerate(self.data_loader):
@@ -108,7 +116,8 @@ class Solver:
             # Calculate loss
             loss = self.loss(predicted, labels)
             loss.backward()
-            print(f"Iter\t{i}\tLoss: {loss}")
+            for logger in self.loggers:
+                logger(i, loss.item(), self.network)
 
             # Optimizer step
             self.optimizer.step()
