@@ -107,7 +107,9 @@ class Solver:
 
             loss = self.loss(y, labels)
             loss.backward()
-            print(f"Iter\t{i}\tLoss: {loss/batch.shape[0]}")
+            print(f"Iter\t{i}\tLoss: {loss}")
+
+            self.optimizer.step()
 
 
 
