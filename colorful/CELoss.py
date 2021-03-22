@@ -19,4 +19,4 @@ class CrossEntropyLoss(torch.nn.Module):
         if self.weights is not None:
             loss = loss * self.weights
             loss = loss.sum() / self.weights_sum
-        return loss / m * n
+        return loss / m
