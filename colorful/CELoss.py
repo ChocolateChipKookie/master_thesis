@@ -11,7 +11,7 @@ class CrossEntropyLoss(torch.nn.Module):
 
     def forward(self, predicted, target):
         n, _, w, h = predicted.shape
-        m = w * h * n
+        m = w * h
         softmax = log_softmax(predicted, dim=1)
         norm = target.clone()
         norm[norm != 0] = torch.log(norm[norm != 0])

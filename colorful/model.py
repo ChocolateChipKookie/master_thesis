@@ -130,7 +130,7 @@ class Colorful(nn.Module):
         conv8_3 = self.model8(conv7_3)
         # out_reg = self.model_out(self.softmax(conv8_3))
 
-        return self.upsample4(conv8_3)
+        return conv8_3
         #        return self.unnormalize_ab(self.upsample4(out_reg))
 
     def forward_colorize(self, input_l):

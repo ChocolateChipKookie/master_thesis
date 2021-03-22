@@ -2,6 +2,7 @@ import colorful.model
 import util
 
 import torch
+from torch.nn import functional
 import torchvision
 from torch.utils.data import DataLoader
 from colorful import cielab, encoders, CELoss
@@ -86,30 +87,33 @@ class Solver:
         # Encoder
         self.encoder = encoders.SoftEncoder(self.cielab, device=self.device)
 
-
     def train(self):
         self.network.train()
         for i, batch in enumerate(self.data_loader):
-            # Clean memory
-            torch.cuda.empty_cache()
             # Reset the gradients
             self.optimizer.zero_grad()
 
             # Fetch images
             batch, _ = batch
-            batch = batch.type(self.dtype).to(self.device)
-            # Split into input and desired output
-            X, Y = batch[:, :1, :, :].to(self.device), batch[:, 1:, :, :].to(self.device)
-
+            batch = batch.type(self.dtype)
+            # Fetch input for the network
+            x = batch[:, :1, :, :].to(self.device)
             # Forward pass
-            y = self.network(X)
-            labels = self.encoder(Y)
+            predicted = self.network(x)
+            # Fetch output and resize
+            actual = functional.interpolate(batch[:, 1:, :, :], size=predicted.shape[2:]).to(self.device)
+            # Encode the outputs
+            labels = self.encoder(actual)
 
-            loss = self.loss(y, labels)
+            # Calculate loss
+            loss = self.loss(predicted, labels)
             loss.backward()
             print(f"Iter\t{i}\tLoss: {loss}")
 
+            # Optimizer step
             self.optimizer.step()
+            # Clean memory
+            torch.cuda.empty_cache()
 
 
 
