@@ -91,9 +91,9 @@ class Solver:
         self.encoder = encoders.SoftEncoder(self.cielab, device=self.device)
 
         self.loggers = []
-        #self.loggers.append(LossLogger())
+        self.loggers.append(LossLogger(format="({0}, {1})\n", output="./tmp/desmos.log"))
+        self.loggers.append(OutputLogger(self.iterations, self.batch_size, output="./tmp/out.log"))
         self.loggers.append(OutputLogger(self.iterations, self.batch_size))
-
 
     def train(self):
         self.network.train()
