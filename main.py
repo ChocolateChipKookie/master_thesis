@@ -21,9 +21,17 @@ config['lambda'] = 0.5
 config['lr'] = 1e-5
 config['weight_decay'] = 1e-3
 config['iterations'] = 200000
-config['batch_size'] = 5
-config['data_path'] = "./imagenet/val"
+config['batch_size'] = 40
+
+config['data_path'] = "./imagenet/tmp"
 config['dataloader_workers'] = 4
+
+config['validate_every'] = 1000
+config['val_data_path'] = "./imagenet/val"
+config['val_data_size'] = 1000
+config['snapshot_every'] = 5
+config['snapshot_dir'] = "./tmp/snapshots"
+
 
 solver = Solver(config)
 solver.train()

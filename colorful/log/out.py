@@ -1,14 +1,16 @@
-from colorful.log.logger import Logger
+from colorful.log.listener import Listener
 import sys
 import datetime
+import os
 
-class OutputLogger(Logger):
+class OutputLogger(Listener):
     def __init__(self, total_iterations, batch_size, frequency=1, output = None):
         super(OutputLogger, self).__init__(frequency)
+        self.output = output
         if output:
-            self.output = open(output, 'w')
-        else:
-            self.output = sys.stdout
+            if os.path.exists(output):
+                open(output, 'w')
+
         self.batch_size = batch_size
         self.begin = datetime.datetime.now()
         self.total_iterations = total_iterations
@@ -24,6 +26,15 @@ class OutputLogger(Logger):
         seconds = total_seconds - hours * 3600 - minutes * 60
         since_begin_str = f"{hours:02}:{minutes:02}:{seconds:02}"
         iter_str = str(iter).rjust(self.total_iterations_magnitude)
-        self.output.write(
+
+        if self.output:
+            if os.path.exists(self.output):
+                output = open(self.output, 'a')
+            else:
+                output = open(self.output, 'w')
+        else:
+            output = sys.stdout
+
+        output.write(
             f"[{now_str}] [{since_begin_str}] [{iter_str}/{self.total_iterations}] {loss:>10.4e}\n"
         )

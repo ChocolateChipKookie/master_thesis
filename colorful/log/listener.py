@@ -1,5 +1,5 @@
 
-class Logger:
+class Listener:
     def __init__(self, logging_frequency):
         self.frequency = logging_frequency
 

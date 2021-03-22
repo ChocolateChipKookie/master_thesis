@@ -8,6 +8,7 @@ from torch.utils.data import DataLoader
 from colorful import cielab, encoders, CELoss
 from colorful.log.loss import LossLogger
 from colorful.log.out import OutputLogger
+from colorful.log.validator import Validator
 
 
 class Solver:
@@ -86,14 +87,27 @@ class Solver:
         self.dataset = torchvision.datasets.ImageFolder(config['data_path'], transform=self.transform)
         self.loaders = config['dataloader_workers'] if 'dataloader_workers' in config else 0
         self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.loaders)
+        self.val_dataset = torchvision.datasets.ImageFolder(config['val_data_path'], transform=self.transform)
 
         # Encoder
         self.encoder = encoders.SoftEncoder(self.cielab, device=self.device)
 
-        self.loggers = []
-        self.loggers.append(LossLogger(format="({0}, {1})\n", output="./tmp/desmos.log"))
-        self.loggers.append(OutputLogger(self.iterations, self.batch_size, output="./tmp/out.log"))
-        self.loggers.append(OutputLogger(self.iterations, self.batch_size))
+
+        self.listeners = []
+        self.listeners.append(LossLogger(format="({0}, {1})\n", output="./tmp/desmos.log"))
+        self.listeners.append(OutputLogger(self.iterations, self.batch_size, output="./tmp/out.log"))
+        self.listeners.append(OutputLogger(self.iterations, self.batch_size))
+
+        # Validator
+        self.listeners.append(
+            Validator(
+                config['validate_every'],
+                config['val_data_size'],
+                self,
+                './tmp/val.log',
+                config['snapshot_every'],
+                config['snapshot_dir']
+            ))
 
     def train(self):
         self.network.train()
@@ -116,7 +130,7 @@ class Solver:
             # Calculate loss
             loss = self.loss(predicted, labels)
             loss.backward()
-            for logger in self.loggers:
+            for logger in self.listeners:
                 logger(i, loss.item(), self.network)
 
             # Optimizer step
