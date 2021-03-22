@@ -4,9 +4,7 @@ import util
 import torch
 import torchvision
 from torch.utils.data import DataLoader
-from colorful import cielab
-from colorful import encoders
-from torch.nn.functional import log_softmax
+from colorful import cielab, encoders, CELoss
 
 class Solver:
     def __init__(self, config):
@@ -69,9 +67,9 @@ class Solver:
             self.weights = 1 / ((1 - self.l_factor) * self.prior + self.l_factor * uniform)
             self.weights /= torch.sum(self.prior * self.weights)
 
-            self.loss = torch.nn.CrossEntropyLoss(weight=self.weights)
+            self.loss = CELoss.CrossEntropyLoss(self.weights)
         else:
-            self.loss = torch.nn.CrossEntropyLoss()
+            self.loss = CELoss.CrossEntropyLoss()
 
         # Dataset and data loader
         self.transform = torchvision.transforms.Compose([
@@ -86,7 +84,7 @@ class Solver:
         self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.loaders)
 
         # Encoder
-        self.encoder = encoders.HardEncoder(self.cielab, device=self.device)
+        self.encoder = encoders.SoftEncoder(self.cielab, device=self.device)
 
 
     def train(self):
@@ -109,14 +107,6 @@ class Solver:
 
             loss = self.loss(y, labels)
             loss.backward()
-            """
-            softmax = log_softmax(y, dim=1)
-            norm = labels.clone()
-            norm[norm != 0] = torch.log(norm[norm != 0])
-            loss = -torch.sum((softmax - norm) * labels) / y.shape[0]
-            loss.backward()
-            """
-
             print(f"Iter\t{i}\tLoss: {loss/batch.shape[0]}")
 
 
