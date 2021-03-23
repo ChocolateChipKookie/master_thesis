@@ -9,17 +9,17 @@ def train():
     config['lr'] = 3e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
-    config['batch_size'] = 40
+    config['batch_size'] = 5
 
-    config['data_path'] = "./imagenet/train"
+    config['data_path'] = "./imagenet/val"
     config['dataloader_workers'] = 4
 
     config['validate_every'] = 1000
     config['val_data_path'] = "./imagenet/val"
     config['val_data_size'] = 25000
     config['snapshot_every'] = 1
-#    config['snapshot_dir'] = "./tmp/snapshots"
-    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
+    config['snapshot_dir'] = "./tmp/snapshots"
+#    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
 
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
