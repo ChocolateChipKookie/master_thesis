@@ -3,12 +3,13 @@ import sys
 import os
 
 class LossLogger(Listener):
-    def __init__(self, frequency=1, format="{0}.\t{1}\n", output = None):
+    def __init__(self, frequency=1, format="{0}.\t{1}\n", output = None, append=False):
         super(LossLogger, self).__init__(frequency)
         self.output = output
         if output:
-            if os.path.exists(output):
-                open(output, 'w')
+            if not append:
+                if os.path.exists(output):
+                    open(output, 'w')
 
         self.format = format
 

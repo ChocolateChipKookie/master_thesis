@@ -4,12 +4,13 @@ import datetime
 import os
 
 class OutputLogger(Listener):
-    def __init__(self, total_iterations, batch_size, frequency=1, output = None):
+    def __init__(self, total_iterations, batch_size, frequency=1, output=None, append=False):
         super(OutputLogger, self).__init__(frequency)
         self.output = output
         if output:
-            if os.path.exists(output):
-                open(output, 'w')
+            if not append:
+                if os.path.exists(output):
+                    open(output, 'w')
 
         self.batch_size = batch_size
         self.begin = datetime.datetime.now()

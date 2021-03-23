@@ -9,22 +9,23 @@ def train():
     config['lr'] = 3e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
-    config['batch_size'] = 20
+    config['batch_size'] = 40
 
-    config['data_path'] = "./imagenet/val"
+    config['data_path'] = "./imagenet/train"
     config['dataloader_workers'] = 4
 
     config['validate_every'] = 1000
     config['val_data_path'] = "./imagenet/val"
     config['val_data_size'] = 25000
     config['snapshot_every'] = 1
-    config['snapshot_dir'] = "./tmp/snapshots"
+#    config['snapshot_dir'] = "./tmp/snapshots"
+    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
 
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-    config['model_file'] = 'tmp/snapshots/23_03(05:06:05)-19000_9896.pth'
-    config['start_iteration'] = 19001
+    config['model_file'] = '/hdd/adi/colorful/snapshots/23_03(18:41:23)-2000_8204.pth'
+    config['start_iteration'] = 2001
 
     solver = Solver(config)
     solver.train()
