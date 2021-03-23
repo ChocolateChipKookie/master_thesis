@@ -1,5 +1,7 @@
 import torch.nn as nn
 from colorful import cielab
+import torch
+import colorful.decoders
 
 class Colorful(nn.Module):
     def __init__(self):
@@ -98,6 +100,7 @@ class Colorful(nn.Module):
         self.upsample4 = nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True)
 
         self.color_model = cielab.LABBins()
+        self.decoder = colorful.decoders.ClosestDecode(torch.from_numpy(self.color_model.q_to_ab))
 
     def normalize_l(self, in_l):
         return (in_l - self.l_mean) / self.l_norm
@@ -117,8 +120,6 @@ class Colorful(nn.Module):
         else:
             return self.forward_colorize(input_l)
 
-
-
     def forward_train(self, input_l):
         conv1_2 = self.model1(self.normalize_l(input_l))
         conv2_2 = self.model2(conv1_2)
@@ -134,5 +135,12 @@ class Colorful(nn.Module):
         #        return self.unnormalize_ab(self.upsample4(out_reg))
 
     def forward_colorize(self, input_l):
-        raise NotImplementedError("Function not implemented for non-training purposes!")
+        with torch.no_grad():
+            self.decoder.to(input_l.device)
+            q_img = self.forward_train(input_l)
+            q_img = self.upsample4(q_img)
+            ab_img = self.decoder(q_img)
+            l_img = input_l.permute(0, 2, 3, 1)
+            img = torch.cat((l_img, ab_img), dim=3)
+            return img[0]
 
