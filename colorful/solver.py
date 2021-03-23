@@ -57,7 +57,9 @@ class Solver:
             self.network.load_state_dict(torch.load('tmp/snapshots/23_03(05:06:05)-19000_9896.pth'))
             self.network.eval()
             self.network = self.network.type(self.dtype).to(self.device)
+            self.resume = True
         else:
+            self.resume = False
             self.network = colorful.model.Colorful().type(self.dtype).to(self.device)
 
         # Net optimization
@@ -112,9 +114,9 @@ class Solver:
 
 
         self.listeners = []
-        self.listeners.append(LossLogger(format="({0}, {1})\n", output="./tmp/desmos.log"))
-        self.listeners.append(OutputLogger(self.iterations, self.batch_size, output="./tmp/out.log"))
-        self.listeners.append(OutputLogger(self.iterations, self.batch_size))
+        self.listeners.append(LossLogger(format="({0}, {1})\n", output="./tmp/desmos.log", append=self.resume))
+        self.listeners.append(OutputLogger(self.iterations, self.batch_size, output="./tmp/out.log", append=self.resume))
+        self.listeners.append(OutputLogger(self.iterations, self.batch_size, append=self.resume))
 
         # Validator
         self.listeners.append(
@@ -124,7 +126,8 @@ class Solver:
                 self,
                 './tmp/val.log',
                 config['snapshot_every'],
-                config['snapshot_dir']
+                config['snapshot_dir'],
+                append=self.resume
             ))
 
     def train(self):

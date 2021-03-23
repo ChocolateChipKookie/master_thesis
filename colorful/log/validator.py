@@ -5,12 +5,30 @@ from colorful.log.listener import Listener
 import datetime
 import os
 
+from torch.utils.data import Sampler
+import math
+
 class Validator(Listener):
-    def __init__(self, validate_every, size, solver, output, save_every=None, snapshot_dir=None):
+
+    class ValidatorSampler(Sampler[int]):
+        def __init__(self, total_samples, validate_samples):
+            assert total_samples > validate_samples
+
+            self.total_samples = total_samples
+            self.validate_samples = validate_samples
+            self.increment = int(math.floor(total_samples/validate_samples))
+            self.max_i = self.validate_samples * self.increment
+
+        def __iter__(self):
+            return (i for i in range(0, self.max_i, self.increment))
+
+
+    def __init__(self, validate_every, size, solver, output, save_every=None, snapshot_dir=None, append=False):
         super(Validator, self).__init__(validate_every)
         self.size = size
         self.solver = solver
         self.save = save_every is not None
+
         if self.save:
             if not snapshot_dir:
                 raise RuntimeError("Destination directory not specified")
@@ -23,8 +41,9 @@ class Validator(Listener):
                 raise RuntimeError("Destination path is not a directory")
 
         self.output = output
-        if os.path.exists(output):
-            open(output, 'w')
+        if not append:
+            if os.path.exists(output):
+                open(output, 'w')
         self.counter = 0
 
     def log(self, iter, loss, network):
@@ -34,14 +53,12 @@ class Validator(Listener):
         print("===============================================")
         print(f"Validating...")
 
-        data_loader = DataLoader(self.solver.val_dataset, batch_size=self.solver.batch_size, shuffle=False, num_workers=self.solver.loaders)
+        sampler = self.ValidatorSampler(len(self.solver.val_dataset), self.size)
+        data_loader = DataLoader(self.solver.val_dataset, batch_size=self.solver.batch_size, shuffle=False, num_workers=self.solver.loaders, sampler=sampler)
         total_validated = 0
         total_loss = 0.
         total_i = 0.
         for batch, _ in data_loader:
-            if total_validated >= self.size:
-                break
-
             total_i += 1
             total_validated += batch.shape[0]
 
