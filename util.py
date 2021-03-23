@@ -31,7 +31,7 @@ class ShortResize(torch.nn.Module):
         resized = functional.resize(img, size, self.interpolation)
         return resized
 
-class Lab2rgb(torch.nn.Module):
+class rgb2lab(torch.nn.Module):
     """
         Converts PIL image from the rgb colour space to CIELAB
     """
