@@ -6,10 +6,10 @@ def train():
     config['device'] = "cuda:0"
     config['dtype'] = torch.float32
     config['lambda'] = 0.5
-    config['lr'] = 1e-5
+    config['lr'] = 3e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
-    config['batch_size'] = 10
+    config['batch_size'] = 20
 
     config['data_path'] = "./imagenet/val"
     config['dataloader_workers'] = 4

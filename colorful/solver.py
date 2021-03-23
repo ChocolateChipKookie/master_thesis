@@ -178,6 +178,7 @@ class Solver:
                             plt.savefig(os.path.join(self.progress_dir, f"{i}.png"))
                         else:
                             plt.show()
+                        plt.close()
 
             # Clean memory
             torch.cuda.empty_cache()
