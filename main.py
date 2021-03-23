@@ -9,7 +9,7 @@ def train():
     config['lr'] = 3e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
-    config['batch_size'] = 5
+    config['batch_size'] = 40
 
     config['data_path'] = "./imagenet/train"
     config['dataloader_workers'] = 4

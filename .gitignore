@@ -1,3 +1,4 @@
 # Don't track
 __pycache__/
 imagenet/
+tmp/
