@@ -132,7 +132,10 @@ class Solver:
 
     def train(self):
         self.network.train()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84c88b5903dfb61cc3a4b131316791f14daec48e
         while self.start_iteration < self.iterations:
             for i, batch in enumerate(self.data_loader, self.start_iteration):
                 self.start_iteration += 1
@@ -188,4 +191,7 @@ class Solver:
 
                 # Clean memory
                 torch.cuda.empty_cache()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84c88b5903dfb61cc3a4b131316791f14daec48e

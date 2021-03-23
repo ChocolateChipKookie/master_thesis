@@ -18,6 +18,7 @@ def train():
     config['val_data_path'] = "./imagenet/val"
     config['val_data_size'] = 25000
     config['snapshot_every'] = 1
+
 #    config['snapshot_dir'] = "./tmp/snapshots"
     config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
 
@@ -71,5 +72,9 @@ def colorize():
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     train()
 
+=======
+    train()
+>>>>>>> 84c88b5903dfb61cc3a4b131316791f14daec48e

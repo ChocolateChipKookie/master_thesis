@@ -1,4 +1,4 @@
 # Don't track
 __pycache__/
-imagenet/
+imagenet
 tmp/
