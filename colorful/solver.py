@@ -55,7 +55,7 @@ class Solver:
             if 'start_iteration' in config:
                 self.start_iteration = config['start_iteration']
             self.network = colorful.model.Colorful()
-            self.network.load_state_dict(torch.load('tmp/snapshots/23_03(05:06:05)-19000_9896.pth'))
+            self.network.load_state_dict(torch.load(config['model_file']))
             self.network.eval()
             self.network = self.network.type(self.dtype).to(self.device)
             self.resume = True
@@ -138,6 +138,10 @@ class Solver:
 
     def train(self):
         self.network.train()
+<<<<<<< HEAD
+
+=======
+>>>>>>> 84c88b5903dfb61cc3a4b131316791f14daec48e
         while self.start_iteration < self.iterations:
             for i, batch in enumerate(self.data_loader, self.start_iteration):
                 self.start_iteration += 1
@@ -193,3 +197,7 @@ class Solver:
 
                 # Clean memory
                 torch.cuda.empty_cache()
+<<<<<<< HEAD
+
+=======
+>>>>>>> 84c88b5903dfb61cc3a4b131316791f14daec48e
