@@ -25,8 +25,8 @@ def train():
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-    config['model_file'] = '/hdd/adi/colorful/snapshots/23_03(18:41:23)-2000_8204.pth'
-    config['start_iteration'] = 2001
+    config['model_file'] = '/hdd/adi/colorful/snapshots/25_03\(21\:43\:05\)-98000_7401.pth'
+    config['start_iteration'] = 98001
 
     solver = Solver(config)
     solver.train()
@@ -72,9 +72,5 @@ def colorize():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     train()
 
-=======
-    train()
->>>>>>> 84c88b5903dfb61cc3a4b131316791f14daec48e
