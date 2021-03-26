@@ -1,3 +1,4 @@
+
 def train():
     from colorful.solver import Solver
     import torch
@@ -9,24 +10,28 @@ def train():
     config['lr'] = 3e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
-    config['batch_size'] = 40
+    config['batch_size'] = 5
 
-    config['data_path'] = "./imagenet/train"
+    config['data_path'] = "./imagenet/val"
     config['dataloader_workers'] = 4
 
     config['validate_every'] = 1000
     config['val_data_path'] = "./imagenet/val"
     config['val_data_size'] = 25000
     config['snapshot_every'] = 1
-
-#    config['snapshot_dir'] = "./tmp/snapshots"
-    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
+    config['snapshot_dir'] = "./tmp/snapshots"
+#    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
 
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
     config['model_file'] = '/hdd/adi/colorful/snapshots/25_03\(21\:43\:05\)-98000_7401.pth'
     config['start_iteration'] = 98001
+    config['backup_dir'] = 'tmp'
+    config['backup_every'] = 100
+
+#    config['model_file'] = 'tmp/snapshots/23_03(05:06:05)-19000_9896.pth'
+#    config['start_iteration'] = 19001
 
     solver = Solver(config)
     solver.train()
@@ -70,7 +75,17 @@ def colorize():
 
     plt.show()
 
+def restore():
+    from colorful.solver import Solver
+    import json
+    settings = json.load("tmp/config.json")
+
+    config = settings['config']
+    iter = settings['iter']
+    config['model_file'] = 'tmp/backup_model.pth'
+    config['start_iteration'] = iter + 1
+    solver = Solver(config)
+    solver.train()
 
 if __name__ == '__main__':
     train()
-

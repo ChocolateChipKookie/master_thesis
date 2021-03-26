@@ -1,4 +1,9 @@
 # Don't track
-__pycache__/
-imagenet
+# All pycache files and contents
+!**/__pycache__/
+*.pyo
+*.pyc
+# Symlink
+imagenet/
+# Temporary train related files
 tmp/

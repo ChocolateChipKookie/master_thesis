@@ -6,6 +6,7 @@ from torch.nn import functional
 import torchvision
 from torch.utils.data import DataLoader
 from colorful import cielab, encoders, CELoss
+from colorful.log.backup import Backup
 from colorful.log.loss import LossLogger
 from colorful.log.out import OutputLogger
 from colorful.log.validator import Validator
@@ -129,6 +130,11 @@ class Solver:
                 config['snapshot_dir'],
                 append=self.resume
             ))
+
+        # Backup listener, creates backup
+        self.listeners.append(
+            Backup(config['backup_every'], config['backup_dir'], config)
+        )
 
     def train(self):
         self.network.train()
