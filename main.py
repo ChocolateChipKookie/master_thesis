@@ -29,6 +29,9 @@ def train():
     config['backup_dir'] = 'tmp'
     config['backup_every'] = 100
 
+#    config['model_file'] = 'tmp/snapshots/23_03(05:06:05)-19000_9896.pth'
+#    config['start_iteration'] = 19001
+
     solver = Solver(config)
     solver.train()
 
@@ -74,9 +77,9 @@ def colorize():
 def restore():
     from colorful.solver import Solver
     import json
-    settings = json.load("tmp/config.json")
-
-    config = settings['config']
+    import torch
+    settings = json.load("tmp/state.json")
+    config = torch.load("tmp/config.pth")
     iter = settings['iter']
     config['model_file'] = 'tmp/backup_model.pth'
     config['start_iteration'] = iter + 1
