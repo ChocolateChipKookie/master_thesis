@@ -1,3 +1,4 @@
+
 def train():
     from colorful.solver import Solver
     import torch
@@ -23,6 +24,9 @@ def train():
 
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
+
+    config['backup_dir'] = 'tmp'
+    config['backup_every'] = 100
 
 #    config['model_file'] = 'tmp/snapshots/23_03(05:06:05)-19000_9896.pth'
 #    config['start_iteration'] = 19001
@@ -69,6 +73,17 @@ def colorize():
 
     plt.show()
 
+def restore():
+    from colorful.solver import Solver
+    import json
+    settings = json.load("tmp/config.json")
+
+    config = settings['config']
+    iter = settings['iter']
+    config['model_file'] = 'tmp/backup_model.pth'
+    config['start_iteration'] = iter + 1
+    solver = Solver(config)
+    solver.train()
 
 if __name__ == '__main__':
     train()
