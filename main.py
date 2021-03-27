@@ -1,4 +1,3 @@
-
 def train():
     from colorful.solver import Solver
     import torch

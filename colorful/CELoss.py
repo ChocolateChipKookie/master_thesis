@@ -18,5 +18,5 @@ class CrossEntropyLoss(torch.nn.Module):
         loss = -torch.sum((softmax - norm) * target) / predicted.shape[0]
         if self.weights is not None:
             loss = loss * self.weights
-            loss = loss.mean()
+            loss = loss.mean() /self.weights_sum
         return loss
