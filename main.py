@@ -24,10 +24,10 @@ def train():
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-    config['model_file'] = '/hdd/adi/colorful/snapshots/26_03(18:46:24)-116000_7330.pth'
-    config['start_iteration'] = 116001
+#    config['model_file'] = '/hdd/adi/colorful/snapshots/26_03(18:46:24)-116000_7330.pth'
+#    config['start_iteration'] = 116001
     config['backup_dir'] = 'tmp'
-    config['backup_every'] = 1000000
+    config['backup_every'] = 200
 
 #    config['model_file'] = 'tmp/snapshots/23_03(05:06:05)-19000_9896.pth'
 #    config['start_iteration'] = 19001
