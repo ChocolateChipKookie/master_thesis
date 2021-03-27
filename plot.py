@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 
-
-
 F = {}
 
 for line in open("tmp/desmos.log", 'r'):
