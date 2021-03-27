@@ -24,10 +24,10 @@ def train():
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-    config['model_file'] = '/hdd/adi/colorful/snapshots/25_03(21:43:05)-98000_7401.pth'
-    config['start_iteration'] = 98001
+    config['model_file'] = '/hdd/adi/colorful/snapshots/26_03(18:46:24)-116000_7330.pth'
+    config['start_iteration'] = 116001
     config['backup_dir'] = 'tmp'
-    config['backup_every'] = 100
+    config['backup_every'] = 1000000
 
 #    config['model_file'] = 'tmp/snapshots/23_03(05:06:05)-19000_9896.pth'
 #    config['start_iteration'] = 19001
@@ -78,9 +78,11 @@ def restore():
     from colorful.solver import Solver
     import json
     import torch
-    settings = json.load("tmp/state.json")
+    settings = json.loads(open("tmp/state.json", 'r').read())
     config = torch.load("tmp/config.pth")
     iter = settings['iter']
+
+    config['lr'] = 3e-4
     config['model_file'] = 'tmp/backup_model.pth'
     config['start_iteration'] = iter + 1
     solver = Solver(config)
