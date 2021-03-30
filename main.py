@@ -7,7 +7,7 @@ def train():
     config['device'] = "cuda:0"
     config['dtype'] = torch.float32
     config['lambda'] = 0.5
-    config['lr'] = 3e-5
+    config['lr'] = 1e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
     config['batch_size'] = 40
@@ -24,8 +24,8 @@ def train():
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-#    config['model_file'] = '/hdd/adi/colorful/snapshots/26_03(18:46:24)-116000_7330.pth'
-#    config['start_iteration'] = 116001
+    config['model_file'] = '/hdd/adi/colorful/snapshots/29_03(16:40:43)-75000_23.pth'
+    config['start_iteration'] = 75001
     config['backup_dir'] = 'tmp'
     config['backup_every'] = 200
 
@@ -95,7 +95,8 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
     import torchvision
     import torch
     import util
-    import os
+    print('Filter started')
+
     transform = torchvision.transforms.Compose([
         util.ShortResize(256),
         torchvision.transforms.RandomCrop(256),
@@ -119,6 +120,7 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
         return check_channel(img[1]) and check_channel(img[2])
 
     invalid = []
+
     with open(out_file, 'w') as file:
         for i, img in enumerate(dataset):
             img = img[0]
@@ -132,4 +134,4 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
 
 
 if __name__ == '__main__':
-    filter("./imagenet/val", './masks/val.txt')
+    filter("./imagenet/train", './masks/train.txt')
