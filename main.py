@@ -6,7 +6,7 @@ def train():
     config['device'] = "cuda:0"
     config['dtype'] = torch.float32
     config['lambda'] = 0.5
-    config['lr'] = 3e-5
+    config['lr'] = 1e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
     config['batch_size'] = 40
@@ -23,8 +23,8 @@ def train():
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-#    config['model_file'] = '/hdd/adi/colorful/snapshots/26_03(18:46:24)-116000_7330.pth'
-#    config['start_iteration'] = 116001
+    config['model_file'] = '/hdd/adi/colorful/snapshots/29_03(16:40:43)-75000_23.pth'
+    config['start_iteration'] = 75001
     config['backup_dir'] = 'tmp'
     config['backup_every'] = 200
 
