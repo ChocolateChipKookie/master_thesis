@@ -5,27 +5,10 @@ from colorful.log.listener import Listener
 import datetime
 import os
 
-from torch.utils.data import Sampler
-import math
 
 class Validator(Listener):
-
-    class ValidatorSampler(Sampler[int]):
-        def __init__(self, total_samples, validate_samples):
-            assert total_samples > validate_samples
-
-            self.total_samples = total_samples
-            self.validate_samples = validate_samples
-            self.increment = int(math.floor(total_samples/validate_samples))
-            self.max_i = self.validate_samples * self.increment
-
-        def __iter__(self):
-            return (i for i in range(0, self.max_i, self.increment))
-
-
-    def __init__(self, validate_every, size, solver, output, save_every=None, snapshot_dir=None, append=False):
+    def __init__(self, validate_every, solver, output, save_every=None, snapshot_dir=None, append=False):
         super(Validator, self).__init__(validate_every)
-        self.size = size
         self.solver = solver
         self.save = save_every is not None
 
@@ -53,7 +36,7 @@ class Validator(Listener):
         print("===============================================")
         print(f"Validating...")
 
-        sampler = self.ValidatorSampler(len(self.solver.val_dataset), self.size)
+        sampler = self.solver.val_sampler
         data_loader = DataLoader(self.solver.val_dataset, batch_size=self.solver.batch_size, shuffle=False, num_workers=self.solver.loaders, sampler=sampler)
         total_validated = 0
         total_loss = 0.

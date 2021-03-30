@@ -107,12 +107,12 @@ class Solver:
 
         self.dataset = torchvision.datasets.ImageFolder(config['data_path'], transform=self.transform)
         self.loaders = config['dataloader_workers'] if 'dataloader_workers' in config else 0
-        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.loaders)
         self.val_dataset = torchvision.datasets.ImageFolder(config['val_data_path'], transform=self.transform)
+        self.sampler = util.ShuffledFilterSampler(indexes_file=config['data_mask_path'])
+        self.val_sampler = util.SubsetFilterSampler(config['val_data_size'], indexes_file=config['val_data_mask_path'])
 
         # Encoder
         self.encoder = encoders.SoftEncoder(self.cielab, device=self.device)
-
 
         self.listeners = []
         self.listeners.append(LossLogger(format="({0}, {1})\n", output="./tmp/desmos.log", append=self.resume))
@@ -123,7 +123,6 @@ class Solver:
         self.listeners.append(
             Validator(
                 config['validate_every'],
-                config['val_data_size'],
                 self,
                 './tmp/val.log',
                 config['snapshot_every'],
@@ -140,7 +139,9 @@ class Solver:
         self.network.train()
 
         while self.start_iteration < self.iterations:
-            for i, batch in enumerate(self.data_loader, self.start_iteration):
+            data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.loaders)
+
+            for i, batch in enumerate(data_loader, self.start_iteration):
                 self.start_iteration += 1
                 # Reset the gradients
                 self.optimizer.zero_grad()

@@ -7,25 +7,27 @@ def train():
     config['device'] = "cuda:0"
     config['dtype'] = torch.float32
     config['lambda'] = 0.5
-    config['lr'] = 1e-5
+    config['lr'] = 3e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
     config['batch_size'] = 40
 
     config['data_path'] = "./imagenet/train"
+    config['data_mask_path'] = "./masks/train.txt"
     config['dataloader_workers'] = 4
 
     config['validate_every'] = 1000
     config['val_data_path'] = "./imagenet/val"
-    config['val_data_size'] = 25000
+    config['val_data_mask_path'] = "./masks/val.txt"
+    config['val_data_size'] = 20000
     config['snapshot_every'] = 1
     config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
 
     config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-    config['model_file'] = '/hdd/adi/colorful/snapshots/29_03(16:40:43)-75000_23.pth'
-    config['start_iteration'] = 75001
+#    config['model_file'] = '/hdd/adi/colorful/snapshots/26_03(18:46:24)-116000_7330.pth'
+#    config['start_iteration'] = 116001
     config['backup_dir'] = 'tmp'
     config['backup_every'] = 200
 
@@ -95,8 +97,6 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
     import torchvision
     import torch
     import util
-    print('Filter started')
-
     transform = torchvision.transforms.Compose([
         util.ShortResize(256),
         torchvision.transforms.RandomCrop(256),
@@ -134,4 +134,4 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
 
 
 if __name__ == '__main__':
-    filter("./imagenet/train", './masks/train.txt')
+    train()
