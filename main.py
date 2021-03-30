@@ -95,6 +95,8 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
     import torchvision
     import torch
     import util
+
+    print('Filter started')
     transform = torchvision.transforms.Compose([
         util.ShortResize(256),
         torchvision.transforms.RandomCrop(256),
@@ -124,7 +126,6 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
         if not is_grayscale(img):
             valid.append(i)
         else:
-            util.display_lab(img.permute(1, 2, 0))
             print(f"Not valid {i}")
             invalid.append(i)
 
@@ -135,4 +136,4 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
 
 
 if __name__ == '__main__':
-    filter("./imagenet/val", './masks/val.txt')
+    filter("./imagenet/train", './masks/train.txt')
