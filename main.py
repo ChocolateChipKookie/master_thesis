@@ -95,6 +95,7 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
     import torchvision
     import torch
     import util
+    import os
     transform = torchvision.transforms.Compose([
         util.ShortResize(256),
         torchvision.transforms.RandomCrop(256),
@@ -117,21 +118,17 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
 
         return check_channel(img[1]) and check_channel(img[2])
 
-    valid = []
     invalid = []
-    for i, img in enumerate(dataset):
-        img = img[0]
-        if not is_grayscale(img):
-            valid.append(i)
-        else:
-            util.display_lab(img.permute(1, 2, 0))
-            print(f"Not valid {i}")
-            invalid.append(i)
-
-    print(f'Total valid {len(valid)}\n Not valid: {len(invalid)}')
     with open(out_file, 'w') as file:
-        for i in valid:
-            file.write(f'{i}\n')
+        for i, img in enumerate(dataset):
+            img = img[0]
+            if not is_grayscale(img):
+                file.write(f"{i}\n")
+            else:
+                print(f"Not valid {i}")
+                invalid.append(i)
+
+    print(f'Total valid {len(dataset) - len(invalid)}\n Not valid: {len(invalid)}')
 
 
 if __name__ == '__main__':
