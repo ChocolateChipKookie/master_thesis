@@ -4,6 +4,6 @@
 *.pyo
 *.pyc
 # Symlink
-imagenet/
+imagenet
 # Temporary train related files
 tmp/
