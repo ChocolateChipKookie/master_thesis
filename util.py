@@ -46,3 +46,4 @@ def display_lab(img):
     img = color.lab2rgb(img)
     plt.imshow(img)
     plt.show()
+    plt.close()

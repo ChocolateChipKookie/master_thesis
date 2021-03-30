@@ -1,3 +1,4 @@
+
 def train():
     from colorful.solver import Solver
     import torch
@@ -33,6 +34,7 @@ def train():
 
     solver = Solver(config)
     solver.train()
+
 
 def colorize():
     import colorful.model
@@ -73,6 +75,7 @@ def colorize():
 
     plt.show()
 
+
 def restore():
     from colorful.solver import Solver
     import json
@@ -87,5 +90,49 @@ def restore():
     solver = Solver(config)
     solver.train()
 
+
+def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
+    import torchvision
+    import torch
+    import util
+    transform = torchvision.transforms.Compose([
+        util.ShortResize(256),
+        torchvision.transforms.RandomCrop(256),
+        util.rgb2lab(),
+        torchvision.transforms.ToTensor(),
+    ])
+
+    dataset = torchvision.datasets.ImageFolder(src_path, transform=transform)
+
+    def is_grayscale(img):
+        def check_channel(channel):
+            # Checks if threshold percentage of pixels are in range -threshold < channel < threshold
+            total_elements = channel.shape[0] * channel.shape[1]
+            threshold_elements = total_elements * threshold_percentage
+            lo = -threshold_val <= channel
+            hi = channel <= threshold_val
+            in_range = torch.logical_and(hi, lo)
+            non_zero = torch.count_nonzero(in_range)
+            return non_zero > threshold_elements
+
+        return check_channel(img[1]) and check_channel(img[2])
+
+    valid = []
+    invalid = []
+    for i, img in enumerate(dataset):
+        img = img[0]
+        if not is_grayscale(img):
+            valid.append(i)
+        else:
+            util.display_lab(img.permute(1, 2, 0))
+            print(f"Not valid {i}")
+            invalid.append(i)
+
+    print(f'Total valid {len(valid)}\n Not valid: {len(invalid)}')
+    with open(out_file, 'w') as file:
+        for i in valid:
+            file.write(f'{i}\n')
+
+
 if __name__ == '__main__':
-    train()
+    filter("./imagenet/val", './masks/val.txt')
