@@ -2,21 +2,23 @@ import torch
 from torch.nn.functional import log_softmax
 
 
-class CrossEntropyLoss(torch.nn.Module):
+class MultinomialCrossEntropyLoss(torch.nn.Module):
     def __init__(self, weights=None):
         super().__init__()
         self.weights = weights
         if weights is not None:
             self.weights_sum = self.weights.sum()
 
-    def forward(self, predicted, target):
-        n, _, w, h = predicted.shape
-        m = w * h
-        softmax = log_softmax(predicted, dim=1)
-        norm = target.clone()
-        norm[norm != 0] = torch.log(norm[norm != 0])
-        loss = -torch.sum((softmax - norm) * target) / predicted.shape[0]
+    def forward(self, logits, target):
+        # Log-softmax
+        ls = log_softmax(logits, dim=1)
+        # Cross-entropy
+        ce = torch.sum(ls * target, dim=1)
+        # Apply weights
         if self.weights is not None:
-            loss = loss * self.weights
-            loss = loss.mean() /self.weights_sum
+            am = torch.argmax(target, dim=1)
+            weights = self.weights[am]
+            ce *= weights
+
+        loss = -torch.mean(ce)
         return loss

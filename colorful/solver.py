@@ -93,9 +93,9 @@ class Solver:
             self.weights = 1 / ((1 - self.l_factor) * self.prior + self.l_factor * uniform)
             self.weights /= torch.sum(self.prior * self.weights)
 
-            self.loss = CELoss.CrossEntropyLoss(self.weights)
+            self.loss = CELoss.MultinomialCrossEntropyLoss(self.weights)
         else:
-            self.loss = CELoss.CrossEntropyLoss()
+            self.loss = CELoss.MultinomialCrossEntropyLoss()
 
         # Dataset and data loader
         self.transform = torchvision.transforms.Compose([

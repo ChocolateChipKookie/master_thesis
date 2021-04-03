@@ -4,7 +4,7 @@ import torch
 import colorful.decoders
 
 class Colorful(nn.Module):
-    def __init__(self):
+    def __init__(self, decoder_T=0.38):
         super(Colorful, self).__init__()
         self.l_mean = 50.
         self.l_norm = 100.
@@ -100,7 +100,7 @@ class Colorful(nn.Module):
         self.upsample4 = nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True)
 
         self.color_model = cielab.LABBins()
-        self.decoder = colorful.decoders.ClosestDecode(torch.from_numpy(self.color_model.q_to_ab))
+        self.decoder = colorful.decoders.AnnealedMeanDecode(torch.from_numpy(self.color_model.q_to_ab), decoder_T)
 
     def normalize_l(self, in_l):
         return (in_l - self.l_mean) / self.l_norm
@@ -138,6 +138,7 @@ class Colorful(nn.Module):
         with torch.no_grad():
             self.decoder.to(input_l.device)
             q_img = self.forward_train(input_l)
+            q_img = torch.softmax(q_img, dim=1)
             q_img = self.upsample4(q_img)
             ab_img = self.decoder(q_img)
             l_img = input_l.permute(0, 2, 3, 1)

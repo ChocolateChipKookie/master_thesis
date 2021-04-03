@@ -82,8 +82,8 @@ class Validator(Listener):
         self.counter += 1
         if self.save and self.counter % self.save_every == 0:
             now = datetime.datetime.now()
-            now_str = now.strftime("%d_%m(%H:%M:%S)")
-            name = f"{now_str}-{iter}_{int(avg_loss)}.pth"
+            now_str = now.strftime("%m_%d")
+            name = f"{now_str}-{iter}.pth"
             path = os.path.join(self.snapshot_dir, name)
             torch.save(self.solver.network.state_dict(), path)
             print(f"Saved snapshot {name} to {self.snapshot_dir}")

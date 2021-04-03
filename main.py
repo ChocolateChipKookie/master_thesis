@@ -21,13 +21,14 @@ def train():
     config['val_data_mask_path'] = "./masks/val.txt"
     config['val_data_size'] = 20000
     config['snapshot_every'] = 1
-    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
+#    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
+    config['snapshot_dir'] = "./tmp/snapshots"
 
-    config['progress_every'] = 10
+    config['progress_every'] = 1
     config['progress_dir'] = './tmp/progress'
 
-#    config['model_file'] = '/hdd/adi/colorful/snapshots/26_03(18:46:24)-116000_7330.pth'
-#    config['start_iteration'] = 116001
+#    config['model_file'] = './tmp/snapshots/01_04(18:40:19)-71000_25.pth'
+#    config['start_iteration'] = 71001
     config['backup_dir'] = 'tmp'
     config['backup_every'] = 200
 
