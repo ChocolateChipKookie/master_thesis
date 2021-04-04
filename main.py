@@ -11,9 +11,12 @@ def train():
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
     config['batch_size'] = 40
+#    config['batch_size'] = 5
 
     config['data_path'] = "./imagenet/train"
+#    config['data_path'] = "./imagenet/val"
     config['data_mask_path'] = "./masks/train.txt"
+#    config['data_mask_path'] = "./masks/val.txt"
     config['dataloader_workers'] = 4
 
     config['validate_every'] = 1000

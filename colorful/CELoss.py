@@ -14,10 +14,10 @@ class MultinomialCrossEntropyLoss(torch.nn.Module):
         ls = log_softmax(logits, dim=1)
         # Cross-entropy
         ce = torch.sum(ls * target, dim=1)
+
         # Apply weights
         if self.weights is not None:
-            am = torch.argmax(target, dim=1)
-            weights = self.weights[am]
+            weights = torch.tensordot(target, self.weights, ([1], [0]))
             ce *= weights
 
         loss = -torch.mean(ce)
