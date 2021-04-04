@@ -10,13 +10,13 @@ def train():
     config['lr'] = 3e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
-    config['batch_size'] = 40
-#    config['batch_size'] = 5
+#    config['batch_size'] = 40
+    config['batch_size'] = 5
 
-    config['data_path'] = "./imagenet/train"
-#    config['data_path'] = "./imagenet/val"
-    config['data_mask_path'] = "./masks/train.txt"
-#    config['data_mask_path'] = "./masks/val.txt"
+#    config['data_path'] = "./imagenet/train"
+    config['data_path'] = "./imagenet/val"
+#    config['data_mask_path'] = "./masks/train.txt"
+    config['data_mask_path'] = "./masks/val.txt"
     config['dataloader_workers'] = 4
 
     config['validate_every'] = 1000
@@ -97,9 +97,8 @@ def restore():
     solver.train()
 
 
-def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
+def filter(src_path, out_file):
     import torchvision
-    import torch
     import util
     transform = torchvision.transforms.Compose([
         util.ShortResize(256),
@@ -110,32 +109,18 @@ def filter(src_path, out_file, threshold_val=10, threshold_percentage=0.9):
 
     dataset = torchvision.datasets.ImageFolder(src_path, transform=transform)
 
-    def is_grayscale(img):
-        def check_channel(channel):
-            # Checks if threshold percentage of pixels are in range -threshold < channel < threshold
-            total_elements = channel.shape[0] * channel.shape[1]
-            threshold_elements = total_elements * threshold_percentage
-            lo = -threshold_val <= channel
-            hi = channel <= threshold_val
-            in_range = torch.logical_and(hi, lo)
-            non_zero = torch.count_nonzero(in_range)
-            return non_zero > threshold_elements
-
-        return check_channel(img[1]) and check_channel(img[2])
-
     invalid = []
 
     with open(out_file, 'w') as file:
         for i, img in enumerate(dataset):
             img = img[0]
-            if not is_grayscale(img):
+            if not util.is_grayscale(img):
                 file.write(f"{i}\n")
             else:
                 print(f"Not valid {i}")
                 invalid.append(i)
 
     print(f'Total valid {len(dataset) - len(invalid)}\n Not valid: {len(invalid)}')
-
 
 if __name__ == '__main__':
     train()

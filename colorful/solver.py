@@ -139,16 +139,22 @@ class Solver:
         self.network.train()
 
         while self.start_iteration < self.iterations:
-            data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.loaders)
+            data_loader = DataLoader(self.dataset, batch_size=self.batch_size, sampler=self.sampler, num_workers=self.loaders)
 
             for i, batch in enumerate(data_loader, self.start_iteration):
                 self.start_iteration += 1
                 # Reset the gradients
                 self.optimizer.zero_grad()
-
                 # Fetch images
                 batch, _ = batch
                 batch = batch.type(self.dtype)
+
+                if False:
+                    for i in range(len(batch)):
+                        if util.is_grayscale(batch[i]):
+                            util.display_lab(batch[i].permute(1, 2, 0))
+                            raise RuntimeError("Something is wrong!")
+
                 # Fetch input for the network
                 x = batch[:, :1, :, :].to(self.device)
                 # Forward pass

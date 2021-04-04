@@ -37,7 +37,7 @@ class Validator(Listener):
         print(f"Validating...")
 
         sampler = self.solver.val_sampler
-        data_loader = DataLoader(self.solver.val_dataset, batch_size=self.solver.batch_size, shuffle=False, num_workers=self.solver.loaders, sampler=sampler)
+        data_loader = DataLoader(self.solver.val_dataset, batch_size=self.solver.batch_size, num_workers=self.solver.loaders, sampler=sampler)
         total_validated = 0
         total_loss = 0.
         total_i = 0.

@@ -67,11 +67,11 @@ class ShuffledFilterSampler(Sampler[int]):
         self.shuffle()
 
     def shuffle(self):
-        self.indexes = random.shuffle(self.indexes)
+        random.shuffle(self.indexes)
 
     def __iter__(self):
         self.shuffle()
-        return self.indexes
+        return (i for i in self.indexes)
 
 class SubsetFilterSampler(Sampler[int]):
     def __init__(self, samples, indexes=None, indexes_file=None):
@@ -100,3 +100,15 @@ class SubsetFilterSampler(Sampler[int]):
     def __iter__(self):
         return (i for i in self.indexes)
 
+
+def is_grayscale(img, threshold_val = 10, threshold_percentage = .9):
+    def check_channel(channel):
+        # Checks if threshold percentage of pixels are in range -threshold < channel < threshold
+        total_elements = channel.shape[0] * channel.shape[1]
+        threshold_elements = total_elements * threshold_percentage
+        lo = -threshold_val <= channel
+        hi = channel <= threshold_val
+        in_range = torch.logical_and(hi, lo)
+        non_zero = torch.count_nonzero(in_range)
+        return non_zero > threshold_elements
+    return check_channel(img[1]) and check_channel(img[2])
