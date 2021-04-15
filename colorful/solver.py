@@ -101,6 +101,7 @@ class Solver:
         self.transform = torchvision.transforms.Compose([
             util.ShortResize(256),
             torchvision.transforms.RandomCrop(256),
+            torchvision.transforms.RandomRotation(),
             util.rgb2lab(),
             torchvision.transforms.ToTensor(),
         ])

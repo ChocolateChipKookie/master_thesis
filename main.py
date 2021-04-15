@@ -7,16 +7,16 @@ def train():
     config['device'] = "cuda:0"
     config['dtype'] = torch.float32
     config['lambda'] = 0.5
-    config['lr'] = 3e-5
+    config['lr'] = 1e-5
     config['weight_decay'] = 1e-3
     config['iterations'] = 200000
-#    config['batch_size'] = 40
-    config['batch_size'] = 5
+    config['batch_size'] = 40
+#    config['batch_size'] = 5
 
-#    config['data_path'] = "./imagenet/train"
-    config['data_path'] = "./imagenet/val"
-#    config['data_mask_path'] = "./masks/train.txt"
-    config['data_mask_path'] = "./masks/val.txt"
+    config['data_path'] = "./imagenet/train"
+#    config['data_path'] = "./imagenet/val"
+    config['data_mask_path'] = "./masks/train.txt"
+#    config['data_mask_path'] = "./masks/val.txt"
     config['dataloader_workers'] = 4
 
     config['validate_every'] = 1000
@@ -24,14 +24,14 @@ def train():
     config['val_data_mask_path'] = "./masks/val.txt"
     config['val_data_size'] = 20000
     config['snapshot_every'] = 1
-#    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
-    config['snapshot_dir'] = "./tmp/snapshots"
+    config['snapshot_dir'] = "/hdd/adi/colorful/snapshots"
+#    config['snapshot_dir'] = "./tmp/snapshots"
 
-    config['progress_every'] = 1
+    config['progress_every'] = 10
     config['progress_dir'] = './tmp/progress'
 
-#    config['model_file'] = './tmp/snapshots/01_04(18:40:19)-71000_25.pth'
-#    config['start_iteration'] = 71001
+    config['model_file'] = '/hdd/adi/colorful/snapshots/04_15-204000.pth'
+    config['start_iteration'] = 204000
     config['backup_dir'] = 'tmp'
     config['backup_every'] = 200
 
