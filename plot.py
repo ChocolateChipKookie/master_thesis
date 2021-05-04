@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 F = {}
 
-for line in open("tmp/desmos.log", 'r'):
+for line in open("colorful/tmp/desmos.log", 'r'):
     l = line[1:-2].split(', ')
     F[int(l[0])] = float(l[1])
 
@@ -15,7 +15,7 @@ for x in F:
 X_val = [0]
 Y_val = [Y[0]]
 
-for line in open("tmp/val.log", 'r'):
+for line in open("colorful/tmp/val.log", 'r'):
     tmp = line.strip().split()
     X_val.append(int(tmp[0]))
     Y_val.append(float(tmp[1]))
