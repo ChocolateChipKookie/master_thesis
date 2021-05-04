@@ -1,16 +1,19 @@
 import torch
 from torch.utils.data import Sampler
 from torchvision.transforms import functional
+import torchvision.transforms
 from skimage import color
 import matplotlib.pyplot as plt
 import random
 import math
+
 
 class ShortResize(torch.nn.Module):
     """
         Resizes the image so the shorter side is exactly _size_ pixels long
         Image can be of type Tensor or PIL image
     """
+
     def __init__(self, size: int):
         super().__init__()
         self.size = size
@@ -25,17 +28,19 @@ class ShortResize(torch.nn.Module):
         # Get the length of the shorter side
         min_len = min(size)
         # Calculate scale
-        scale = self.size/min_len
+        scale = self.size / min_len
         for i in range(len(size)):
             size[i] = int(round(size[i] * scale))
         # Resize
         resized = functional.resize(img, size, self.interpolation)
         return resized
 
+
 class rgb2lab(torch.nn.Module):
     """
         Converts PIL image from the rgb colour space to CIELAB
     """
+
     def __init__(self):
         super().__init__()
 
@@ -43,11 +48,13 @@ class rgb2lab(torch.nn.Module):
         # Fetch the size of the image
         return color.rgb2lab(img)
 
+
 def display_lab(img):
     img = color.lab2rgb(img)
     plt.imshow(img)
     plt.show()
     plt.close()
+
 
 class ShuffledFilterSampler(Sampler[int]):
     def __init__(self, indexes=None, indexes_file=None):
@@ -73,6 +80,7 @@ class ShuffledFilterSampler(Sampler[int]):
         self.shuffle()
         return (i for i in self.indexes)
 
+
 class SubsetFilterSampler(Sampler[int]):
     def __init__(self, samples, indexes=None, indexes_file=None):
         self.indexes = None
@@ -93,7 +101,7 @@ class SubsetFilterSampler(Sampler[int]):
 
         self.total_samples = len(self.indexes)
         self.samples = samples
-        self.increment = int(math.floor(self.total_samples/self.samples))
+        self.increment = int(math.floor(self.total_samples / self.samples))
         self.max_i = self.samples * self.increment
         self.indexes = self.indexes[0:self.max_i:self.increment]
 
@@ -101,7 +109,7 @@ class SubsetFilterSampler(Sampler[int]):
         return (i for i in self.indexes)
 
 
-def is_grayscale(img, threshold_val = 10, threshold_percentage = .9):
+def is_grayscale(img, threshold_val=10, threshold_percentage=.9):
     def check_channel(channel):
         # Checks if threshold percentage of pixels are in range -threshold < channel < threshold
         total_elements = channel.shape[0] * channel.shape[1]
@@ -111,4 +119,56 @@ def is_grayscale(img, threshold_val = 10, threshold_percentage = .9):
         in_range = torch.logical_and(hi, lo)
         non_zero = torch.count_nonzero(in_range)
         return non_zero > threshold_elements
+
     return check_channel(img[1]) and check_channel(img[2])
+
+
+def is_monochrome(img, min_eccentricity=7.5):
+    avg = img.mean(dim=[1, 2])
+    centered = img[1:] - avg[1:, None, None]
+    dist = torch.linalg.norm(centered, dim=0)
+    mean = dist.mean().item()
+    return mean < min_eccentricity
+
+
+def filter_dataset(src_path, func, invert=False, log_period=None):
+    transform = torchvision.transforms.Compose([
+        ShortResize(256),
+        torchvision.transforms.RandomCrop(256),
+        rgb2lab(),
+        torchvision.transforms.ToTensor(),
+    ])
+
+    dataset = torchvision.datasets.ImageFolder(src_path, transform=transform)
+
+    valid = []
+    invalid = []
+
+    def get_log():
+        def log_function(index):
+            if index % log_period == 0:
+                print(f'[{i} / {len(dataset)}] valid: {len(valid)}- invalid: {len(invalid)}')
+
+        def log_dummy(index):
+            pass
+
+        if log_period:
+            return log_function
+        else:
+            return log_dummy
+
+    log = get_log()
+
+    if invert:
+        is_valid = lambda x: not func(x)
+    else:
+        is_valid = func
+
+    for i, img in enumerate(dataset):
+        img = img[0]
+        log(i)
+        if is_valid(img):
+            valid.append(i)
+        else:
+            invalid.append(i)
+    return valid, invalid

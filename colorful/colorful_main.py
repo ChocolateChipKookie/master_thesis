@@ -96,31 +96,5 @@ def restore():
     solver = Solver(config)
     solver.train()
 
-
-def filter(src_path, out_file):
-    import torchvision
-    import util
-    transform = torchvision.transforms.Compose([
-        util.ShortResize(256),
-        torchvision.transforms.RandomCrop(256),
-        util.rgb2lab(),
-        torchvision.transforms.ToTensor(),
-    ])
-
-    dataset = torchvision.datasets.ImageFolder(src_path, transform=transform)
-
-    invalid = []
-
-    with open(out_file, 'w') as file:
-        for i, img in enumerate(dataset):
-            img = img[0]
-            if not util.is_grayscale(img):
-                file.write(f"{i}\n")
-            else:
-                print(f"Not valid {i}")
-                invalid.append(i)
-
-    print(f'Total valid {len(dataset) - len(invalid)}\n Not valid: {len(invalid)}')
-
 if __name__ == '__main__':
     train()
