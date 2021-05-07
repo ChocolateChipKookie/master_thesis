@@ -11,16 +11,15 @@
       "device": "cuda:0",
       "dtype": "torch.float32",
       "iterations": 200000,
-      "batch_size": 2,
+      "batch_size": 40,
       "dataloader_workers": 4,
 
-      "train_path": "./imagenet/val",
-      "train_mask": "./masks/imagenet_val.txt",
+      "train_path": "./imagenet/train",
+      "train_mask": "./masks/imagenet_train.txt",
 
       "val_path": "./imagenet/val",
       "val_mask": "./masks/imagenet_val.txt",
       "val_data_size": 20000,
-
 
       "optimizer": {
         "class": "torch.optim.Adam",
@@ -77,7 +76,7 @@
             "frequency": 1000,
             "output": "./colorful/data/val.log",
             "save_every": 5,
-            "snapshot_dir": "./colorful/data/snapshots"
+            "snapshot_dir": "/hdd/adi/colorful/snapshots/"
           }
         },
         {
