@@ -5,7 +5,6 @@ from util import util
 if __name__ == "__main__":
     # Create parser
     parser = argparse.ArgumentParser(description="Dispatcher for training colorization models")
-    parser.add_argument('mode', metavar='mode', type=str, help="Working mode for the dispatcher possible programs: train, restore, argchange")
     parser.add_argument('config', metavar='config', type=str, help="Config file path")
 
     # Get args and extras

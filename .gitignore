@@ -6,4 +6,4 @@
 # Symlink
 imagenet
 # Temporary train related files
-colorful/tmp/
+colorful/data/

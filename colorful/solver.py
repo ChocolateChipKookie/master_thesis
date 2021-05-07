@@ -3,6 +3,7 @@ from torch.nn import functional
 from colorful import cielab, encoders, CELoss
 from util import module
 
+
 class ColorfulSolver(module.Solver):
     def __init__(self, network, config):
         super().__init__(network, config)

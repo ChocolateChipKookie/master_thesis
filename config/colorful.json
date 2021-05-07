@@ -57,20 +57,20 @@
       "snapshot_dir": "/hdd/adi/colorful/snapshots",
 
       "progress_every": 50,
-      "progress_dir": "./tmp/progress/colorful",
+      "progress_dir": "./colorful/data/progress",
 
       "listeners": [
         {
           "class": "util.listener.LossLogger",
           "args": {
             "format": "({0}, {1})\n",
-            "output": "./colorful/tmp/desmos.log"
+            "output": "./colorful/data/desmos.log"
           }
         },
         {
           "class": "util.listener.OutputLogger",
           "args": {
-            "output": "./colorful/tmp/out.log"
+            "output": "./colorful/data/out.log"
           }
         },
         {
@@ -81,16 +81,16 @@
           "class": "util.listener.Validator",
           "args": {
             "frequency": 1000,
-            "output": "./colorful/tmp/val.log",
+            "output": "./colorful/data/val.log",
             "save_every": 5,
-            "snapshot_dir": "./colorful/tmp/snapshots"
+            "snapshot_dir": "./colorful/data/snapshots"
           }
         },
         {
           "class": "util.listener.Backup",
           "args": {
             "frequency": 500,
-            "save_dir": "./colorful/tmp",
+            "save_dir": "./colorful/data",
             "config_file": "backup_config.json",
             "save_file": "backup_model.pth"
           }
@@ -99,7 +99,7 @@
           "class": "util.listener.ColorizeLogger",
           "args": {
             "frequency": 50,
-            "directory": "./colorful/tmp/progress/"
+            "directory": "./colorful/data/progress/"
           }
         }
       ]

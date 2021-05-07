@@ -79,7 +79,7 @@ def restore():
     from colorful.solver import ColorfulSolver
     import json
     import torch
-    settings = json.loads(open("tmp/state.json", 'r').read())
+    settings = json.loads(open("data/state.json", 'r').read())
     config = torch.load("tmp/config.pth")
     iter = settings['iter']
 
