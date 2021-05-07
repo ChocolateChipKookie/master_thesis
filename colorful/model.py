@@ -2,10 +2,12 @@ import torch.nn as nn
 from colorful import cielab
 import torch
 import colorful.decoders
+from util import module
 
-class Colorful(nn.Module):
-    def __init__(self, decoder_T=0.38):
+class Colorful(module.Network):
+    def __init__(self, decoder_T = 0.38):
         super(Colorful, self).__init__()
+
         self.l_mean = 50.
         self.l_norm = 100.
         self.ab_norm = 110.
@@ -113,12 +115,6 @@ class Colorful(nn.Module):
 
     def unnormalize_ab(self, in_ab):
         return in_ab * self.ab_norm
-
-    def forward(self, input_l):
-        if self.training:
-            return self.forward_train(input_l)
-        else:
-            return self.forward_colorize(input_l)
 
     def forward_train(self, input_l):
         conv1_2 = self.model1(self.normalize_l(input_l))

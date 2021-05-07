@@ -1,6 +1,6 @@
 
 def train():
-    from colorful.solver import Solver
+    from colorful.solver import ColorfulSolver
     import torch
 
     config = {}
@@ -15,7 +15,7 @@ def train():
 
     config['data_path'] = "./imagenet/train"
 #    config['data_path'] = "./imagenet/val"
-    config['data_mask_path'] = "./masks/train.txt"
+    config['data_mask_path'] = "./masks/imagenet_train.txt"
 #    config['data_mask_path'] = "./masks/val.txt"
     config['dataloader_workers'] = 4
 
@@ -38,7 +38,7 @@ def train():
 #    config['model_file'] = 'tmp/snapshots/23_03(05:06:05)-19000_9896.pth'
 #    config['start_iteration'] = 19001
 
-    solver = Solver(config)
+    solver = ColorfulSolver(config)
     solver.train()
 
 
@@ -54,13 +54,6 @@ def colorize():
     model.load_state_dict(torch.load('tmp/snapshots/23_03(05:06:05)-19000_9896.pth'))
     model.eval()
 
-    # Dataset and data loader
-    transform = torchvision.transforms.Compose([
-        util.ShortResize(256),
-        torchvision.transforms.RandomCrop(256),
-        util.rgb2lab(),
-        torchvision.transforms.ToTensor(),
-    ])
 
     fix, (ax1, ax2, ax3) = plt.subplots(1, 3)
 
@@ -83,7 +76,7 @@ def colorize():
 
 
 def restore():
-    from colorful.solver import Solver
+    from colorful.solver import ColorfulSolver
     import json
     import torch
     settings = json.loads(open("tmp/state.json", 'r').read())
@@ -93,7 +86,7 @@ def restore():
     config['lr'] = 3e-4
     config['model_file'] = 'tmp/backup_model.pth'
     config['start_iteration'] = iter + 1
-    solver = Solver(config)
+    solver = ColorfulSolver(config)
     solver.train()
 
 if __name__ == '__main__':

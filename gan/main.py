@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     with open(out_file, 'w') as f:
         for i in valid:
-            f.write(str(i))
+            f.write(f'{i}\n')
 
     grayscale = []
 

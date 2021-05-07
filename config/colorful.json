@@ -1,0 +1,112 @@
+{
+  "model": {
+    "class" : "colorful.model.Colorful",
+    "args" : {
+      "decoder_T": 0.38
+    }
+  },
+  "solver": {
+    "class": "colorful.solver.ColorfulSolver",
+    "config": {
+      "device": "cuda:0",
+      "dtype": "torch.float32",
+      "iterations": 200000,
+      "batch_size": 2,
+
+      "optimizer": {
+        "class": "torch.optim.Adam",
+        "args": {
+          "lr": 1e-4,
+          "weight_decay": 1e-3,
+          "betas": [0.9, 0.99]
+        }
+      },
+      "transforms": [
+        {
+          "class": "util.module.ShortResize",
+          "args": {
+            "size": 256
+          }
+        },
+        {
+          "class": "torchvision.transforms.RandomCrop",
+          "args": {
+            "size": 256
+          }
+        },
+        {
+          "class": "util.module.rgb2lab",
+          "args": {}
+        },
+        {
+          "class": "torchvision.transforms.ToTensor",
+          "args": {}
+        }
+      ],
+
+      "train_path": "./imagenet/val",
+      "train_mask": "./masks/imagenet_val.txt",
+      "dataloader_workers": 4,
+
+      "val_path": "./imagenet/val",
+      "val_mask": "./masks/imagenet_val.txt",
+      "val_data_size": 20000,
+
+      "validate_every": 1000,
+      "snapshot_every": 5,
+      "snapshot_dir": "/hdd/adi/colorful/snapshots",
+
+      "progress_every": 50,
+      "progress_dir": "./tmp/progress/colorful",
+
+      "listeners": [
+        {
+          "class": "util.listener.LossLogger",
+          "args": {
+            "format": "({0}, {1})\n",
+            "output": "./colorful/tmp/desmos.log"
+          }
+        },
+        {
+          "class": "util.listener.OutputLogger",
+          "args": {
+            "output": "./colorful/tmp/out.log"
+          }
+        },
+        {
+          "class": "util.listener.OutputLogger",
+          "args": {}
+        },
+        {
+          "class": "util.listener.Validator",
+          "args": {
+            "frequency": 1000,
+            "output": "./colorful/tmp/val.log",
+            "save_every": 5,
+            "snapshot_dir": "./colorful/tmp/snapshots"
+          }
+        },
+        {
+          "class": "util.listener.Backup",
+          "args": {
+            "frequency": 500,
+            "save_dir": "./colorful/tmp",
+            "config_file": "backup_config.json",
+            "save_file": "backup_model.pth"
+          }
+        },
+        {
+          "class": "util.listener.ColorizeLogger",
+          "args": {
+            "frequency": 50,
+            "directory": "./colorful/tmp/progress/"
+          }
+        }
+      ]
+    },
+    "derived": {
+      "lambda": 0.5
+    }
+  },
+  "restore": false
+}
