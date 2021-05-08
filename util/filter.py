@@ -1,6 +1,6 @@
 import torch
 import torchvision.transforms
-from module import ShortResize, rgb2lab
+from util.module import ShortResize, rgb2lab
 
 def is_grayscale(img, threshold_val=10, threshold_percentage=.9):
     def check_channel(channel):
