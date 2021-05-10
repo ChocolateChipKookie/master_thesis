@@ -48,6 +48,29 @@ class rgb2lab(torch.nn.Module):
         return color.rgb2lab(img)
 
 
+class ListModule(torch.nn.Module):
+    def __init__(self, *args):
+        super(ListModule, self).__init__()
+        idx = 0
+        for module in args:
+            self.add_module(str(idx), module)
+            idx += 1
+
+    def __getitem__(self, idx):
+        if idx < 0 or idx >= len(self._modules):
+            raise IndexError('index {} is out of range'.format(idx))
+        it = iter(self._modules.values())
+        for i in range(idx):
+            next(it)
+        return next(it)
+
+    def __iter__(self):
+        return iter(self._modules.values())
+
+    def __len__(self):
+        return len(self._modules)
+
+
 class Solver(object):
     __metaclass__ = ABCMeta
 
@@ -158,6 +181,10 @@ class Network(torch.nn.Module):
     def __init__(self):
         super().__init__()
 
+        self.l_mean = 50.
+        self.l_norm = 100.
+        self.ab_norm = 110.
+
     def forward(self, input_l):
         if self.training:
             return self.forward_train(input_l)
@@ -171,3 +198,25 @@ class Network(torch.nn.Module):
     @abstractmethod
     def forward_colorize(self, input_l):
         pass
+
+    def normalize_l(self, in_l):
+        return (in_l - self.l_mean) / self.l_norm
+
+    def unnormalize_l(self, in_l):
+        return in_l * self.l_norm + self.l_mean
+
+    def normalize_ab(self, in_ab):
+        return in_ab / self.ab_norm
+
+    def unnormalize_ab(self, in_ab):
+        return in_ab * self.ab_norm
+
+    def normalize(self, in_lab):
+        in_lab[:, :1] = self.normalize_l(in_lab[:, :1])
+        in_lab[:, 1:] = self.normalize_ab(in_lab[:, 1:])
+        return in_lab
+
+    def unnormalize(self, in_lab):
+        in_lab[:, :1] = self.unnormalize_l(in_lab[:, :1])
+        in_lab[:, 1:] = self.unnormalize_ab(in_lab[:, 1:])
+        return in_lab

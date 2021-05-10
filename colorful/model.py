@@ -8,10 +8,6 @@ class Colorful(module.Network):
     def __init__(self, decoder_T = 0.38):
         super(Colorful, self).__init__()
 
-        self.l_mean = 50.
-        self.l_norm = 100.
-        self.ab_norm = 110.
-
         model1 = [
             nn.Conv2d(1, 64, kernel_size=3, stride=1, padding=1, bias=True),
             nn.ReLU(True),
@@ -103,18 +99,6 @@ class Colorful(module.Network):
 
         self.color_model = cielab.LABBins()
         self.decoder = colorful.decoders.AnnealedMeanDecode(torch.from_numpy(self.color_model.q_to_ab), decoder_T)
-
-    def normalize_l(self, in_l):
-        return (in_l - self.l_mean) / self.l_norm
-
-    def unnormalize_l(self, in_l):
-        return in_l * self.l_norm + self.l_cent
-
-    def normalize_ab(self, in_ab):
-        return in_ab / self.ab_norm
-
-    def unnormalize_ab(self, in_ab):
-        return in_ab * self.ab_norm
 
     def forward_train(self, input_l):
         conv1_2 = self.model1(self.normalize_l(input_l))
