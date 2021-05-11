@@ -7,4 +7,4 @@
 imagenet
 # Temporary train related files
 colorful/data/
-gan/data/
+unet/data/

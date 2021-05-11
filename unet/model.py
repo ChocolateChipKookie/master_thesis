@@ -5,7 +5,7 @@ import util.module
 from util.module import Network
 
 
-class Generator(Network):
+class Unet(Network):
     def __init__(self, encoder_layout, decoder_layout):
         super().__init__()
         # Layouts are lists of tuples that describe the encoder and decoder parts of the network

@@ -1,6 +1,6 @@
 {
   "model": {
-    "class" : "gan.model.Generator",
+    "class" : "unet.model.Unet",
     "args" : {
       "encoder_layout": [
         [64, 1],
@@ -24,7 +24,7 @@
     }
   },
   "solver": {
-    "class": "gan.solver.UnetSolver",
+    "class": "unet.solver.UnetSolver",
     "config": {
       "device": "cuda:0",
       "dtype": "torch.float32",
@@ -76,13 +76,13 @@
           "class": "util.listener.LossLogger",
           "args": {
             "format": "({0}, {1})\n",
-            "output": "./colorful/data/desmos.log"
+            "output": "./unet/data/desmos.log"
           }
         },
         {
           "class": "util.listener.OutputLogger",
           "args": {
-            "output": "./colorful/data/out.log"
+            "output": "./unet/data/out.log"
           }
         },
         {
@@ -93,16 +93,16 @@
           "class": "util.listener.Validator",
           "args": {
             "frequency": 1000,
-            "output": "./colorful/data/val.log",
+            "output": "./unet/data/val.log",
             "save_every": 5,
-            "snapshot_dir": "./colorful/data/snapshots"
+            "snapshot_dir": "./unet/data/snapshots"
           }
         },
         {
           "class": "util.listener.Backup",
           "args": {
             "frequency": 500,
-            "save_dir": "./colorful/data",
+            "save_dir": "./unet/data",
             "config_file": "backup_config.json",
             "save_file": "backup_model.pth"
           }
@@ -111,7 +111,7 @@
           "class": "util.listener.ColorizeLogger",
           "args": {
             "frequency": 50,
-            "directory": "./colorful/data/progress/"
+            "directory": "./unet/data/progress/"
           }
         }
       ]

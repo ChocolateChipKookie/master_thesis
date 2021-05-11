@@ -204,7 +204,6 @@ class Validator(SolverListener):
         print(f"Iteration: {iter}")
         print(f"Average loss: {avg_loss}")
 
-        print(f"{iter:<8} {avg_loss}\n")
         self.counter += 1
         if self.save and self.counter % self.save_every == 0:
             now = datetime.datetime.now()
@@ -213,9 +212,9 @@ class Validator(SolverListener):
             path = os.path.join(self.snapshot_dir, name)
             torch.save(self.solver.network.state_dict(), path)
             print(f"Saved snapshot {name} to {self.snapshot_dir}")
-
         print("===============================================")
-        self.write(f"{iter} {avg_loss}")
+
+        self.write(f"{iter:<8} {avg_loss}\n")
 
 
 class ColorizeLogger(SolverListener):
