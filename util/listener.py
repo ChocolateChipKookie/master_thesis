@@ -168,8 +168,8 @@ class Validator(SolverListener):
             return
         # Note the beginning of the validation
         begin = datetime.datetime.now()
-        self.write("===============================================")
-        self.write(f"Validating...")
+        print("===============================================")
+        print(f"Validating...")
 
         # For simpler code
         solver = self.solver
@@ -199,12 +199,12 @@ class Validator(SolverListener):
         total_duration = end - begin
         total_seconds = total_duration.total_seconds()
 
-        self.write(f"Validated {total_validated} samples!")
-        self.write(f"Time spent: {int(total_seconds)} sec")
-        self.write(f"Iteration: {iter}")
-        self.write(f"Average loss: {avg_loss}")
+        print(f"Validated {total_validated} samples!")
+        print(f"Time spent: {int(total_seconds)} sec")
+        print(f"Iteration: {iter}")
+        print(f"Average loss: {avg_loss}")
 
-        self.write(f"{iter:<8} {avg_loss}\n")
+        print(f"{iter:<8} {avg_loss}\n")
         self.counter += 1
         if self.save and self.counter % self.save_every == 0:
             now = datetime.datetime.now()
@@ -212,9 +212,10 @@ class Validator(SolverListener):
             name = f"{now_str}-{iter}.pth"
             path = os.path.join(self.snapshot_dir, name)
             torch.save(self.solver.network.state_dict(), path)
-            self.write(f"Saved snapshot {name} to {self.snapshot_dir}")
+            print(f"Saved snapshot {name} to {self.snapshot_dir}")
 
-        self.write("===============================================")
+        print("===============================================")
+        self.write(f"{iter} {avg_loss}")
 
 
 class ColorizeLogger(SolverListener):
