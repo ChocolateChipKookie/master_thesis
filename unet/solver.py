@@ -7,6 +7,7 @@ from util import module
 class UnetSolver(module.Solver):
     def __init__(self, network, config):
         super().__init__(network, config)
+        self.loss = torch.nn.L1Loss()
 
     def calculate_loss(self, batch):
         y = self.network.normalize(batch).to(self.device)
@@ -15,5 +16,5 @@ class UnetSolver(module.Solver):
         # Forward pass
         predicted = self.network(x)
         # Calculate loss
-        return torch.cdist(predicted, y).mean()
+        return self.loss(predicted, y)
 
