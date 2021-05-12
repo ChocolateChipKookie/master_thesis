@@ -91,9 +91,9 @@
         {
           "class": "util.listener.Validator",
           "args": {
-            "frequency": 1000,
+            "frequency": 2500,
             "output": "./unet/data/val.log",
-            "save_every": 5,
+            "save_every": 4,
             "snapshot_dir": "/hdd/adi/snapshots/unet"
           }
         },
