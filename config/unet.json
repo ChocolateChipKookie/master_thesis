@@ -37,7 +37,7 @@
 
       "val_path": "./imagenet/val",
       "val_mask": "./masks/imagenet_val.txt",
-      "val_data_size": 20000,
+      "val_data_size": 15000,
 
 
       "optimizer": {

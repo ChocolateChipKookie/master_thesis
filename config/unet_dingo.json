@@ -118,10 +118,5 @@
     },
     "derived": {}
   },
-  "restore": true,
-  "state": {
-    "time": "2021-05-11 19:27:16.100011",
-    "iter": 85000,
-    "state_dict": "./unet/data/backup_model.pth"
-  }
+  "restore": false
 }
