@@ -37,7 +37,7 @@ for i, y_ in enumerate(Y):
 
 plt.figure(figsize=(12, 12))
 
-trim = 10
+trim = 1
 if trim:
     X_val = X_val[trim:]
     Y_val = Y_val[trim:]
