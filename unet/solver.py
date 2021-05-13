@@ -14,5 +14,5 @@ class UnetSolver(module.Solver):
         # Forward pass
         predicted = self.network(x)
         # Calculate loss
-        return self.loss(predicted, y[:, 1:])
+        return self.loss(predicted, y)
 
