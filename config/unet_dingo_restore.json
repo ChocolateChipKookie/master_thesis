@@ -28,7 +28,7 @@
     "config": {
       "device": "cuda:0",
       "dtype": "torch.float32",
-      "iterations": 100000,
+      "iterations": 300000,
       "batch_size": 40,
       "dataloader_workers": 4,
 
@@ -120,7 +120,7 @@
   "restore": true,
   "state": {
     "time": "2021-05-12 15:46:15.866292",
-    "iter": 200000,
+    "iter": 220000,
     "state_dict": "/hdd/adi/snapshots/unet/05_13-220000.pth"
   }
 }
