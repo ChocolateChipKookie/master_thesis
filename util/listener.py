@@ -221,7 +221,7 @@ class ColorizeLogger(SolverListener):
     def __init__(self, solver, frequency, directory):
         super().__init__(solver, frequency)
         self.dataset = solver.val_dataset
-        self.dataloader = DataLoader(self.dataset, batch_size=1, sampler=self.solver.val_sampler)
+        self.dataloader = DataLoader(self.dataset, batch_size=1, sampler=self.solver.shuffled_val_sampler)
         self.dataloader_iter = iter(self.dataloader)
         self.directory = directory
 

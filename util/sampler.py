@@ -29,7 +29,7 @@ class ShuffledFilterSampler(Sampler[int]):
 
 
 class SubsetFilterSampler(Sampler[int]):
-    def __init__(self, samples, indexes=None, indexes_file=None):
+    def __init__(self, samples, shuffle=False, indexes=None, indexes_file=None):
         self.indexes = None
         if indexes and indexes_file:
             raise RuntimeError("Only one argument has to be defined!")
@@ -51,7 +51,15 @@ class SubsetFilterSampler(Sampler[int]):
         self.increment = int(math.floor(self.total_samples / self.samples))
         self.max_i = self.samples * self.increment
         self.indexes = self.indexes[0:self.max_i:self.increment]
+        self.shuffle = shuffle
+        if self.shuffle:
+            self.shuffle_indexes()
+
+    def shuffle_indexes(self):
+        random.shuffle(self.indexes)
 
     def __iter__(self):
+        if self.shuffle:
+            self.shuffle_indexes()
         return (i for i in self.indexes)
 

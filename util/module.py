@@ -131,6 +131,11 @@ class Solver(object):
             self.solver_config['val_data_size'],
             indexes_file=self.solver_config['val_mask']
         )
+        self.shuffled_val_sampler = sampler.SubsetFilterSampler(
+            self.solver_config['val_data_size'],
+            indexes_file=self.solver_config['val_mask'],
+            shuffle=True
+        )
 
         self.listeners = []
 
