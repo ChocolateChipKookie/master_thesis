@@ -221,15 +221,23 @@ class ColorizeLogger(SolverListener):
     def __init__(self, solver, frequency, directory):
         super().__init__(solver, frequency)
         self.dataset = solver.val_dataset
-        self.dataloader = DataLoader(self.dataset, batch_size=1, shuffle=True)
+        self.dataloader = DataLoader(self.dataset, batch_size=1, sampler=self.solver.val_sampler)
         self.dataloader_iter = iter(self.dataloader)
         self.directory = directory
+
+    def get_image(self):
+        try:
+            image, _ = next(self.dataloader_iter)
+        except StopIteration:
+            self.dataloader_iter = iter(self.dataloader)
+            image, _ = next(self.dataloader_iter)
+        return image
 
     def update(self, iter, loss):
         with torch.no_grad():
             fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
 
-            image, _ = next(self.dataloader_iter)
+            image = self.get_image()
             image = image.to(self.solver.device)[0]
 
             l = image[:1, :, :]
@@ -247,4 +255,6 @@ class ColorizeLogger(SolverListener):
 
             plt.savefig(os.path.join(self.directory, f"{iter}.png"))
             plt.close()
+
+            self.i += 1
 

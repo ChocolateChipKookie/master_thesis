@@ -28,8 +28,8 @@
     "config": {
       "device": "cuda:0",
       "dtype": "torch.float32",
-      "iterations": 200000,
-      "batch_size": 10,
+      "iterations": 100000,
+      "batch_size": 40,
       "dataloader_workers": 4,
 
       "train_path": "/hdd/imagenet/train",
@@ -91,16 +91,16 @@
         {
           "class": "util.listener.Validator",
           "args": {
-            "frequency": 5000,
+            "frequency": 2500,
             "output": "./unet/data/val.log",
-            "save_every": 2,
+            "save_every": 4,
             "snapshot_dir": "/hdd/adi/snapshots/unet"
           }
         },
         {
           "class": "util.listener.Backup",
           "args": {
-            "frequency": 500,
+            "frequency": 1000,
             "save_dir": "./unet/data",
             "config_file": "backup_config.json",
             "save_file": "backup_model.pth"
