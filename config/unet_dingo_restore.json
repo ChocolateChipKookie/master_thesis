@@ -1,0 +1,126 @@
+{
+  "model": {
+    "class" : "unet.model.Unet",
+    "args" : {
+      "encoder_layout": [
+        [64, 1],
+        [64, 2],
+        [128, 2],
+        [256, 2],
+        [512, 2],
+        [512, 2],
+        [512, 2],
+        [512, 2]
+      ],
+      "decoder_layout": [
+        [512, 2],
+        [512, 2],
+        [512, 2],
+        [256, 2],
+        [128, 2],
+        [64, 2],
+        [64, 2]
+      ]
+    }
+  },
+  "solver": {
+    "class": "unet.solver.UnetSolver",
+    "config": {
+      "device": "cuda:0",
+      "dtype": "torch.float32",
+      "iterations": 100000,
+      "batch_size": 40,
+      "dataloader_workers": 4,
+
+      "train_path": "/hdd/imagenet/train",
+      "train_mask": "./masks/imagenet_train.txt",
+
+      "val_path": "/hdd/imagenet/val",
+      "val_mask": "./masks/imagenet_val.txt",
+      "val_data_size": 20000,
+
+      "optimizer": {
+        "class": "torch.optim.Adam",
+        "args": {
+          "lr": 2e-4,
+          "weight_decay": 1e-3,
+          "betas": [0.5, 0.99]
+        }
+      },
+      "transforms": [
+        {
+          "class": "util.module.ShortResize",
+          "args": {
+            "size": 256
+          }
+        },
+        {
+          "class": "torchvision.transforms.RandomCrop",
+          "args": {
+            "size": 256
+          }
+        },
+        {
+          "class": "util.module.rgb2lab",
+          "args": {}
+        },
+        {
+          "class": "torchvision.transforms.ToTensor",
+          "args": {}
+        }
+      ],
+
+      "listeners": [
+        {
+          "class": "util.listener.LossLogger",
+          "args": {
+            "format": "({0}, {1})\n",
+            "output": "./unet/data/desmos.log"
+          }
+        },
+        {
+          "class": "util.listener.OutputLogger",
+          "args": {
+            "output": "./unet/data/out.log"
+          }
+        },
+        {
+          "class": "util.listener.OutputLogger",
+          "args": {}
+        },
+        {
+          "class": "util.listener.Validator",
+          "args": {
+            "frequency": 2500,
+            "output": "./unet/data/val.log",
+            "save_every": 4,
+            "snapshot_dir": "/hdd/adi/snapshots/unet"
+          }
+        },
+        {
+          "class": "util.listener.Backup",
+          "args": {
+            "frequency": 1000,
+            "save_dir": "./unet/data",
+            "config_file": "backup_config.json",
+            "save_file": "backup_model.pth"
+          }
+        },
+        {
+          "class": "util.listener.ColorizeLogger",
+          "args": {
+            "frequency": 50,
+            "directory": "./unet/data/progress/"
+          }
+        }
+      ]
+    },
+    "derived": {}
+  },
+  "restore": true,
+  "state": {
+    "time": "2021-05-12 15:46:15.866292",
+    "iter": 200000,
+    "state_dict": "/hdd/adi/snapshots/unet/05_13-220000.pth"
+  }
+}
