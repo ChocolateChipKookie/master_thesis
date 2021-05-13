@@ -256,5 +256,3 @@ class ColorizeLogger(SolverListener):
             plt.savefig(os.path.join(self.directory, f"{iter}.png"))
             plt.close()
 
-            self.i += 1
-
