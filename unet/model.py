@@ -13,7 +13,7 @@ class Unet(Network):
         self.e_layout = encoder_layout
         self.d_layout = decoder_layout
         self.input_dims = 1
-        self.out_dims = 2
+        self.out_dims = 3
         self.kernel = (4, 4)
 
         encoding_layers = []
@@ -55,9 +55,11 @@ class Unet(Network):
         self.out = nn.Conv2d(previous[0], self.out_dims, kernel_size=(1, 1), stride=(1, 1))
 
     def forward_colorize(self, input_l):
-        out = self.forward_train(input_l)
-        unnormalized = self.unnormalize(out)
-        img = unnormalized.permute(0, 2, 3, 1)
+        with torch.no_grad():
+            normalized_l = self.normalize_l(input_l)
+            out = self.forward_train(normalized_l)
+            unnormalized = self.unnormalize(out)
+            img = unnormalized.permute(0, 2, 3, 1)
         return img[0]
 
     def forward_train(self, input_l):
