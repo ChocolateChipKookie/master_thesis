@@ -13,7 +13,7 @@ class Unet(Network):
         self.e_layout = encoder_layout
         self.d_layout = decoder_layout
         self.input_dims = 1
-        self.out_dims = 3
+        self.out_dims = 2
         self.kernel = (4, 4)
 
         encoding_layers = []
@@ -58,9 +58,10 @@ class Unet(Network):
         with torch.no_grad():
             normalized_l = self.normalize_l(input_l)
             out = self.forward_train(normalized_l)
-            unnormalized = self.unnormalize(out)
-            img = unnormalized.permute(0, 2, 3, 1)
-        return img[0]
+            ab = self.unnormalize_ab(out)
+            img = torch.cat((input_l, ab), dim=1)
+            img = img.permute(0, 2, 3, 1)
+            return img[0]
 
     def forward_train(self, input_l):
         x = input_l
