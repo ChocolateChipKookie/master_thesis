@@ -96,11 +96,11 @@ class Solver(object):
             if "state" not in self.config:
                 print("Please load config file with state defined, state has to have at least values: iter, state_dict")
                 exit()
-            state = self.config['state']
-            state_dict = torch.load(state['state_dict'])
+            self.state = self.config['state']
+            state_dict = torch.load(self.state['state_dict'])
             self.network.load_state_dict(state_dict)
             self.network.eval()
-            self.iteration = state['iter'] + 1
+            self.iteration = self.state['iter'] + 1
 
         # Optimizer
         optimizer_data = self.solver_config['optimizer']

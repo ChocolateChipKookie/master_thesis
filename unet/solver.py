@@ -1,6 +1,4 @@
 import torch
-from torch.nn import functional
-from colorful import cielab, encoders, CELoss
 from util import module
 
 
@@ -16,5 +14,5 @@ class UnetSolver(module.Solver):
         # Forward pass
         predicted = self.network(x)
         # Calculate loss
-        return self.loss(predicted, y)
+        return self.loss(predicted, y[:, 1:])
 

@@ -13,7 +13,7 @@ class Unet(Network):
         self.e_layout = encoder_layout
         self.d_layout = decoder_layout
         self.input_dims = 1
-        self.out_dims = 3
+        self.out_dims = 2
         self.kernel = (4, 4)
 
         encoding_layers = []

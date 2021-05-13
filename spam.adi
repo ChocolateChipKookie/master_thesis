@@ -1,3 +1,8 @@
 Napraviti base class za solver
 refactor coda za solver
 Loadanje klasa iz imena
+
+
+https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/models/pix2pix_model.py
+https://github.com/ImagingLab/Colorizing-with-GANs
+https://github.com/richzhang/colorization/tree/master/colorizers

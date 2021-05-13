@@ -116,10 +116,20 @@
       ]
     },
     "derived": {
+      "valid_label": 0.9,
+      "invalid_label": 0.0,
+      "gan_loss": "torch.nn.MSELoss",
+      "cond_loss": "torch.nn.L1Loss",
+      "cond_lambda": 100,
       "discriminator": {
         "class" : "gan.model.Discriminator",
         "args": {
-
+          "layout": [
+            [64, 2],
+            [128, 2],
+            [256, 2],
+            [512, 1]
+          ]
         }
       }
     }

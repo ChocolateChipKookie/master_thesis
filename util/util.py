@@ -21,7 +21,16 @@ def import_attr(val):
 def factory(desc):
     # Dynamically load class and create instance
     # For a class to be loaded, the descriptor has to have 2 fields:
+    #   if desc is string that class is created with no arguments
+    #   "val": "util.my.Class" is equivalent to "val": {"class": "util.my.Class"}
     #   class: class from module to be loaded (eg. module.path.Class)
-    #   attr: attributes for creating the class
-    Class = import_attr(desc['class'])
-    return Class(**desc['args'])
+    #   attr: attributes for creating the class (optional)
+    if isinstance(desc, str):
+        Class = import_attr(desc)
+        return Class()
+    else:
+        Class = import_attr(desc['class'])
+        if 'args' in desc:
+            return Class(**desc['args'])
+        else:
+            return Class()

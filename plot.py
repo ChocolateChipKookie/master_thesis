@@ -41,7 +41,7 @@ trim = 1
 if trim:
     X_val = X_val[trim:]
     Y_val = Y_val[trim:]
-    trim = trim * 1000
+    trim = trim * 5000
     X = X[trim:]
     Y = Y[trim:]
     moving_average = moving_average[trim:]

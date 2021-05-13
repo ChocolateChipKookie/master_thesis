@@ -77,13 +77,26 @@ class Generator(Network):
 class Discriminator(nn.Module):
     def __init__(self, layout):
         super().__init__()
+        in_channels = 4
+        self.kernel = (4, 4)
 
+        self.layers = []
+        prev_channels = in_channels
+        for i, c in enumerate(layout):
+            channels, stride = c
+            batch_norm = False if i == 0 else True
+            self.layers.append(nn.Conv2d(prev_channels, channels, kernel_size=self.kernel, stride=stride))
+            if batch_norm:
+                self.layers.append(nn.BatchNorm2d(channels))
+            self.layers.append(nn.LeakyReLU(0.2, True))
+            prev_channels = channels
 
-
-
+        self.layers.append(nn.Conv2d(prev_channels, 1, kernel_size=(1, 1), stride=(1, 1)))
+        self.layers.append(nn.Sigmoid())
+        self.network = nn.Sequential(*self.layers)
 
     def forward(self, in_img):
-        pass
+        return self.network(in_img)
 
 
 
