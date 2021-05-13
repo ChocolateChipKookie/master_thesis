@@ -29,7 +29,7 @@
       "device": "cuda:0",
       "dtype": "torch.float32",
       "iterations": 100000,
-      "batch_size": 40,
+      "batch_size": 20,
       "dataloader_workers": 4,
 
       "train_path": "/hdd/imagenet/train",
