@@ -158,6 +158,9 @@ class Solver(object):
             )
 
             for i, batch in enumerate(data_loader, self.iteration):
+                # Check if exit condition is satisfied
+                if self.iteration == self.iterations:
+                    break
                 self.iteration += 1
                 # Reset the gradients
                 self.optimizer.zero_grad()
