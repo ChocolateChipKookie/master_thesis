@@ -90,7 +90,7 @@
         {
           "class": "gan.listener.Validator",
           "args": {
-            "frequency": 1000,
+            "frequency": 10,
             "output": "./gan/data/val.log",
             "save_every": 5,
             "snapshot_dir": "./gan/data/snapshots"

@@ -185,7 +185,7 @@ class Validator(SolverListener):
                 solver.eval_D(l_norm, ab_norm, fake)
                 solver.eval_G(l_norm, ab_norm, fake)
 
-                losses = (x.item for x in self.solver.calculate_loss(batch))
+                losses = (x.item() for x in self.solver.calculate_loss(batch))
                 for i, loss in enumerate(losses):
                     total_losses[i] += loss
                 # Clean memory
