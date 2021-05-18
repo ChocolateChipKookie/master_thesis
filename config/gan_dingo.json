@@ -91,7 +91,7 @@
             "frequency": 1000,
             "output": "./gan/data/val.log",
             "save_every": 5,
-            "snapshot_dir": "./gan/data/snapshots"
+            "snapshot_dir": "/hdd/adi/snapshots/gan"
           }
         },
         {
