@@ -59,7 +59,9 @@ class GANsolver(module.Solver):
         # Fake the discriminator
         input_D = torch.cat((l, fake), 1)
         predicted = self.net_D(input_D)
-        self.loss_G_fake = self.criterion(predicted, True)
+        # Options for minimizing or maximizing:
+        # self.loss_G_fake = self.criterion(predicted, True)
+        self.loss_G_fake = -self.criterion(predicted, False)
         # L1 loss
         self.loss_G_cond = self.cond_loss(fake, ab) * self.cond_lambda
         self.loss_G = self.loss_G_fake + self.loss_G_cond

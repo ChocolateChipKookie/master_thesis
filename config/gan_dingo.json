@@ -27,7 +27,7 @@
       "device": "cuda:0",
       "dtype": "torch.float32",
       "iterations": 100000,
-      "batch_size": 10,
+      "batch_size": 20,
       "dataloader_workers": 4,
 
       "train_path": "/hdd/imagenet/train",
@@ -116,7 +116,7 @@
     "derived": {
       "valid_label": 0.9,
       "invalid_label": 0.0,
-      "gan_loss": "torch.nn.MSELoss",
+      "gan_loss": "torch.nn.BCEWithLogitsLoss",
       "cond_loss": "torch.nn.L1Loss",
       "cond_lambda": 100,
       "discriminator": {

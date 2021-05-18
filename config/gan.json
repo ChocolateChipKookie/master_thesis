@@ -118,7 +118,7 @@
     "derived": {
       "valid_label": 0.9,
       "invalid_label": 0.0,
-      "gan_loss": "torch.nn.MSELoss",
+      "gan_loss": "torch.nn.BCEWithLogitsLoss",
       "cond_loss": "torch.nn.L1Loss",
       "cond_lambda": 100,
       "discriminator": {

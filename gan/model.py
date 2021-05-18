@@ -98,7 +98,6 @@ class Discriminator(nn.Module):
             prev_channels = channels
 
         self.layers.append(nn.Conv2d(prev_channels, 1, kernel_size=(1, 1), stride=(1, 1)))
-        self.layers.append(nn.Sigmoid())
         self.network = nn.Sequential(*self.layers)
 
     def forward(self, in_img):
