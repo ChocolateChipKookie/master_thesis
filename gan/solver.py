@@ -70,7 +70,7 @@ class GANsolver(module.Solver):
 
     def train(self):
         self.network.train()
-        while self.iteration < self.iterations:
+        while self.iteration <= self.iterations:
             data_loader = DataLoader(
                 self.train_dataset,
                 batch_size=self.batch_size,
@@ -79,6 +79,8 @@ class GANsolver(module.Solver):
             )
 
             for i, batch in enumerate(data_loader, self.iteration):
+                if self.iteration > self.iterations:
+                    break
                 self.iteration += 1
                 # Reset the gradients
                 self.optimizer.zero_grad()
