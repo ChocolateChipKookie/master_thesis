@@ -12,12 +12,13 @@ class GANsolver(module.Solver):
         self.net_G = self.network
         self.opt_G = self.optimizer
         self.net_D = util.factory(self.derived_config["discriminator"])
+        self.net_D = self.net_D.to(self.device)
         optimizer_data = self.solver_config['optimizer']
         optimizer_class = util.import_attr(optimizer_data['class'])
         self.opt_D = optimizer_class(self.net_D.parameters(), **optimizer_data['args'])
 
-        self.valid_label = torch.tensor(self.derived_config['valid_label'])
-        self.invalid_label = torch.tensor(self.derived_config['invalid_label'])
+        self.valid_label = torch.tensor(self.derived_config['valid_label']).to(self.device)
+        self.invalid_label = torch.tensor(self.derived_config['invalid_label']).to(self.device)
         self.gan_loss = util.factory(self.derived_config["gan_loss"])
         self.cond_loss = util.factory(self.derived_config["cond_loss"])
         self.cond_lambda = self.derived_config["cond_lambda"]
@@ -32,7 +33,7 @@ class GANsolver(module.Solver):
         self.loss_D_fake = None
         self.loss_D = None
         self.loss_G_fake = None
-        self.loss_G_real = None
+        self.loss_G_cond = None
         self.loss_G = None
 
     def criterion(self, pred_D, target):
@@ -41,41 +42,27 @@ class GANsolver(module.Solver):
         return self.gan_loss(pred_D, label)
 
     def calculate_loss(self, batch):
-        return self.loss_D, self.loss_D_real, self.loss_D_fake
+        return self.loss_D, self.loss_D_real, self.loss_D_fake, self.loss_G, self.loss_G_cond, self.loss_G_fake
 
-    def update_D(self, batch, fake):
-        self.set_requires_grad(self.net_D, True)
-        self.opt_D.zero_grad()
-
-        l = batch[:, :1, :, :]
+    def eval_D(self, l, ab, fake):
         # Pass fake
         input_D = torch.cat((l, fake), 1)
         predicted_fake = self.net_D(input_D)
         self.loss_D_fake = self.criterion(predicted_fake, False)
         # Pass true
-        input_D = torch.cat((l, batch), 1)
+        input_D = torch.cat((l, ab), 1)
         predicted_real = self.net_D(input_D)
         self.loss_D_real = self.criterion(predicted_real, True)
         self.loss_D = (self.loss_D_real + self.loss_D_fake) / 2
-        # Calculate gradients
-        self.loss_D.backward()
-        # Step
-        self.opt_D.step()
-        self.set_requires_grad(self.net_D, False)
 
-    def update_G(self, batch, fake):
-        self.opt_G.zero_grad()
-
-        l = batch[:, :1, :, :]
+    def eval_G(self, l, ab, fake):
         # Fake the discriminator
         input_D = torch.cat((l, fake), 1)
         predicted = self.net_D(input_D)
         self.loss_G_fake = self.criterion(predicted, True)
         # L1 loss
-        self.loss_G_cond = self.cond_loss(fake, batch) * self.cond_lambda
+        self.loss_G_cond = self.cond_loss(fake, ab) * self.cond_lambda
         self.loss_G = self.loss_G_fake + self.loss_G_cond
-        self.loss_G.backward()
-        self.opt_G.step()
 
     def set_requires_grad(self, net, requires_grad):
         for param in net.parameters():
@@ -98,12 +85,30 @@ class GANsolver(module.Solver):
                 # Fetch images
                 batch, _ = batch
 
+                # Fetch input for the network
+                l = batch[:, :1, :, :].to(self.device)
+                l_norm = self.net_G.normalize_l(l)
+                ab = batch[:, 1:, :, :].to(self.device)
+                ab_norm = self.net_G.normalize_ab(ab)
+
                 # Create fake batch
-                fake = self.network(batch)
+                fake = self.net_G(l_norm, True)
+
                 # Update discriminator
-                self.update_D(batch, fake)
+                self.set_requires_grad(self.net_D, True)
+                self.opt_D.zero_grad()
+                self.eval_D(l_norm, ab_norm, fake)
+                self.loss_D.backward(retain_graph=True)
+                # Step discriminator
+                self.opt_D.step()
+                self.set_requires_grad(self.net_D, False)
+
                 # Update generator
-                self.update_G(batch, fake)
+                self.opt_G.zero_grad()
+                self.eval_G(l_norm, ab_norm, fake)
+                self.loss_G.backward()
+                # Step generator
+                self.opt_G.step()
 
                 # Fetch losses
                 loss = [x.item() for x in self.calculate_loss(None)]

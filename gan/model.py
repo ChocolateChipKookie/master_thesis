@@ -13,7 +13,7 @@ class Generator(Network):
         self.e_layout = encoder_layout
         self.d_layout = decoder_layout
         self.input_dims = 1
-        self.out_dims = 3
+        self.out_dims = 2
         self.kernel = (4, 4)
 
         encoding_layers = []
@@ -54,14 +54,20 @@ class Generator(Network):
         self.decoding = util.module.ListModule(*decoding_layers)
         self.out = nn.Conv2d(previous[0], self.out_dims, kernel_size=(1, 1), stride=(1, 1))
 
-    def forward_colorize(self, input_l):
-        out = self.forward_train(input_l)
-        unnormalized = self.unnormalize(out)
-        img = unnormalized.permute(0, 2, 3, 1)
-        return img[0]
+    def forward_colorize(self, input_l, normalized=False):
+        with torch.no_grad():
+            out = self.forward_train(input_l, normalized)
+            ab = self.unnormalize_ab(out)
+            img = torch.cat((input_l, ab), dim=1)
+            img = img.permute(0, 2, 3, 1)
+            return img[0]
 
-    def forward_train(self, input_l):
-        x = input_l
+    def forward_train(self, input_l, normalized=False):
+        if not normalized:
+            x = self.normalize_l(input_l)
+        else:
+            x = input_l
+
         connect = []
         for layer in self.encoding:
             x = layer(x)
@@ -77,7 +83,7 @@ class Generator(Network):
 class Discriminator(nn.Module):
     def __init__(self, layout):
         super().__init__()
-        in_channels = 4
+        in_channels = 3
         self.kernel = (4, 4)
 
         self.layers = []

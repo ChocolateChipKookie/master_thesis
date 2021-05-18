@@ -1,34 +1,12 @@
+from torch.utils.data import DataLoader
+
+from util.listener import SolverListener
 import sys
-from abc import ABCMeta, abstractmethod
-import os
 import datetime
 import torch
-import json
+import os
 import copy
-from skimage import color
-
-from torch.utils.data import DataLoader
-import matplotlib.pyplot as plt
-
-
-class SolverListener:
-    """
-    Base solver listener class
-    The update method is called every frequency iterations
-    """
-    __metaclass__ = ABCMeta
-
-    def __init__(self, solver, logging_frequency):
-        self.solver = solver
-        self.frequency = logging_frequency
-
-    @abstractmethod
-    def update(self, iter, loss):
-        pass
-
-    def __call__(self, iter, loss):
-        if iter % self.frequency == 0:
-            self.update(iter, loss)
+import json
 
 
 class OutputLogger(SolverListener):
@@ -66,14 +44,17 @@ class OutputLogger(SolverListener):
         since_begin_str = f"{hours:03}:{minutes:02}:{seconds:02}"
         # Justify, output and flush
         iter_str = str(iter).rjust(self.iterations_magnitude)
+
+        loss_D, loss_D_real, loss_D_fake, loss_G, loss_G_cond, loss_G_fake = loss
+
         self.output.write(
-            f"[{now_str}] [{since_begin_str}] [{iter_str}/{self.iterations}] {loss:>10.4e}\n"
+            f"[{now_str}] [{since_begin_str}] [{iter_str}/{self.iterations}] [ D: {loss_D:>12.4e} | real: {loss_D_real:>12.4e} | fake: {loss_D_fake:>12.4e}] [G: {loss_G:>12.4e} | cond: {loss_G_cond:>12.4e} | fake: {loss_G_fake:>12.4e}]\n"
         )
         self.output.flush()
 
 
 class LossLogger(SolverListener):
-    def __init__(self, solver, frequency=1, format="{0}.\t{1}\n", output = None):
+    def __init__(self, solver, frequency=1, format="{0}.\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\n", output = None):
         """
         Logs loss
         :param solver: Solver to be monitored
@@ -94,12 +75,12 @@ class LossLogger(SolverListener):
 
     def update(self, iter, loss):
         # Write and flush
-        self.output.write(self.format.format(iter, loss))
+        self.output.write(self.format.format(iter, *loss))
         self.output.flush()
 
 
 class Backup(SolverListener):
-    def __init__(self, solver, frequency, save_dir, config_file='backup_config.json', save_file='backup_model.pth'):
+    def __init__(self, solver, frequency, save_dir, config_file='backup_config.json', generator_file='backup_generator.pth', discriminator_file='backup_discriminator.pth'):
         """
         Backs up the network in regular periods defined by the frequency
         :param solver: Solver to be monitored
@@ -111,15 +92,18 @@ class Backup(SolverListener):
         super(Backup, self).__init__(solver, frequency)
         self.save_dir = save_dir
         self.config_file = config_file
-        self.save_file = save_file
+        self.generator_file = generator_file
+        self.discriminator_file = discriminator_file
 
         if not os.path.isdir(save_dir):
             raise RuntimeError(f"Directory '{save_dir}' does not exist!")
 
     def update(self, iter, loss):
         # Save state dict of model
-        path = os.path.join(self.save_dir, self.save_file)
-        torch.save(self.solver.network.state_dict(), path)
+        path_g = os.path.join(self.save_dir, self.generator_file)
+        torch.save(self.solver.net_G.state_dict(), path_g)
+        path_d = os.path.join(self.save_dir, self.discriminator_file)
+        torch.save(self.solver.net_D.state_dict(), path_d)
 
         with open(os.path.join(self.save_dir, self.config_file), 'w') as file:
             # Deepcopy the config, so it does not get modified
@@ -128,7 +112,8 @@ class Backup(SolverListener):
             state = {
                 "time": str(datetime.datetime.now()),
                 "iter": iter,
-                "state_dict": path
+                "state_dict": path_g,
+                "discriminator_dict": path_d,
             }
             # Update config
             config['state'] = state
@@ -181,21 +166,36 @@ class Validator(SolverListener):
 
         # Define initial variables
         total_validated = 0
-        total_loss = 0.
         total_i = 0.
+        total_losses = [0, 0, 0, 0, 0, 0]
         # Validate all
         for batch, _ in data_loader:
             total_i += 1
             total_validated += batch.shape[0]
 
             with torch.no_grad():
-                # Calculate loss
-                total_loss += self.solver.calculate_loss(batch).item()
+                # Fetch input for the network
+                l = batch[:, :1, :, :].to(solver.device)
+                l_norm = solver.net_G.normalize_l(l)
+                ab = batch[:, 1:, :, :].to(solver.device)
+                ab_norm = solver.net_G.normalize_ab(ab)
+
+                # Create fake batch
+                fake = solver.net_G(l_norm, True)
+                solver.eval_D(l_norm, ab_norm, fake)
+                solver.eval_G(l_norm, ab_norm, fake)
+
+                losses = (x.item for x in self.solver.calculate_loss(batch))
+                for i, loss in enumerate(losses):
+                    total_losses[i] += loss
                 # Clean memory
                 torch.cuda.empty_cache()
 
         # Calculate results
-        avg_loss = total_loss / total_i
+        avg_losses = []
+        for loss in total_losses:
+            avg_losses.append(loss/total_i)
+
         end = datetime.datetime.now()
         total_duration = end - begin
         total_seconds = total_duration.total_seconds()
@@ -203,57 +203,17 @@ class Validator(SolverListener):
         print(f"Validated {total_validated} samples!")
         print(f"Time spent: {int(total_seconds)} sec")
         print(f"Iteration: {iter}")
-        print(f"Average loss: {avg_loss}")
+        print(f"Average loss: [ D {avg_losses[0]:>12.4e} | real: {avg_losses[1]:>12.4e} | fake: {avg_losses[2]:>12.4e}] [ G: {avg_losses[3]:>12.4e} | cond: {avg_losses[4]:>12.4e} | fake: {avg_losses[5]:>12.4e}]")
 
         self.counter += 1
         if self.save and self.counter % self.save_every == 0:
             now = datetime.datetime.now()
             now_str = now.strftime("%m_%d")
-            name = f"{now_str}-{iter}.pth"
-            path = os.path.join(self.snapshot_dir, name)
-            torch.save(self.solver.network.state_dict(), path)
-            print(f"Saved snapshot {name} to {self.snapshot_dir}")
+            name_G = f"G-{now_str}-{iter}.pth"
+            name_D = f"D-{now_str}-{iter}.pth"
+            torch.save(self.solver.net_G.state_dict(), os.path.join(self.snapshot_dir, name_G))
+            torch.save(self.solver.net_D.state_dict(), os.path.join(self.snapshot_dir, name_D))
+            print(f"Saved snapshot {name_G} to {self.snapshot_dir}")
         print("===============================================")
 
-        self.write(f"{iter:<8} {avg_loss}\n")
-
-
-class ColorizeLogger(SolverListener):
-    def __init__(self, solver, frequency, directory):
-        super().__init__(solver, frequency)
-        self.dataset = solver.val_dataset
-        self.dataloader = DataLoader(self.dataset, batch_size=1, sampler=self.solver.shuffled_val_sampler)
-        self.dataloader_iter = iter(self.dataloader)
-        self.directory = directory
-
-    def get_image(self):
-        try:
-            image, _ = next(self.dataloader_iter)
-        except StopIteration:
-            self.dataloader_iter = iter(self.dataloader)
-            image, _ = next(self.dataloader_iter)
-        return image
-
-    def update(self, iter, loss):
-        with torch.no_grad():
-            fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
-
-            image = self.get_image()
-            image = image.to(self.solver.device)[0]
-
-            l = image[:1, :, :]
-            predicted = self.solver.network.forward_colorize(l.view(1, *l.shape), False)
-
-            image_normal = color.lab2rgb(image.cpu().permute(1, 2, 0))
-
-            image_gs = torch.cat(3 * [l.cpu()]).permute(1, 2, 0)
-            image_gs /= 100
-
-            image_colorized = color.lab2rgb(predicted.cpu())
-            ax1.imshow(image_gs)
-            ax2.imshow(image_normal)
-            ax3.imshow(image_colorized)
-
-            plt.savefig(os.path.join(self.directory, f"{iter}.png"))
-            plt.close()
-
+        self.write(f"{iter:<8} {avg_losses[0]} {avg_losses[1]} {avg_losses[2]} {avg_losses[3]} {avg_losses[4]} {avg_losses[5]}\n")

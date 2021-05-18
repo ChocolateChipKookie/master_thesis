@@ -186,6 +186,7 @@ class Solver(object):
 
 class Network(torch.nn.Module):
     __metaclass__ = ABCMeta
+
     def __init__(self):
         super().__init__()
 
@@ -193,18 +194,18 @@ class Network(torch.nn.Module):
         self.l_norm = 100.
         self.ab_norm = 110.
 
-    def forward(self, input_l):
+    def forward(self, input_l, normalized=False):
         if self.training:
-            return self.forward_train(input_l)
+            return self.forward_train(input_l, normalized)
         else:
-            return self.forward_colorize(input_l)
+            return self.forward_colorize(input_l, normalized)
 
     @abstractmethod
-    def forward_train(self, input_l):
+    def forward_train(self, input_l, normalized=False):
         pass
 
     @abstractmethod
-    def forward_colorize(self, input_l):
+    def forward_colorize(self, input_l, normalized=False):
         pass
 
     def normalize_l(self, in_l):
