@@ -113,7 +113,7 @@ class Backup(SolverListener):
                 "time": str(datetime.datetime.now()),
                 "iter": iter,
                 "state_dict": path_g,
-                "discriminator_dict": path_d,
+                "discriminator_state_dict": path_d,
             }
             # Update config
             config['state'] = state
