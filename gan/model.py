@@ -1,5 +1,6 @@
 import torch
 from torch import nn
+from torchvision.transforms import functional
 
 import util.module
 from util.module import Network
@@ -56,11 +57,31 @@ class Generator(Network):
 
     def forward_colorize(self, input_l, normalized=False):
         with torch.no_grad():
-            out = self.forward_train(input_l, normalized)
+            # Get size of original image
+            size = input_l.shape[2:]
+            # Fetch shorter side and calculate scaling factor
+            scaling_factor = 256 / min(size)
+            # Calculate new size and cast to ints
+            in_size = torch.tensor(size) * scaling_factor
+            conv_scaling = 64
+            in_size = in_size / conv_scaling
+            in_size = torch.round(in_size).type(torch.int32)
+            in_size *= conv_scaling
+            # Resize input image
+            l_in = functional.resize(input_l, list(in_size))
+
+            out = self.forward_train(l_in, normalized)
             ab = self.unnormalize_ab(out)
-            img = torch.cat((input_l, ab), dim=1)
-            img = img.permute(0, 2, 3, 1)
-            return img[0]
+
+            # Get L and ab values
+            l = input_l[0]
+            ab = ab[0]
+            # Resize ab to be the size of the input
+            ab = functional.resize(ab, l.shape[1:])
+            # Create image and permute
+            img = torch.cat((l, ab), dim=0)
+            img = img.permute(1, 2, 0)
+            return img
 
     def forward_train(self, input_l, normalized=False):
         if not normalized:

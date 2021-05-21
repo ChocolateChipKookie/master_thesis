@@ -2,7 +2,7 @@
   "colorizer": {
     "class": "colorful.model.Colorful",
     "args": {
-      "decoder_T": 0.7
+      "decoder_T": 0.38
     }
   },
   "state_dict": "colorful/data/04_28-602000.pth"

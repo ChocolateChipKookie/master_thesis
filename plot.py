@@ -120,9 +120,9 @@ def plot_gan():
     # Draw validation results
     fig_loss = axs[1]
 
-    losses = [ y[4] for y in Y ]
+    losses = [y[4] for y in Y]
     loss_ma = moving_averages[4]
-    loss_vals = [ y[4] for y in Y_val ]
+    loss_vals = [y[4] for y in Y_val]
 
     fig_loss.scatter(X, losses, marker='.')
     fig_loss.plot(X, loss_ma, 'r-')
@@ -135,11 +135,11 @@ def plot_gan():
 #    gan_game.set_yscale("log")
 
     g_fake_ma = moving_averages[5]
-    g_fake_val = [ y[5] for y in Y_val]
+    g_fake_val = [y[5] for y in Y_val]
     d_real_ma = moving_averages[1]
-    d_real_val = [ y[1] for y in Y_val]
+    d_real_val = [y[1] for y in Y_val]
     d_fake_ma = moving_averages[2]
-    d_fake_val = [ y[2] for y in Y_val]
+    d_fake_val = [y[2] for y in Y_val]
 
     gan_game.plot(X, g_fake_ma, '-', color=(0.0, 1.0, 0.0))
     gan_game.plot(X_val, g_fake_val, '-', color=(0.0, 0.5, 0.0))
