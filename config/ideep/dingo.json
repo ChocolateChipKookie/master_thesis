@@ -17,10 +17,10 @@
       "batch_size": 20,
       "dataloader_workers": 4,
 
-      "train_path": "./imagenet/train",
+      "train_path": "/hdd/imagenet/train",
       "train_mask": "./masks/imagenet_train.txt",
 
-      "val_path": "./imagenet/val",
+      "val_path": "/hdd/imagenet/val",
       "val_mask": "./masks/imagenet_val.txt",
       "val_data_size": 20000,
 
