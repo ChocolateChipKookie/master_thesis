@@ -7,13 +7,14 @@ from util.module import Network
 
 
 class Generator(Network):
-    def __init__(self, encoder_layout, decoder_layout):
+    def __init__(self, encoder_layout, decoder_layout, input_min = 256):
         super().__init__()
         # Layouts are lists of tuples that describe the encoder and decoder parts of the network
         # Each pair represents the number of output channels and
         self.e_layout = encoder_layout
         self.d_layout = decoder_layout
         self.input_dims = 1
+        self.input_min = input_min
         self.out_dims = 2
         self.kernel = (4, 4)
 
@@ -60,7 +61,7 @@ class Generator(Network):
             # Get size of original image
             size = input_l.shape[2:]
             # Fetch shorter side and calculate scaling factor
-            scaling_factor = 256 / min(size)
+            scaling_factor = self.input_min / min(size)
             # Calculate new size and cast to ints
             in_size = torch.tensor(size) * scaling_factor
             conv_scaling = 64

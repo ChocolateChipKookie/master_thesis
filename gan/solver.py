@@ -2,7 +2,6 @@ import torch
 from torch.utils.data import DataLoader
 
 from util import module, util
-from gan import model
 
 class GANsolver(module.Solver):
 

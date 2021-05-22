@@ -194,18 +194,18 @@ class Network(torch.nn.Module):
         self.l_norm = 100.
         self.ab_norm = 110.
 
-    def forward(self, input_l, normalized=False):
+    def forward(self, *args, **kwargs):
         if self.training:
-            return self.forward_train(input_l, normalized)
+            return self.forward_train(*args, **kwargs)
         else:
-            return self.forward_colorize(input_l, normalized)
+            return self.forward_colorize(*args, **kwargs)
 
     @abstractmethod
-    def forward_train(self, input_l, normalized=False):
+    def forward_train(self, *args, **kwargs):
         pass
 
     @abstractmethod
-    def forward_colorize(self, input_l, normalized=False):
+    def forward_colorize(self, *args, **kwargs):
         pass
 
     def normalize_l(self, in_l):
