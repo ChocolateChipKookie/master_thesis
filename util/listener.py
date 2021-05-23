@@ -157,7 +157,6 @@ class Validator(SolverListener):
             self.output = open(output, 'a' if self.solver.restore else 'w')
         else:
             self.output = sys.stdout
-        self.counter = 0
 
     def write(self, str):
         self.output.write(str)
@@ -205,8 +204,7 @@ class Validator(SolverListener):
         print(f"Iteration: {iter}")
         print(f"Average loss: {avg_loss}")
 
-        self.counter += 1
-        if self.save and self.counter % self.save_every == 0:
+        if self.save and iter % (self.frequency * self.save_every) == 0:
             now = datetime.datetime.now()
             now_str = now.strftime("%m_%d")
             name = f"{now_str}-{iter}.pth"

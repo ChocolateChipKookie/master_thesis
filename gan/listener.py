@@ -142,7 +142,6 @@ class Validator(SolverListener):
             self.output = open(output, 'a' if self.solver.restore else 'w')
         else:
             self.output = sys.stdout
-        self.counter = 0
 
     def write(self, str):
         self.output.write(str)
@@ -205,8 +204,7 @@ class Validator(SolverListener):
         print(f"Iteration: {iter}")
         print(f"Average loss: [ D {avg_losses[0]:>12.4e} | real: {avg_losses[1]:>12.4e} | fake: {avg_losses[2]:>12.4e}] [ G: {avg_losses[3]:>12.4e} | cond: {avg_losses[4]:>12.4e} | fake: {avg_losses[5]:>12.4e}]")
 
-        self.counter += 1
-        if self.save and self.counter % self.save_every == 0:
+        if self.save and iter % (self.frequency * self.save_every) == 0:
             now = datetime.datetime.now()
             now_str = now.strftime("%m_%d")
             name_G = f"G-{now_str}-{iter}.pth"
