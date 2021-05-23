@@ -12,7 +12,7 @@ class Colorizer(Network):
         self.dim_out = dim_out
         self.input_min = input_min
 
-        def create_block(dim_in, dim_out, n, kernel_size=3, stride=1, padding=1, dilation=1, prepend_relu=False):
+        def create_block(dim_in, dim_out, n, kernel_size=3, stride=1, padding=1, dilation=1, prepend_relu=False, norm=True):
             dilation = (dilation, dilation)
             kernel_size = (kernel_size, kernel_size)
             stride = (stride, stride)
@@ -30,7 +30,8 @@ class Colorizer(Network):
                     nn.Conv2d(dim_out, dim_out, kernel_size=kernel_size, stride=stride, padding=padding, dilation=dilation, bias=bias),
                     nn.ReLU(True)
                 ]
-            block.append(nn.BatchNorm2d(dim_out))
+            if norm:
+                block.append(nn.BatchNorm2d(dim_out))
             return nn.Sequential(*block)
 
         # Create convolutional blocks
@@ -62,6 +63,8 @@ class Colorizer(Network):
             nn.LeakyReLU(0.2)
         )
 
+        self.global_hints = create_block(316, 512, 4, kernel_size=1, padding=0)
+
         # Output layer
         self.out = nn.Sequential(
             nn.Conv2d(128, 2, kernel_size=(1, 1), padding=(0, 0), stride=(1, 1), bias=bias),
@@ -69,7 +72,9 @@ class Colorizer(Network):
         )
         self.sampling = nn.MaxPool2d(2, 2)
 
-    def forward_colorize(self, input_l, normalized=False):
+    def forward_colorize(self, input_l, global_hints=None, normalized=False):
+        train = self.training
+        self.train(False)
         with torch.no_grad():
             # Get size of original image
             size = input_l.shape[2:]
@@ -83,8 +88,7 @@ class Colorizer(Network):
             in_size *= conv_scaling
             # Resize input image
             l_in = functional.resize(input_l, list(in_size))
-
-            out = self.forward_train(l_in, normalized)
+            out = self.forward_train(l_in, global_hints, normalized=normalized)
             ab = self.unnormalize_ab(out)
 
             # Get L and ab values
@@ -95,17 +99,25 @@ class Colorizer(Network):
             # Create image and permute
             img = torch.cat((l, ab), dim=0)
             img = img.permute(1, 2, 0)
-            return img
+        self.train(train)
+        return img
 
-    def forward_train(self, input_l, normalized=False):
+    def forward_train(self, input_l, global_hints=None, normalized=False):
         if not normalized:
             input_l = self.normalize_l(input_l)
+
+        if global_hints == None:
+            # Expand dimensions and pull through global hints part of network
+            global_hints = torch.zeros((input_l.shape[0], 316), device=input_l.device)
+        global_hints = self.global_hints(global_hints[:, :, None, None])
+
 
         c1 = self.conv1(input_l)
         c2 = self.conv2(self.sampling(c1))
         c3 = self.conv3(self.sampling(c2))
         c4 = self.conv4(self.sampling(c3))
-        c5 = self.conv5(c4)
+        c5_in = c4 + global_hints.expand_as(c4)
+        c5 = self.conv5(c5_in)
         c6 = self.conv6(c5)
         c7 = self.conv7(c6)
         c8_in = self.conv8up(c7) + self.conv3_8short(c3)

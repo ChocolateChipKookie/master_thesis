@@ -93,7 +93,7 @@
           }
         },
         {
-          "class": "util.listener.ColorizeLogger",
+          "class": "ideep.listener.GlobalHintsColorizeLogger",
           "args": {
             "frequency": 50,
             "directory": "./ideep/data/progress/"
