@@ -37,8 +37,9 @@ class OutputLogger(SolverListener):
         since_begin = now - self.begin
         total_seconds = since_begin.seconds
         days = since_begin.days
-        hours = total_seconds // 3600 + days * 24
-        minutes = (total_seconds - hours * 3600) // 60
+        hours = total_seconds // 3600
+        hours += days * 24
+        minutes = (total_seconds - (hours) * 3600) // 60
         seconds = total_seconds - hours * 3600 - minutes * 60
         # Format
         since_begin_str = f"{hours:03}:{minutes:02}:{seconds:02}"

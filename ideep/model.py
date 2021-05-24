@@ -111,7 +111,6 @@ class Colorizer(Network):
             global_hints = torch.zeros((input_l.shape[0], 316), device=input_l.device)
         global_hints = self.global_hints(global_hints[:, :, None, None])
 
-
         c1 = self.conv1(input_l)
         c2 = self.conv2(self.sampling(c1))
         c3 = self.conv3(self.sampling(c2))
