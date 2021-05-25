@@ -1,4 +1,7 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction}{i}%
+\contentsline {section}{\numberline {1.1}Image Colorization}{i}%
+\contentsline {section}{\numberline {1.2}Previous work}{i}%
+\contentsline {section}{\numberline {1.3}Use Cases}{i}%
 \contentsline {chapter}{\numberline {2}Conclusion}{i}%
 \contentsline {chapter}{Bibliography}{ii}%

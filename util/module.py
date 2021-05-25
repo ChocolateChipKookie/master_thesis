@@ -166,6 +166,8 @@ class Solver(object):
                 self.optimizer.zero_grad()
                 # Fetch images
                 batch, _ = batch
+                if batch.shape[0] < 2:
+                    continue
 
                 loss = self.calculate_loss(batch)
                 loss.backward()
