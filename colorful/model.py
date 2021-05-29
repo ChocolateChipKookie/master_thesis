@@ -8,9 +8,9 @@ from util import module
 
 
 class Colorful(module.Network):
-    def __init__(self, decoder_T = 0.38):
+    def __init__(self, decoder_T = 0.38, input_min=256):
         super(Colorful, self).__init__()
-
+        self.input_min = input_min
         model1 = [
             nn.Conv2d(1, 64, kernel_size=3, stride=1, padding=1, bias=True),
             nn.ReLU(True),
@@ -122,10 +122,13 @@ class Colorful(module.Network):
             # Get size of original image
             size = input_l.shape[2:]
             # Fetch shorter side and calculate scaling factor
-            scaling_factor = 256 / min(size)
+            scaling_factor = self.input_min / min(size)
             # Calculate new size and cast to ints
-            in_size = torch.tensor(size) * scaling_factor
+            in_size = torch.tensor(size, dtype=torch.float) * scaling_factor
+            shrink_factor = 8
+            in_size = in_size / shrink_factor
             in_size = torch.round(in_size).type(torch.int32)
+            in_size *= shrink_factor
             # Resize input image
             l_in = functional.resize(input_l, list(in_size))
 

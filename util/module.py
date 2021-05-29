@@ -158,6 +158,7 @@ class Solver(object):
             )
 
             for i, batch in enumerate(data_loader, self.iteration):
+                torch.cuda.empty_cache()
                 # Check if exit condition is satisfied
                 if self.iteration == self.iterations:
                     break

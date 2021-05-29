@@ -1,12 +1,16 @@
 \documentclass[times, utf8, diplomski, english]{fer}
 \usepackage{booktabs}
 \usepackage{verbatim}
+\usepackage{amssymb}
 
+\usepackage{float}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \graphicspath{{./graphics/}}
 
 \usepackage{subfiles}
-
+\setcitestyle{numbers}
+\setcitestyle{square}
 
 \begin{document}
 
@@ -35,6 +39,10 @@
 
 % Chapters
 \subfile{chapters/introduction}
+\subfile{chapters/related}
+\subfile{chapters/method}
+\subfile{chapters/results}
+\subfile{chapters/conclusion}
 \subfile{chapters/conclusion}
 
 % Bibliography
