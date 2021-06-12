@@ -5,21 +5,21 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Fatima et~al.(2021)Fatima, Hussain, and Rasool]{fatima2021image}
-Aroosh Fatima, Wajahat Hussain, and Shahzad Rasool.
-\newblock Grey is the new rgb: How good is gan-based image colorization for
-  image compression?
-\newblock \emph{Multimedia Tools and Applications}, 2021.
-
 \bibitem[Henisch and Henisch(1996)]{henisch1996photograph}
 Heinz~K Henisch and Bridget~Ann Henisch.
 \newblock \emph{{The painted photograph, 1839-1914 : origins, techniques,
   aspirations}}.
 \newblock Pennsylvania State University Press, 1996.
 
-\bibitem[Pan et~al.(2019)Pan, Yuan, Lei, and Kwong]{pan2019video}
-Zhaoqing Pan, Feng Yuan, Jianjun Lei, and Sam Kwong.
-\newblock Video compression coding via colorization: A generative adversarial
-  network (gan)-based approach, 2019.
+\bibitem[Int(2004)]{icc2004cielab}
+\emph{Image technology colour management — Architecture, profile format, and
+  data structure}.
+\newblock International Color Consortium, 2004.
+\newblock URL \url{https://www.color.org/icc1v42.pdf}.
+\newblock Profile version 4.2.0.0.
+
+\bibitem[Pang et~al.(2021)Pang, Lin, Qin, and Chen]{pang2021imagetoimage}
+Yingxue Pang, Jianxin Lin, Tao Qin, and Zhibo Chen.
+\newblock Image-to-image translation: Methods and applications, 2021.
 
 \end{thebibliography}

@@ -1,14 +1,13 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}%
-\contentsline {section}{\numberline {1.1}Task description}{1}%
-\contentsline {section}{\numberline {1.2}Multimodality}{2}%
-\contentsline {section}{\numberline {1.3}Use Cases}{2}%
-\contentsline {section}{\numberline {1.4}Related work}{iii}%
-\contentsline {chapter}{\numberline {2}Related work}{i}%
-\contentsline {chapter}{\numberline {3}Method}{i}%
-\contentsline {section}{\numberline {3.1}Colorspaces}{i}%
-\contentsline {section}{\numberline {3.2}Dataset}{i}%
-\contentsline {chapter}{\numberline {4}Results}{i}%
+\contentsline {chapter}{\numberline {2}Methods}{1}%
+\contentsline {section}{\numberline {2.1}Color space}{2}%
+\contentsline {section}{\numberline {2.2}Task definition}{2}%
+\contentsline {subsection}{\numberline {2.2.1}Multimodality}{iii}%
+\contentsline {section}{\numberline {2.3}Dataset}{iii}%
+\contentsline {chapter}{\numberline {3}Results}{i}%
+\contentsline {chapter}{\numberline {4}Related work}{i}%
+\contentsline {section}{\numberline {4.1}Related work}{i}%
 \contentsline {chapter}{\numberline {5}Conclusion}{i}%
-\contentsline {chapter}{\numberline {6}Conclusion}{i}%
+\contentsline {section}{\numberline {5.1}Possible improvements}{i}%
 \contentsline {chapter}{Bibliography}{ii}%

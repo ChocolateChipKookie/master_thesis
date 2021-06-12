@@ -1,0 +1,173 @@
+\begin{comment}
+    Use cases
+    Multimodality
+
+    Neural networks:
+        Basics
+        CNN
+        U-NET
+
+    Dataset
+
+    Implementations:
+        Colorful image colorization
+        GAN/pix2pix
+        IDeep
+\end{comment}
+
+\chapter{Methods}
+
+The task of automatic colorization can be defined as an image-to-image 
+translation problem \citep{pang2021imagetoimage}, where for a monochrome 
+input image we have to propose a plausible colored output. Although 
+grayscale is a subset of monochrome (meaning \textit{having one color}), 
+the two terms will be used interchangeably throughout this thesis. 
+The defining feature of the input images is that they only have one channel 
+representing the perceptual lightness of the given image. That means that 
+each pixel only has a numeric value, usually in the 8-bit range, 
+expressing how light (or dark) it is. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/alim_khan.jpg}
+    \caption{
+    Colored image of Alim Khan taken by Sergey Prokudin-Gorsky 
+    in 1911 using the three-image color photography method on the left,
+    and the green, red, and blue (top to bottom) filter negatives
+    (shown as positives) on the right.}
+    \label{fig:alim_khan}
+\end{figure}
+
+On the other hand, if we want to render a colored photograph we need at 
+least 3 channels to do, meaning that for each pixel we want to draw, 
+we need at least 3 values associated with it. The specific way of mapping 
+the three values to a color is called a color space. An example of a color
+space is the RGB color model in which each of the 3 channels depicts the 
+amount of \textbf{R}ed, \textbf{G}reen, or \textbf{B}lue color present,
+as shown in figure \ref{fig:alim_khan}. 
+
+That said, the task of colorization can be summed up as
+    \[\mathbf{Y} = \mathcal{F}(\mathbf{X})\]
+where $\mathbf{X} \in \mathbb{R}^{H \times W \times 1}$ is the input 
+and $\mathbf{Y} \in \mathbb{R}^{H \times W \times 3}$ is the colored output.
+$\mathcal{F}$ is the function that maps the domain $\mathbf{X}$ to the codomain 
+$\mathbf{Y}$, which in our case represents the colorizer.
+
+
+\section{Color space}
+
+Even though automatic colorization can be accomplished using any color space, 
+as with any task some tools are better for the job than others. Although the 
+RGB color space would be the easiest to use, as it is the default option for 
+many tools, it doesn't give us an advantage when colorizing. On the other hand, 
+the CIELAB color space has a few useful properties which make it convenient 
+for the task. The CIELAB (or L*a*b*) color space was defined by the 
+International Commission on Illumination in 1976 as an attempt to create a 
+perceptually uniform color space \citep{icc2004cielab}. 
+
+In perceptually uniform color spaces, a numeric change in any direction 
+would result in a similar perceived color change. Although L*a*b* is not truly 
+perceptually uniform, it is nevertheless useful for that purpose. Perceptual 
+uniformity is not necessary while colorizing, but it is practical. As small 
+changes in value result in small color changes.
+
+
+- What L*a*b* mean
+- Plots of lab colorspace
+- Not as effective for image compression as only a third of the box is used
+- Quintization errors with ints, best to use 32 bit floats to repersent the colorspace
+- Covers the whole visible color spectrum
+- Created as perceptually coherent color space
+- Not entirely successful at it, but quite successful
+- Why use LAB colorspace
+- Good for this task because of:
+    - Perceptual distance close to numerical distance (good at assesing what humans would percieve color differences)
+    - Input diemnsion is grayscale which matches the L channel of Lab colorspace, we only need to predict 2 channels a* and b*
+
+As we are working with images the choice of colorspace is quite important 
+Covers the while human visible spectrum
+Perceptually close colors are 
+
+thats why rather than using the rgb colorspace ...  La*b*
+
+
+- 
+
+
+
+\section{Task definition}
+
+
+
+- That said
+- The task of colorization is:
+    get ab color channels from the luminance value of the photo
+    image-to-image translation problem where the domain is the grayscale L channel and codomain are the ab color channels 
+    Trying to imagine the probable values for the a and b (color) channels
+    of the CIELab colorspace givent the luminance values of a grayscale image
+    Colored images have 3 channels, one channel is already available, so the colorizer has to 
+    hallucinate
+
+
+
+- It is impossible to perfectly recover the original image as too much information has been lost due to the colorspace
+- The best the model can do is to offer a plausible colorization
+- Trying to imagine 2 color dimensions of the lab color space
+
+- Image colorization definition
+
+- The baseline knowledge that is needed to understand
+- Approaches to the problem
+- Dataset and dataset preparation (possible improvements like adding noise)
+- describing 
+
+
+\subsection{Multimodality}
+
+\section{Dataset}
+\label{sec:dataset}
+
+- The model is only as good as the dataset
+
+
+\begin{comment}
+
+    
+    
+    \section{Multimodality}
+    \label{sec:multimodality}
+    
+    Multimodalnost
+    
+    - Multimodality:
+        Roses are red, violets are grey?
+        There is more to it
+    
+    
+    The task of image colorization can be defined as an image-to-image translation problem, where 
+    given a grayscale input image, the colorizer has to suggest a plausible colored version 
+    of the same image. The input to the colorizer is a 2-dimensional array 
+    where the intensity of each pixel is a one-dimensional 
+    value (usually in the 8-bit range), whereas the output, is a colored image that 
+    requires at least three channels to cover the whole color spectrum. 
+    
+    The process of colorization can be written down as:
+        \[\mathbf{Y} = \mathcal{F}(\mathbf{X})\]
+    where $\mathbf{X} \in \mathbb{R}^{H \times W \times 1}$ is the input grayscale image, 
+    $\mathbf{Y} \in \mathbb{R}^{H \times W \times 3}$ is the colored output and
+    $\mathcal{F}$ is the function that maps $\mathbf{X} \rightarrow \mathbf{Y}$. 
+    In the case of colorization $\mathcal{F}$ represents the colorizer.
+    
+    
+    
+    \section{Use Cases}
+    
+    The primary use case of colorization is to add color to old monochrome images taken
+    in an era where colored photography was not yet a viable option. Although people 
+    can imagine how the photographed scene looked like when the image was taken, seeing 
+    a plausible colorization gives the viewer another perspective to the original image.
+    Automatic colorization might also be useful in the field of image\citep{fatima2021image} 
+    and video \citep{pan2019video} compression as saving only the luminance channel 
+    of an image or video (and some color information) reduces the file size with a potentially
+    low impact on the image quality. 
+\end{comment}

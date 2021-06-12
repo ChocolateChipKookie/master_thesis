@@ -18,7 +18,7 @@ def moving_average(vals, n):
 def plot_colorful():
     F = {}
 
-    for line in open("colorful/data/desmos.log", 'r'):
+    for line in open("ideep/data/desmos.log", 'r'):
         l = line[1:-2].split(', ')
         F[int(l[0])] = float(l[1])
 
@@ -31,7 +31,7 @@ def plot_colorful():
     X_val = [0]
     Y_val = [Y[0]]
 
-    for line in open("colorful/data/val.log", 'r'):
+    for line in open("ideep/data/val.log", 'r'):
         line = line.strip()
         if line == "":
             continue
@@ -151,6 +151,6 @@ def plot_gan():
     plt.show()
 
 if __name__ == "__main__":
-    plot_gan()
+    plot_colorful()
 
 

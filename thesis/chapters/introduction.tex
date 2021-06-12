@@ -28,12 +28,10 @@ but this time the problem was tackled from a computational perspective.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{img/hand_colored.jpg}
+    \includegraphics[width=0.54\textwidth]{img/hand_colored.jpg}
     \caption{Hand-colored photograph by Stillfried \& Andersen (made the period between 1862 and 1885)}
     \label{fig:hand_colored}
 \end{figure}
-
-\section{Task description}
 
 At first sight, the task of automatic colorization might look impossible to accomplish, 
 as information is lost when taking a monochrome photograph. If our goal is to 
@@ -43,7 +41,7 @@ encounter the problem of multimodality that is described in section
 colorization, the task becomes achievable as there is still a lot of semantic 
 information ingrained in the grayscale image. 
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 	\centering
 	\begin{subfigure}{.32\textwidth}
 		\centering
@@ -74,66 +72,22 @@ All that information is available no matter that there is no color
 in the image, but the colorizer should be able to deduce a likely color from the 
 shapes and textures present. 
 
-That said the task of colorization can be described as a image-to-image translation problem
-
-- That said
-- The task of colorization is:
-    get ab color channels from the luminance value of the photo
-    image-to-image translation problem where the domain is the grayscale L channel and codomain are the ab color channels 
-    Trying to imagine the probable values for the a and b (color) channels
-    of the CIELab colorspace givent the luminance values of a grayscale image
-
-
-
-- It is impossible to perfectly recover the original image as too much information has been lost due to the colorspace
-- The best the model can do is to offer a plausible colorization
-- Trying to imagine 2 color dimensions of the lab color space
-
-
-\section{Multimodality}
-\label{sec:multimodality}
-
-Multimodalnost
-
-- Multimodality:
-    Roses are red, violets are grey?
-    There is more to it
+That said, in this thesis we will explore the topic of automatic image 
+colorization. Firstly the task of image colorization will be described as well 
+other notable details important for the understanding of that topic. After the
+basic are covered 
 
 \begin{comment}
 
-The task of image colorization can be defined as an image-to-image translation problem, where 
-given a grayscale input image, the colorizer has to suggest a plausible colored version 
-of the same image. The input to the colorizer is a 2-dimensional array 
-where the intensity of each pixel is a one-dimensional 
-value (usually in the 8-bit range), whereas the output, is a colored image that 
-requires at least three channels to cover the whole color spectrum. 
+\textbf{TODO!}
+% TODO: OVO SE TREBA NA KRAJU NAPISATI
 
-The process of colorization can be written down as:
-    \[\mathbf{Y} = \mathcal{F}(\mathbf{X})\]
-where $\mathbf{X} \in \mathbb{R}^{H \times W \times 1}$ is the input grayscale image, 
-$\mathbf{Y} \in \mathbb{R}^{H \times W \times 3}$ is the colored output and
-$\mathcal{F}$ is the function that maps $\mathbf{X} \rightarrow \mathbf{Y}$. 
-In the case of colorization $\mathcal{F}$ represents the colorizer.
 
+- Technicalities 
+- The task of colorization
+- Different approaches to image colorization
+- Dataset
+- Problems with colorization
+- Different metrics for assesing the models
+- Ground up explinations of the working and training of different models
 \end{comment}
-
-
-\section{Use Cases}
-
-The primary use case of colorization is to add color to old monochrome images taken
-in an era where colored photography was not yet a viable option. Although people 
-can imagine how the photographed scene looked like when the image was taken, seeing 
-a plausible colorization gives the viewer another perspective to the original image.
-Automatic colorization might also be useful in the field of image\citep{fatima2021image} 
-and video \citep{pan2019video} compression as saving only the luminance channel 
-of an image or video (and some color information) reduces the file size with a potentially
-low impact on the image quality. 
-
-
-\section{Related work}
-
-- Beginning statistical models
-- Convolutional networks
-- Generative Adversarial networks
-- In the last few years novel approaches: Transformers, cINN
-- Specialized approaches for different use cases
