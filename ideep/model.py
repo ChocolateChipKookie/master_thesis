@@ -109,12 +109,12 @@ class Colorizer(Network):
         if global_hints == None:
             # Expand dimensions and pull through global hints part of network
             global_hints = torch.zeros((input_l.shape[0], 316), device=input_l.device)
-        global_hints = self.global_hints(global_hints[:, :, None, None])
 
         c1 = self.conv1(input_l)
         c2 = self.conv2(self.sampling(c1))
         c3 = self.conv3(self.sampling(c2))
         c4 = self.conv4(self.sampling(c3))
+        global_hints = self.global_hints(global_hints[:, :, None, None])
         c5_in = c4 + global_hints.expand_as(c4)
         c5 = self.conv5(c5_in)
         c6 = self.conv6(c5)

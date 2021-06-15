@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: diplomski_en.aux
 The style file: plainnat.bst
 Database file #1: literatura.bib
-You've used 3 entries,
+You've used 10 entries,
             2773 wiz_defined-function locations,
-            608 strings with 5351 characters,
-and the built_in function-call counts, 1093 in all, are:
-= -- 93
-> -- 60
-< -- 1
-+ -- 21
-- -- 18
-* -- 80
-:= -- 166
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 14
-chr.to.int$ -- 3
-cite$ -- 6
-duplicate$ -- 53
-empty$ -- 95
-format.name$ -- 22
-if$ -- 228
+            662 strings with 6914 characters,
+and the built_in function-call counts, 4865 in all, are:
+= -- 428
+> -- 305
+< -- 3
++ -- 102
+- -- 92
+* -- 411
+:= -- 751
+add.period$ -- 37
+call.type$ -- 10
+change.case$ -- 58
+chr.to.int$ -- 10
+cite$ -- 20
+duplicate$ -- 216
+empty$ -- 390
+format.name$ -- 103
+if$ -- 1021
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 2
-newline$ -- 23
-num.names$ -- 8
-pop$ -- 38
+missing$ -- 9
+newline$ -- 63
+num.names$ -- 40
+pop$ -- 123
 preamble$ -- 1
-purify$ -- 13
+purify$ -- 50
 quote$ -- 0
-skip$ -- 44
+skip$ -- 161
 stack$ -- 0
-substring$ -- 8
-swap$ -- 4
-text.length$ -- 0
+substring$ -- 146
+swap$ -- 24
+text.length$ -- 1
 text.prefix$ -- 1
 top$ -- 0
-type$ -- 28
+type$ -- 105
 warning$ -- 0
-while$ -- 6
+while$ -- 37
 width$ -- 0
-write$ -- 43
+write$ -- 145

@@ -39,7 +39,7 @@ expressing how light (or dark) it is.
 \end{figure}
 
 On the other hand, if we want to render a colored photograph we need at 
-least 3 channels to do, meaning that for each pixel we want to draw, 
+least 3 channels to do so, meaning that for each pixel we want to draw, 
 we need at least 3 values associated with it. The specific way of mapping 
 the three values to a color is called a color space. An example of a color
 space is the RGB color model in which each of the 3 channels depicts the 
@@ -47,12 +47,13 @@ amount of \textbf{R}ed, \textbf{G}reen, or \textbf{B}lue color present,
 as shown in figure \ref{fig:alim_khan}. 
 
 That said, the task of colorization can be summed up as
-    \[\mathbf{Y} = \mathcal{F}(\mathbf{X})\]
-where $\mathbf{X} \in \mathbb{R}^{H \times W \times 1}$ is the input 
-and $\mathbf{Y} \in \mathbb{R}^{H \times W \times 3}$ is the colored output.
+\begin{equation}
+    \mathbf{Y} = \mathcal{F}(\mathbf{X})\;\mathbf{where}\;\;\mathbf{X} \in \mathbb{R}^{H \times W \times 1}, \mathbf{Y} \in \mathbb{R}^{H \times W \times 3}\label{eq:colorization}
+\end{equation}    
+where $\mathbf{X}$ is the input 
+and $\mathbf{Y}$ is the colored output.
 $\mathcal{F}$ is the function that maps the domain $\mathbf{X}$ to the codomain 
 $\mathbf{Y}$, which in our case represents the colorizer.
-
 
 \section{Color space}
 
@@ -64,110 +65,208 @@ the CIELAB color space has a few useful properties which make it convenient
 for the task. The CIELAB (or L*a*b*) color space was defined by the 
 International Commission on Illumination in 1976 as an attempt to create a 
 perceptually uniform color space \citep{icc2004cielab}. 
-
 In perceptually uniform color spaces, a numeric change in any direction 
 would result in a similar perceived color change. Although L*a*b* is not truly 
 perceptually uniform, it is nevertheless useful for that purpose. Perceptual 
-uniformity is not necessary while colorizing, but it is practical. As small 
-changes in value result in small color changes.
+uniformity is not necessary while colorizing, but it is practical, as changes 
+in value result in proportional color changes.
 
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{.24\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{plot/lab/20}
+	\end{subfigure}
+	\begin{subfigure}{.24\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{plot/lab/40}
+	\end{subfigure}
+	\begin{subfigure}{.24\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{plot/lab/60}
+	\end{subfigure}
+	\begin{subfigure}{.24\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{plot/lab/80}
+	\end{subfigure}
+    \caption{Slices of the CIELAB color space at different luminance levels, with only the RGB gamut rendered}
+	\label{fig:rgb_in_lab}
+\end{figure}
 
-- What L*a*b* mean
-- Plots of lab colorspace
-- Not as effective for image compression as only a third of the box is used
-- Quintization errors with ints, best to use 32 bit floats to repersent the colorspace
-- Covers the whole visible color spectrum
-- Created as perceptually coherent color space
-- Not entirely successful at it, but quite successful
-- Why use LAB colorspace
-- Good for this task because of:
-    - Perceptual distance close to numerical distance (good at assesing what humans would percieve color differences)
-    - Input diemnsion is grayscale which matches the L channel of Lab colorspace, we only need to predict 2 channels a* and b*
+The CIELAB color space expresses colors using three channels. The bounded \textbf{L*}
+channel is expressing the lightness of the color, with 0 representing black and 100 
+white, respectively. The \textbf{a*} and \textbf{b*} channels, on the other hand, 
+express the \textit{color}. Both color channels are unbounded, which allows the 
+CIELAB color space to express the whole human gamut\footnote{The complete range 
+or scope of something}. The RGB color space fits in the CIELAB color space 
+as show in the figure \ref{fig:rgb_in_lab}.
 
-As we are working with images the choice of colorspace is quite important 
-Covers the while human visible spectrum
-Perceptually close colors are 
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/lab_channels/san_g}
+        \caption{Original}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/lab_channels/san_g_gs}
+        \caption{\textbf{L*} channel}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/lab_channels/san_g_color}
+        \caption{\textbf{a*} and \textbf{b*} channels (\textbf{L*} = 75)}
+	\end{subfigure}
+    \caption{Image with seperated channels of the CIELAB color space}
+	\label{fig:lab_channels}
+\end{figure}
 
-thats why rather than using the rgb colorspace ...  La*b*
-
-
-- 
-
-
+Another useful property of the CIELAB color space is that it has a dedicated channel
+for perceptual luminance and two channels for the color, as seen in figure \ref{fig:lab_channels}. 
+We can use that property for simplifying the process of colorization, as the input to the 
+colorizer is the perceptual luminance of the grayscale image. That means that we only have to 
+suggest the \textbf{a*} and \textbf{b*} (color) channels in order to colorize the image. 
+That said, we can update the equation \ref{eq:colorization} to:
+\begin{equation}
+    \mathbf{Y} = \mathcal{F}(\mathbf{X})\;\mathbf{where}\;\;\mathbf{X} \in \mathbb{R}^{H \times W \times 1}, \mathbf{Y} \in \mathbb{R}^{H \times W \times 2}\label{eq:colorization_2}
+\end{equation}    
+as the colorizer only has to suggest two channels.
 
 \section{Task definition}
+\label{sec:task}
+
+In the 2000s many algorithms for colorization were developed \citep{levin2004colorization}\citep{luan2007colorization}\citep{charpiat2008colorization}\citep{reinhard2001colorization} 
+fueled by the ever growing computational capacaties of the modern world. Those were mostly 
+statistical methods that relied on extensive user input to get a viable colorization. 
+Nevertheless they offered a method for somewhat easy colorization that gave good results, 
+but the problem of fully-automated image colorization still remained unsolved. A decade later 
+first models \citep{cheng2015colorization}\citep{iizuka2016colorization} using the CNN
+architecture started popping up, paveing the way for a fully-automated colorization process.
+In this thesis three approaches to image colorization will lined out, all of which are using 
+convolutional neural networks described in section \ref{sec:cnn}.
 
 
-
-- That said
-- The task of colorization is:
-    get ab color channels from the luminance value of the photo
-    image-to-image translation problem where the domain is the grayscale L channel and codomain are the ab color channels 
-    Trying to imagine the probable values for the a and b (color) channels
-    of the CIELab colorspace givent the luminance values of a grayscale image
-    Colored images have 3 channels, one channel is already available, so the colorizer has to 
-    hallucinate
-
-
-
-- It is impossible to perfectly recover the original image as too much information has been lost due to the colorspace
-- The best the model can do is to offer a plausible colorization
-- Trying to imagine 2 color dimensions of the lab color space
-
-- Image colorization definition
-
-- The baseline knowledge that is needed to understand
-- Approaches to the problem
-- Dataset and dataset preparation (possible improvements like adding noise)
-- describing 
-
+The goal for each of the models is to hallucinate a viable colorization for a grayscale 
+input image. The colorizer has to propose the values for the \textbf{a*} and \textbf{b*}
+channels, while the \textbf{L*} channel is the same as the input image. As noted in chapter \ref{ch:introduction}
+perfect colorization is sometimes possible but highly unlikely, the goal is rather to 
+produce a probable colorization which is able to fool human observers into thinking it is a 
+real full-color image.
 
 \subsection{Multimodality}
+\label{sec:multimodality}
+
+One of the reasons why perfect colorization is not possible has to do with the 
+fact that a grayscale photograph has less information than a colored photograph.
+Although it is sometimes possible to deduce colors from the shape or texture of
+an object, more often than not we cannot be sure of the original color.
+The problem becomes apperent when trying to colorize almost any painted object,
+like the three scooters seen in figure \ref{fig:multimodality_scooters}. Given the 
+grayscale image of the scooters one could assume that all of them are the same
+color, which our colorizer did, or that they are all different colors, as seen 
+in the original image. 
+
+That fenomenon is not exclusive to human-made objects, 
+but it also extends to the natural world as seen in the figure 
+\ref{fig:multimodality_sunset}. In the grayscale image there is no clue to the 
+fact that the picture was taken during a sunset, so the best the colorizer
+was able to do was to colorize it as if it was an image of a stormy sea.
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/multimodality/vespa_orig}
+	\end{subfigure}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/multimodality/vespa_gs}
+	\end{subfigure}
+    \begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/multimodality/vespa_colorful}
+	\end{subfigure}
+    \caption{Image of three scooters, colorizer input, and possible colorization}
+	\label{fig:multimodality_scooters}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/multimodality/sunset}
+	\end{subfigure}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/multimodality/sunset_gs}
+	\end{subfigure}
+    \begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/multimodality/sunset_colorized}
+	\end{subfigure}
+    \caption{Image of sea taken during a sunset, colorizer input, and possible colorization}
+	\label{fig:multimodality_sunset}
+\end{figure}
+
+This occurs because it is impossible to create more information than there is present, 
+but our model can try to find the most probable solution to the given problem and the context. 
+Let's say we have a pair of two real positive numbers and the result of their 
+addition is 4, our task is to find the values of the 2 numbers just knowing the 
+result. The task seems impossible at first, as there is an infinite number of possible 
+combinations that give the same result. But given the context that the pair was 
+chosen by humans, and as humans like whole numbers, the chances of the pair being
+$(1, 3)$ or $(2, 2)$ is much higher than for them to be $(3.141592, 0.858408)$. The posed
+problem is quite similar to the task of colorization where the sum is the weighted 
+average of the \textbf{R}, \textbf{G}, and \textbf{B} channels and the context is the 
+whole image. As seen in the above problem, there are several likely combinations
+among the sea of unlikely ones. That property, where we have several possible modes 
+or maxima is called multimodality, and it is the main problem when colorizing. It is
+troublesome as we cannot be sure which is the real solution, but we can provide one 
+of the multiple likely ones.
+
+\section{Artificial neural networks}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[height=.52\linewidth]{img/neuron}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[height=.52\linewidth]{img/simple_nn}
+	\end{subfigure}
+    \caption{Comparison of biological and artificial neuron}
+	\label{fig:neuron}
+\end{figure}
+
+Artificial neural networks, or simply called neural networks in the context of 
+machine learning, are a class of highly versatile computational models used for 
+regression, classification, data processing, etc. As with many successful computational 
+systems artificial neural networks are vaguely inspired by real-world examples,
+in this case, biological neural networks as seen in figure \ref{fig:neuron}. 
+
+In simple, single-layer neural networks like the one seen in figure \ref{fig:neuron}, 
+it is possible to understand how the model is working based on the weights it gives
+to different inputs for different outputs. With deep, multi-layer neural networks 
+we lose that \textit{interpretability}, as we give the neural network the possibility
+to divide the problem into several layers of understanding which are virtually 
+impossible to decypher. The process of neural network training is out of the scope
+of this thesis.
+
+\subsection{Convolutional neural networks}
+\label{sec:cnn}
+
+Like neural networks, convolutional neural networks (or CNNs) were originally 
+nature-inspired, specifically by the way that the animal visual cortex is organized \citep{fukushima1980neocognitron}.
+
+
+
+\subsection{U-net architecture}
+\subsection{Generative adversarial networks}
 
 \section{Dataset}
 \label{sec:dataset}
 
 - The model is only as good as the dataset
-
-
-\begin{comment}
-
-    
-    
-    \section{Multimodality}
-    \label{sec:multimodality}
-    
-    Multimodalnost
-    
-    - Multimodality:
-        Roses are red, violets are grey?
-        There is more to it
-    
-    
-    The task of image colorization can be defined as an image-to-image translation problem, where 
-    given a grayscale input image, the colorizer has to suggest a plausible colored version 
-    of the same image. The input to the colorizer is a 2-dimensional array 
-    where the intensity of each pixel is a one-dimensional 
-    value (usually in the 8-bit range), whereas the output, is a colored image that 
-    requires at least three channels to cover the whole color spectrum. 
-    
-    The process of colorization can be written down as:
-        \[\mathbf{Y} = \mathcal{F}(\mathbf{X})\]
-    where $\mathbf{X} \in \mathbb{R}^{H \times W \times 1}$ is the input grayscale image, 
-    $\mathbf{Y} \in \mathbb{R}^{H \times W \times 3}$ is the colored output and
-    $\mathcal{F}$ is the function that maps $\mathbf{X} \rightarrow \mathbf{Y}$. 
-    In the case of colorization $\mathcal{F}$ represents the colorizer.
-    
-    
-    
-    \section{Use Cases}
-    
-    The primary use case of colorization is to add color to old monochrome images taken
-    in an era where colored photography was not yet a viable option. Although people 
-    can imagine how the photographed scene looked like when the image was taken, seeing 
-    a plausible colorization gives the viewer another perspective to the original image.
-    Automatic colorization might also be useful in the field of image\citep{fatima2021image} 
-    and video \citep{pan2019video} compression as saving only the luminance channel 
-    of an image or video (and some color information) reduces the file size with a potentially
-    low impact on the image quality. 
-\end{comment}

@@ -1,6 +1,8 @@
 from skimage import color
 import numpy as np
 import matplotlib.pyplot as plt
+import cv2
+import os
 
 
 def create_plot(l_=50., dim = 200):
@@ -77,14 +79,17 @@ def create_plot(l_=50., dim = 200):
     plt.title(f"L* = {l_}")
     plt.show()
 
-#for l in range(0, 101, 10):
-#    create_plot(float(l))
 
-dim = 220
-create_plot(12.5, dim)
-create_plot(25, dim)
-create_plot(37.5, dim)
-create_plot(50, dim)
-create_plot(62.5, dim)
-create_plot(75, dim)
-create_plot(87.5, dim)
+def channels_lab(path, l):
+    img = cv2.imread(path)
+    dir, name = os.path.split(path)
+    name = name.split(".")[0]
+    lab = color.rgb2lab(img)
+    gs = lab[:,:,0] / 100 * 255
+    cv2.imwrite(f"{dir}/{name}.png", img)
+    cv2.imwrite(f"{dir}/{name}_gs.png", gs)
+    lab[:,:,0] = l
+    rgb = color.lab2rgb(lab) * 255
+    cv2.imwrite(f"{dir}/{name}_color.png", rgb)
+
+channels_lab("thesis/graphics/img/lab_channels/san_g.png", 75)

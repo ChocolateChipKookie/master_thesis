@@ -2,8 +2,8 @@
   "colorizer": {
     "class": "colorful.model.Colorful",
     "args": {
-      "decoder_T": 0.7,
-      "input_min": 512
+      "decoder_T": 0.2,
+      "input_min": 256
     }
   },
   "state_dict": "colorful/data/04_28-602000.pth"

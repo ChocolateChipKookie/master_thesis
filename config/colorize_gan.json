@@ -19,7 +19,7 @@
         [128, 2],
         [64, 2]
       ],
-      "input_min": 512
+      "input_min": 256
     }
   },
   "state_dict": "gan/data/backup_generator.pth"

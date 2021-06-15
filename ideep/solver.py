@@ -45,7 +45,7 @@ class Solver(module.Solver):
 
     def calculate_loss(self, batch):
         # Fetch input for the network
-        global_hints = self.get_global(batch, True, True).to(self.device)
+        global_hints = self.get_global(batch, False, False).to(self.device)
         x = batch[:, :1, :, :].to(self.device)
         # Forward pass
         predicted = self.network(x, global_hints)

@@ -1,15 +1,45 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Charpiat et~al.(2008)Charpiat, Hofmann, and
+  Sch{\"o}lkopf]{charpiat2008colorization}
+Guillaume Charpiat, Matthias Hofmann, and Bernhard Sch{\"o}lkopf.
+\newblock Automatic image colorization via multimodal predictions.
+\newblock In David Forsyth, Philip Torr, and Andrew Zisserman, editors,
+  \emph{Computer Vision -- ECCV 2008}, pages 126--139, Berlin, Heidelberg,
+  2008. Springer Berlin Heidelberg.
+\newblock ISBN 978-3-540-88690-7.
+
+\bibitem[Cheng et~al.(2015)Cheng, Yang, and Sheng]{cheng2015colorization}
+Zezhou Cheng, Qingxiong Yang, and Bin Sheng.
+\newblock Deep colorization.
+\newblock In \emph{Proceedings of the IEEE International Conference on Computer
+  Vision (ICCV)}, December 2015.
+
+\bibitem[Fukushima(1980)]{fukushima1980neocognitron}
+Kunihiko Fukushima.
+\newblock {Neocognitron: A Self-organizing Neural Network Model for a Mechanism
+  of Pattern Recognition Unaffected by Shift in Position}.
+\newblock \emph{Biological Cybernetics}, 36:\penalty0 193:1--202:9, 1980.
+
 \bibitem[Henisch and Henisch(1996)]{henisch1996photograph}
 Heinz~K Henisch and Bridget~Ann Henisch.
 \newblock \emph{{The painted photograph, 1839-1914 : origins, techniques,
   aspirations}}.
 \newblock Pennsylvania State University Press, 1996.
+
+\bibitem[Iizuka et~al.(2016)Iizuka, Simo-Serra, and
+  Ishikawa]{iizuka2016colorization}
+Satoshi Iizuka, Edgar Simo-Serra, and Hiroshi Ishikawa.
+\newblock {Let there be Color!: Joint End-to-end Learning of Global and Local
+  Image Priors for Automatic Image Colorization with Simultaneous
+  Classification}.
+\newblock \emph{ACM Transactions on Graphics (Proc. of SIGGRAPH 2016)},
+  35\penalty0 (4):\penalty0 110:1--110:11, 2016.
 
 \bibitem[Int(2004)]{icc2004cielab}
 \emph{Image technology colour management — Architecture, profile format, and
@@ -18,8 +48,32 @@ Heinz~K Henisch and Bridget~Ann Henisch.
 \newblock URL \url{https://www.color.org/icc1v42.pdf}.
 \newblock Profile version 4.2.0.0.
 
+\bibitem[Levin et~al.(2004)Levin, Lischinski, and Weiss]{levin2004colorization}
+Anat Levin, Dani Lischinski, and Yair Weiss.
+\newblock Colorization using optimization.
+\newblock \emph{ACM Transactions on Graphics}, 23, 06 2004.
+\newblock \doi{10.1145/1015706.1015780}.
+
+\bibitem[Luan et~al.(2007)Luan, Wen, Cohen-Or, Liang, Xu, and
+  Shum]{luan2007colorization}
+Qing Luan, Fang Wen, Daniel Cohen-Or, Lin Liang, Ying-Qing Xu, and Heung-Yeung
+  Shum.
+\newblock {Natural Image Colorization}.
+\newblock In Jan Kautz and Sumanta Pattanaik, editors, \emph{Rendering
+  Techniques}. The Eurographics Association, 2007.
+\newblock ISBN 978-3-905673-52-4.
+\newblock \doi{10.2312/EGWR/EGSR07/309-320}.
+
 \bibitem[Pang et~al.(2021)Pang, Lin, Qin, and Chen]{pang2021imagetoimage}
 Yingxue Pang, Jianxin Lin, Tao Qin, and Zhibo Chen.
 \newblock Image-to-image translation: Methods and applications, 2021.
+
+\bibitem[Reinhard et~al.(2001)Reinhard, Adhikhmin, Gooch, and
+  Shirley]{reinhard2001colorization}
+E.~Reinhard, M.~Adhikhmin, B.~Gooch, and P.~Shirley.
+\newblock Color transfer between images.
+\newblock \emph{IEEE Computer Graphics and Applications}, 21\penalty0
+  (5):\penalty0 34--41, 2001.
+\newblock \doi{10.1109/38.946629}.
 
 \end{thebibliography}
