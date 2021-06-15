@@ -3,10 +3,11 @@ from torch import nn
 from torchvision.transforms import functional
 
 from util.module import Network
+from colorful.model import Colorful
 
 
 class Colorizer(Network):
-    def __init__(self, dim_in=1, dim_out=2, input_min=256, bias=True):
+    def __init__(self, colorful_path, dim_in=1, dim_out=2, input_min=256, bias=True):
         super(Colorizer, self).__init__()
         self.dim_in = dim_in
         self.dim_out = dim_out
@@ -34,19 +35,34 @@ class Colorizer(Network):
                 block.append(nn.BatchNorm2d(dim_out))
             return nn.Sequential(*block)
 
-        # Create convolutional blocks
-        self.conv1 = create_block(self.dim_in, 64, 2)
-        self.conv2 = create_block(64, 128, 2)
-        self.conv3 = create_block(128, 256, 3)
-        self.conv4 = create_block(256, 512, 3)
-        self.conv5 = create_block(512, 512, 3, dilation=2, padding=2)
-        self.conv6 = create_block(512, 512, 3, dilation=2, padding=2)
-        self.conv7 = create_block(512, 512, 3)
+        colorful_model = Colorful()
+        state_dict = torch.load(colorful_path)
+        colorful_model.load_state_dict(state_dict)
+        colorful_model.eval()
 
-        # Create conv8 and skip connection
-        self.conv8up = nn.ConvTranspose2d(512, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=bias)
+        # Convolutional blocks are pretrained
+        model1_children = list(colorful_model.model1.children())
+        self.conv1 = nn.Sequential(*model1_children[:-3])
+        self.conv1_down = nn.Sequential(*model1_children[-3:])
+        model2_children = list(colorful_model.model2.children())
+        self.conv2 = nn.Sequential(*model2_children[:-3])
+        self.conv2_down = nn.Sequential(*model2_children[-3:])
+        model3_children = list(colorful_model.model3.children())
+        self.conv3 = nn.Sequential(*model3_children[:-3])
+        self.conv3_down = nn.Sequential(*model3_children[-3:])
+        self.conv4 = colorful_model.model4
+        self.conv5 = colorful_model.model5
+        self.conv6 = colorful_model.model6
+        self.conv7 = colorful_model.model7
+
+        # Fetch conv8 parts
+        conv8_children = list(colorful_model.model8.children())
+        # Get the upsampling layer
+        self.conv8up = conv8_children[0]
+        # Ignore the upsampling layer as well as the 256->313 mapping layer
+        self.conv8 = nn.Sequential(*conv8_children[1:-1])
+        # Create short layer
         self.conv3_8short = nn.Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=bias)
-        self.conv8 = create_block(256, 256, 2, prepend_relu=True)
 
         # Create conv9 and skip connection
         self.conv9up = nn.ConvTranspose2d(256, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=bias)
@@ -67,10 +83,9 @@ class Colorizer(Network):
 
         # Output layer
         self.out = nn.Sequential(
-            nn.Conv2d(128, 2, kernel_size=(1, 1), padding=(0, 0), stride=(1, 1), bias=bias)
-            #, nn.Tanh()
+            nn.Conv2d(128, 2, kernel_size=(1, 1), padding=(0, 0), stride=(1, 1), bias=bias),
+            nn.Tanh()
         )
-        self.sampling = nn.MaxPool2d(2, 2)
 
     def forward_colorize(self, input_l, global_hints=None, normalized=False):
         train = self.training
@@ -111,15 +126,20 @@ class Colorizer(Network):
             global_hints = torch.zeros((input_l.shape[0], 316), device=input_l.device)
 
         c1 = self.conv1(input_l)
-        c2 = self.conv2(self.sampling(c1))
-        c3 = self.conv3(self.sampling(c2))
-        c4 = self.conv4(self.sampling(c3))
+        c1_down = self.conv1_down(c1)
+        c2 = self.conv2(c1_down)
+        c2_down = self.conv2_down(c2)
+        c3 = self.conv3(c2_down)
+        c3_down = self.conv3_down(c3)
+        c4 = self.conv4(c3_down)
         global_hints = self.global_hints(global_hints[:, :, None, None])
         c5_in = c4 + global_hints.expand_as(c4)
         c5 = self.conv5(c5_in)
         c6 = self.conv6(c5)
         c7 = self.conv7(c6)
-        c8_in = self.conv8up(c7) + self.conv3_8short(c3)
+        c8_up = self.conv8up(c7)
+        c8_short = self.conv3_8short(c3)
+        c8_in = c8_up + c8_short
         c8 = self.conv8(c8_in)
         c9_in = self.conv9up(c8) + self.conv2_9short(c2)
         c9 = self.conv9(c9_in)
