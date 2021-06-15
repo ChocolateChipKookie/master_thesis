@@ -28,7 +28,7 @@
       "optimizer": {
         "class": "torch.optim.Adam",
         "args": {
-          "lr": 1e-3,
+          "lr": 1e-4,
           "weight_decay": 1e-3,
           "betas": [0.5, 0.99]
         }

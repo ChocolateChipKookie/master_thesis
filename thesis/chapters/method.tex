@@ -237,7 +237,7 @@ of the multiple likely ones.
 		\centering
 		\includegraphics[height=.52\linewidth]{img/simple_nn}
 	\end{subfigure}
-    \caption{Comparison of biological and artificial neuron}
+    \caption{Comparison of biological and artificial neuron (stronger colors indicate higher weights)}
 	\label{fig:neuron}
 \end{figure}
 
@@ -252,14 +252,41 @@ it is possible to understand how the model is working based on the weights it gi
 to different inputs for different outputs. With deep, multi-layer neural networks 
 we lose that \textit{interpretability}, as we give the neural network the possibility
 to divide the problem into several layers of understanding which are virtually 
-impossible to decypher. The process of neural network training is out of the scope
-of this thesis.
+impossible to decypher. The learning part of machine learning takes place during the
+training process which is out of the scope of this thesis.
 
 \subsection{Convolutional neural networks}
 \label{sec:cnn}
 
 Like neural networks, convolutional neural networks (or CNNs) were originally 
-nature-inspired, specifically by the way that the animal visual cortex is organized \citep{fukushima1980neocognitron}.
+nature-inspired, specifically by the way that the animal visual cortex is 
+organized \citep{fukushima1980neocognitron}. Instead of associating specific
+inputs with specific weights, with CNNs we train the network to learn filters 
+(or kernels) that we slide over features to get feature maps. When we stack
+several convolutional layers on top of each other we get a deep convolutional
+neural network (or DCNN). As with deep neural networks the stacking allows 
+the DCNNs to devide the problem into several layers of understanding. 
+
+Let's say we have a picture of nature and we want to detect trees. A potential 
+kernel would have the shape of a leaf, so when the kernel slides over a leaf on the
+the image, it activates. As the result of sliding over the whole image we would
+get a feature map where we know the positions of all leaves. In the next layer 
+the CNN could look for a canopy shaped cluster of leaves. When it slides
+over such a part the feature map, it activats. At that point we know the position
+of the canopy. In the next layer it could take the information about the position
+of the canopy and the information about the position of the tree trunk it deduced
+in a similar way, and in case the canopy is over the trunk it can safely mark the
+position of the tree.
+
+Of course that explination is oversimplified, but it explains a possible way 
+that a CNN deduces where a tree is. In reality a leaf shaped kernel will almost
+certainly not happen, as kernels are usually much smaller in size (in the models
+described in this thesis use $3\times3$ and $4\times4$ kernels) just enough to detect
+
+
+
+and if we have lots of leaves next to 
+each other we could conclude that that is a tree.
 
 
 

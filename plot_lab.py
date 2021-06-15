@@ -92,4 +92,8 @@ def channels_lab(path, l):
     rgb = color.lab2rgb(lab) * 255
     cv2.imwrite(f"{dir}/{name}_color.png", rgb)
 
-channels_lab("thesis/graphics/img/lab_channels/san_g.png", 75)
+# channels_lab("thesis/graphics/img/lab_channels/san_g.png", 75)
+create_plot(20)
+create_plot(40)
+create_plot(60)
+create_plot(80)

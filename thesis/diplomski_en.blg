@@ -6,13 +6,13 @@ Database file #1: literatura.bib
 You've used 10 entries,
             2773 wiz_defined-function locations,
             662 strings with 6914 characters,
-and the built_in function-call counts, 4865 in all, are:
+and the built_in function-call counts, 4870 in all, are:
 = -- 428
 > -- 305
 < -- 3
 + -- 102
 - -- 92
-* -- 411
+* -- 414
 := -- 751
 add.period$ -- 37
 call.type$ -- 10
@@ -20,9 +20,9 @@ change.case$ -- 58
 chr.to.int$ -- 10
 cite$ -- 20
 duplicate$ -- 216
-empty$ -- 390
+empty$ -- 391
 format.name$ -- 103
-if$ -- 1021
+if$ -- 1022
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 9
