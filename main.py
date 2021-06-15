@@ -1,8 +1,12 @@
 import argparse
 import json
+
+import torch.cuda
+
 from util import util
 
 if __name__ == "__main__":
+    torch.cuda.set_per_process_memory_fraction(1, torch.device("cuda:0"))
     # Create parser
     parser = argparse.ArgumentParser(description="Dispatcher for training colorization models")
     parser.add_argument('config', metavar='config', type=str, help="Config file path")
