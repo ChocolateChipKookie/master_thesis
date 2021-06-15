@@ -51,6 +51,5 @@ class Solver(module.Solver):
         predicted = self.network(x, global_hints)
         # Fetch output and resize
         actual = self.network.normalize_ab(batch[:, 1:, :, :]).to(self.device)
-
         # Calculate loss
         return self.loss(predicted, actual)

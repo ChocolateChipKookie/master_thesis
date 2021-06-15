@@ -67,8 +67,8 @@ class Colorizer(Network):
 
         # Output layer
         self.out = nn.Sequential(
-            nn.Conv2d(128, 2, kernel_size=(1, 1), padding=(0, 0), stride=(1, 1), bias=bias),
-            nn.Tanh()
+            nn.Conv2d(128, 2, kernel_size=(1, 1), padding=(0, 0), stride=(1, 1), bias=bias)
+            #, nn.Tanh()
         )
         self.sampling = nn.MaxPool2d(2, 2)
 
