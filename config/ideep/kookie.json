@@ -2,7 +2,7 @@
   "model": {
     "class" : "ideep.model.Colorizer",
     "args" : {
-      "colorful_path": "colorful/data/04_28-602000.pth",
+      "colorful_path": "ideep/data/colorful_state_dict.pth",
       "dim_in": 1,
       "dim_out": 2,
       "input_min":256,
@@ -24,7 +24,6 @@
       "val_path": "~/Documents/dataset/imagenet/val",
       "val_mask": "./masks/imagenet_val.txt",
       "val_data_size": 20000,
-
 
       "optimizer": {
         "class": "torch.optim.Adam",
