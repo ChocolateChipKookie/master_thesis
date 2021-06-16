@@ -75,7 +75,7 @@
           "args": {}
         },
         {
-          "class": "util.listener.Validator",
+          "class": "util.listener.GlobalHintsValidator",
           "args": {
             "frequency": 1000,
             "output": "./ideep/data/val.log",

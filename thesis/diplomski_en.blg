@@ -3,44 +3,48 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: diplomski_en.aux
 The style file: plainnat.bst
 Database file #1: literatura.bib
-You've used 10 entries,
+Warning--empty journal in krizhevskycifar
+Warning--empty year in krizhevskycifar
+Warning--empty year in krizhevskycifar
+You've used 14 entries,
             2773 wiz_defined-function locations,
-            662 strings with 6914 characters,
-and the built_in function-call counts, 4870 in all, are:
-= -- 428
-> -- 305
-< -- 3
-+ -- 102
-- -- 92
-* -- 414
-:= -- 751
-add.period$ -- 37
-call.type$ -- 10
-change.case$ -- 58
-chr.to.int$ -- 10
-cite$ -- 20
-duplicate$ -- 216
-empty$ -- 391
-format.name$ -- 103
-if$ -- 1022
+            681 strings with 7652 characters,
+and the built_in function-call counts, 6764 in all, are:
+= -- 577
+> -- 461
+< -- 4
++ -- 154
+- -- 140
+* -- 576
+:= -- 1055
+add.period$ -- 49
+call.type$ -- 14
+change.case$ -- 86
+chr.to.int$ -- 14
+cite$ -- 31
+duplicate$ -- 299
+empty$ -- 524
+format.name$ -- 157
+if$ -- 1405
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 9
-newline$ -- 63
-num.names$ -- 40
-pop$ -- 123
+missing$ -- 13
+newline$ -- 83
+num.names$ -- 56
+pop$ -- 189
 preamble$ -- 1
-purify$ -- 50
+purify$ -- 74
 quote$ -- 0
-skip$ -- 161
+skip$ -- 223
 stack$ -- 0
-substring$ -- 146
-swap$ -- 24
+substring$ -- 154
+swap$ -- 28
 text.length$ -- 1
 text.prefix$ -- 1
 top$ -- 0
-type$ -- 105
-warning$ -- 0
-while$ -- 37
+type$ -- 149
+warning$ -- 3
+while$ -- 49
 width$ -- 0
-write$ -- 145
+write$ -- 192
+(There were 3 warnings)

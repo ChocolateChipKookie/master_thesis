@@ -1,0 +1,13 @@
+{
+  "colorizer": {
+    "class" : "ideep.model.Colorizer",
+    "args" : {
+      "colorful_path": "ideep/data/colorful_state_dict.pth",
+      "dim_in": 1,
+      "dim_out": 2,
+      "input_min":256,
+      "bias": true
+    }
+  },
+  "state_dict": "ideep/data/state_dict.pth"
+}

@@ -1,7 +1,7 @@
 from util import util
 
 import torch
-from torchvision.transforms import PILToTensor, functional
+from torchvision.transforms import PILToTensor
 
 import os
 import json
@@ -30,7 +30,6 @@ if __name__ == "__main__":
     with open(args.config, "r") as file:
         config = json.load(file)
 
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     device = torch.device("cpu")
 
     # Create model and load parameters

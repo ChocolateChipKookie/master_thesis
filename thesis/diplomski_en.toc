@@ -6,8 +6,6 @@
 \contentsline {subsection}{\numberline {2.2.1}Multimodality}{3}%
 \contentsline {section}{\numberline {2.3}Artificial neural networks}{4}%
 \contentsline {subsection}{\numberline {2.3.1}Convolutional neural networks}{5}%
-\contentsline {subsection}{\numberline {2.3.2}U-net architecture}{vi}%
-\contentsline {subsection}{\numberline {2.3.3}Generative adversarial networks}{vi}%
 \contentsline {section}{\numberline {2.4}Dataset}{vi}%
 \contentsline {chapter}{\numberline {3}Results}{i}%
 \contentsline {chapter}{\numberline {4}Related work}{i}%

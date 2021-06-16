@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex diplomski_en"] 1623790873 "diplomski_en.aux" "diplomski_en.bbl" "diplomski_en" 1623834286
+["bibtex diplomski_en"] 1623856943 "diplomski_en.aux" "diplomski_en.bbl" "diplomski_en" 1623856944
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "diplomski_en.aux" 1623834286 5854 bff32226cd72f2a102cc41c9f369c42c "pdflatex"
-  "literatura.bib" 1623787563 5066 acc13c624218425ed7ff45e25ad645b8 ""
+  "diplomski_en.aux" 1623856944 6140 e196b544d1a62ff657c58c1bb8654f61 "pdflatex"
+  "literatura.bib" 1623856942 8894 03455fc389fa46b08e4ca2afdc41eac8 ""
   (generated)
-  "diplomski_en.bbl"
   "diplomski_en.blg"
-["pdflatex"] 1623834285 "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.tex" "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf" "diplomski_en" 1623834286
+  "diplomski_en.bbl"
+["pdflatex"] 1623856943 "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.tex" "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf" "diplomski_en" 1623856944
   "/etc/texmf/web2c/texmf.cnf" 1613585358 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.aux" 1623834286 5854 bff32226cd72f2a102cc41c9f369c42c ""
+  "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.aux" 1623856944 6140 e196b544d1a62ff657c58c1bb8654f61 ""
   "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.tex" 1622293536 971 b7d122606c8d96af13f68bc9e60f9e3d ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -126,15 +126,15 @@
   "chapters/abstract.tex" 1620926814 90 f3ae5db3225b4b3dce9df74474afbdfc ""
   "chapters/conclusion.tex" 1623398416 143 e0ad105f10818408db1240fef8ab4f89 ""
   "chapters/introduction.tex" 1623744260 3804 0ca550face0670d90ce33d75f164cf58 ""
-  "chapters/method.tex" 1623834285 14053 a4b174ddfd58d0e78350b4c544bbe192 ""
+  "chapters/method.tex" 1623856941 16365 946d39ceb89b4740d5c6e655e1667acf ""
   "chapters/related.tex" 1622293554 252 0b21bad004328aa230dbc456c15956a9 ""
   "chapters/results.tex" 1622213475 17 f1cb506233f4cad8d516357f56f96338 ""
   "chapters/sazetak.tex" 1620926814 177 87d772dd53e3deb731284f55663e5535 ""
   "chapters/thanks.tex" 1620926814 24 87765f1cef95e126b1c07b98ca2e68cd ""
-  "diplomski_en.aux" 1623834286 5854 bff32226cd72f2a102cc41c9f369c42c "pdflatex"
-  "diplomski_en.bbl" 1623790873 3450 029448cf19a83240db62b94b7b2602d7 "bibtex diplomski_en"
+  "diplomski_en.aux" 1623856944 6140 e196b544d1a62ff657c58c1bb8654f61 "pdflatex"
+  "diplomski_en.bbl" 1623856943 4554 53ce1e5e549f8761d919e508b1d35435 "bibtex diplomski_en"
   "diplomski_en.tex" 1622293536 971 b7d122606c8d96af13f68bc9e60f9e3d ""
-  "diplomski_en.toc" 1623834286 1015 051b8a19858f655ca47962a219f5b90b "pdflatex"
+  "diplomski_en.toc" 1623856944 860 9d641eb27f200cda4ba52d94de381fc9 "pdflatex"
   "fer.cls" 1620926814 14351 1a98f36679782dc10fb012ecb7c9e879 ""
   "graphics/assignment.pdf" 1620926814 873494 125f5372f1607d76a10b6d3a07bbc3e5 ""
   "graphics/img/alim_khan.jpg" 1622310489 165308 40f45a7f6a9201a21bfd514e525647de ""
@@ -159,8 +159,8 @@
   "graphics/plot/lab/80.png" 1623788679 93386 f8a36a0a0d0ac3e7600cd085fee94f0e ""
   (generated)
   "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf"
-  "diplomski_en.toc"
-  "diplomski_en.aux"
   "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.log"
   "diplomski_en.pdf"
+  "diplomski_en.aux"
   "diplomski_en.log"
+  "diplomski_en.toc"

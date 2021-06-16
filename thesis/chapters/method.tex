@@ -16,6 +16,7 @@
 \end{comment}
 
 \chapter{Methods}
+\label{ch:methods}
 
 The task of automatic colorization can be defined as an image-to-image 
 translation problem \citep{pang2021imagetoimage}, where for a monochrome 
@@ -56,6 +57,7 @@ $\mathcal{F}$ is the function that maps the domain $\mathbf{X}$ to the codomain
 $\mathbf{Y}$, which in our case represents the colorizer.
 
 \section{Color space}
+\label{sec:colorspace}
 
 Even though automatic colorization can be accomplished using any color space, 
 as with any task some tools are better for the job than others. Although the 
@@ -284,10 +286,41 @@ from the first feature map, higher levels of abstraction should be achievable in
 subsequent layers. So while a leaf detecting kernel is improbable, within a couple
 of layers the same level of \textit{understanding} can be achieved.
 
-\subsection{U-net architecture}
-\subsection{Generative adversarial networks}
-
 \section{Dataset}
 \label{sec:dataset}
 
-- The model is only as good as the dataset
+Besides the network architecture, another crucial part that determines the quality
+of the final product is the data on which the network was trained. If we have bad
+data we can expect bad results, as the network will try to reproduce what is learned.
+So for example, if we train the model on color-negatives we cannot expect that 
+our model will colorize correctly, quite the opposite is true as the model will
+try to reproduce what it has already seen. 
+
+The database used for training all the architectures described in this thesis is 
+the ImageNet database \citep{deng2009imagenet}. At the time of writing, it 
+consists of 1.3 million images ordered in 1000 categories. The database is used 
+as it covers a broad spectrum of different objects, animals, and places from all 
+around the world. That versatility is desirable as our network has to \textit{see}
+as many different things as it is possible, as it cannot know how to colorize something 
+it has not come in contact with.
+
+Any large collection of images, such as the Caltech 101 \citep{fei2004caltech}, 
+Places \citep{zhou2017places}, or Cifar100\citep{krizhevskycifar} dataset, 
+could have been used for training the models. We do not need a specialized dataset, 
+as we can create our input grayscale images using the original colored images.
+The only requirement is that the dataset covers a large spectrum of different
+situations. A model trained on a dataset containing only images of nature 
+would hardly know what to do when it receives a car as an input.
+
+The only preprocessing step we have to do with the dataset is to remove noisy data, 
+which in our case were the monochrome images in the dataset. About one-tenth of 
+the ImageNet dataset was grayscale. The grayscale images were filtered out by 
+first converting the image to the L*a*b* color space, and then checking if all 
+the pixel values were within a radius around $(0, 0)$ which represents a shade of grey. 
+
+The problem with this method is that it only removes truly grayscale images while
+it leaves sepia and other monochrome images in the database. That problem could 
+be solved by calculating the average color of the whole image, and instead of
+checking if every pixel is close to $(0, 0)$, we could check if it was close
+to the average color of the image. That way all images that consist only of 
+different shades of the same color would be filtered out.

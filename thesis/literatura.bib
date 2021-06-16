@@ -1,103 +1,30 @@
-
-@Book{henisch1996photograph,
-  author = 	 {Henisch, Heinz K and Henisch, Bridget Ann},
-  title = 	 {{The painted photograph, 1839-1914 : origins, techniques, aspirations}},
-  publisher = 	 {Pennsylvania State University Press},
-  year = 	 {1996}
-}
-
-@manual{icc2004cielab,
-  organization  = "International Color Consortium",
-  title         = "Image technology colour management — Architecture, profile format, and data structure",
-  number        = "ICC.1:2004-10",
-  year          =  2004,
-  note          = "Profile version 4.2.0.0",
-  url = {https://www.color.org/icc1v42.pdf}
-}
-
-@misc{pan2019video,
-      title={Video Compression Coding via Colorization: A Generative Adversarial Network (GAN)-Based Approach}, 
-      author={Zhaoqing Pan and Feng Yuan and Jianjun Lei and Sam Kwong},
-      year={2019},
-      eprint={1912.10653},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV}
-}
-
 @article{fatima2021image,
-  author          = {Fatima, Aroosh and Hussain, Wajahat and Rasool, Shahzad},
-  title           = {Grey is the new RGB: How good is GAN-based image colorization for image compression?},
-  year            = {2021},
-  journal         = {Multimedia Tools and Applications}
-}
-
-@misc{pang2021imagetoimage,
-      title={Image-to-Image Translation: Methods and Applications}, 
-      author={Yingxue Pang and Jianxin Lin and Tao Qin and Zhibo Chen},
-      year={2021},
-      eprint={2101.08629},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+  author  = {Fatima, Aroosh and Hussain, Wajahat and Rasool, Shahzad},
+  title   = {Grey is the new RGB: How good is GAN-based image colorization for image compression?},
+  year    = {2021},
+  journal = {Multimedia Tools and Applications}
 }
 
 @article{reinhard2001colorization,
-author  ={Reinhard, E. and Adhikhmin, M. and Gooch, B. and Shirley, P.},
-journal ={IEEE Computer Graphics and Applications}, 
-title   ={Color transfer between images}, 
-year    ={2001},
-volume  ={21},
-number  ={5},
-pages   ={34-41},
-doi     ={10.1109/38.946629}
+  author  = {Reinhard, E. and Adhikhmin, M. and Gooch, B. and Shirley, P.},
+  journal = {IEEE Computer Graphics and Applications}, 
+  title   = {Color transfer between images}, 
+  year    = {2001},
+  volume  = {21},
+  number  = {5},
+  pages   = {34-41},
+  doi     = {10.1109/38.946629}
 }
-
 
 @article{levin2004colorization,
-author = {Levin, Anat and Lischinski, Dani and Weiss, Yair},
-year = {2004},
-month = {06},
-pages = {},
-title = {Colorization using Optimization},
-volume = {23},
-journal = {ACM Transactions on Graphics},
-doi = {10.1145/1015706.1015780}
-}
-
-@inproceedings {luan2007colorization,
-booktitle = {Rendering Techniques},
-editor = {Jan Kautz and Sumanta Pattanaik},
-title = {{Natural Image Colorization}},
-author = {Luan, Qing and Wen, Fang and Cohen-Or, Daniel and Liang, Lin and Xu, Ying-Qing and Shum, Heung-Yeung},
-year = {2007},
-publisher = {The Eurographics Association},
-ISSN = {1727-3463},
-ISBN = {978-3-905673-52-4},
-DOI = {10.2312/EGWR/EGSR07/309-320}
-}
-
-@inproceedings{charpiat2008colorization,
-author="Charpiat, Guillaume
-and Hofmann, Matthias
-and Sch{\"o}lkopf, Bernhard",
-editor="Forsyth, David
-and Torr, Philip
-and Zisserman, Andrew",
-title="Automatic Image Colorization Via Multimodal Predictions",
-booktitle="Computer Vision -- ECCV 2008",
-year="2008",
-publisher="Springer Berlin Heidelberg",
-address="Berlin, Heidelberg",
-pages="126--139",
-abstract="We aim to color greyscale images automatically, without any manual intervention. The color proposition could then be interactively corrected by user-provided color landmarks if necessary. Automatic colorization is nontrivial since there is usually no one-to-one correspondence between color and local texture. The contribution of our framework is that we deal directly with multimodality and estimate, for each pixel of the image to be colored, the probability distribution of all possible colors, instead of choosing the most probable color at the local level. We also predict the expected variation of color at each pixel, thus defining a non-uniform spatial coherency criterion. We then use graph cuts to maximize the probability of the whole colored image at the global level. We work in the L-a-b color space in order to approximate the human perception of distances between colors, and we use machine learning tools to extract as much information as possible from a dataset of colored examples. The resulting algorithm is fast, designed to be more robust to texture noise, and is above all able to deal with ambiguity, in contrary to previous approaches.",
-isbn="978-3-540-88690-7"
-}
-
-@InProceedings{cheng2015colorization,
-author = {Cheng, Zezhou and Yang, Qingxiong and Sheng, Bin},
-title = {Deep Colorization},
-booktitle = {Proceedings of the IEEE International Conference on Computer Vision (ICCV)},
-month = {December},
-year = {2015}
+  author  = {Levin, Anat and Lischinski, Dani and Weiss, Yair},
+  year    = {2004},
+  month   = {06},
+  pages   = {},
+  title   = {Colorization using Optimization},
+  volume  = {23},
+  journal = {ACM Transactions on Graphics},
+  doi     = {10.1145/1015706.1015780}
 }
 
 @article{iizuka2016colorization,
@@ -118,4 +45,145 @@ year = {2015}
   volume  = {36},
   number  = {4},
   pages   = {193:1--202:9},
+}
+
+@article{ronneberger2015unet,
+  author        = {Olaf Ronneberger and Philipp Fischer and Thomas Brox},
+  title         = {U-Net: Convolutional Networks for Biomedical Image Segmentation},
+  journal       = {CoRR},
+  volume        = {abs/1505.04597},
+  year          = {2015},
+  url           = {http://arxiv.org/abs/1505.04597},
+  archivePrefix = {arXiv},
+  eprint        = {1505.04597},
+  timestamp     = {Mon, 13 Aug 2018 16:46:52 +0200},
+  biburl        =  {https://dblp.org/rec/journals/corr/RonnebergerFB15.bib},
+  bibsource     = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{fei2004caltech,
+  author    = {L. Fei-Fei, R. Fergus and P. Perona},
+  title     = {{Learning generative visual models from few training examples: an incremental Bayesian approach tested on 101 object categories}},
+  journal   = {IEEE. CVPR 2004},
+  publisher = {IEEE},
+  year      = {2004},
+}
+
+@article{zhou2017places,
+  title     ={Places: A 10 million Image Database for Scene Recognition},
+  author    ={Zhou, Bolei and Lapedriza, Agata and Khosla, Aditya and Oliva, Aude and Torralba, Antonio},
+  journal   ={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year      ={2017},
+  publisher ={IEEE}
+}
+
+@article{krizhevskycifar,
+  title     = {CIFAR-100 (Canadian Institute for Advanced Research)},
+  journal   = {},
+  author    = {Alex Krizhevsky and Vinod Nair and Geoffrey Hinton},
+  year      = {},
+  url       = {http://www.cs.toronto.edu/~kriz/cifar.html},
+  abstract  = {This dataset is just like the CIFAR-10, except it has 100 classes containing 600 images each. There are 500 training images and 100 testing images per class. The 100 classes in the CIFAR-100 are grouped into 20 superclasses. Each image comes with a "fine" label (the class to which it belongs) and a "coarse" label (the superclass to which it belongs).
+    Here is the list of classes in the CIFAR-100:
+
+    Superclass	Classes
+    aquatic mammals	beaver, dolphin, otter, seal, whale
+    fish	aquarium fish, flatfish, ray, shark, trout
+    flowers	orchids, poppies, roses, sunflowers, tulips
+    food containers	bottles, bowls, cans, cups, plates
+    fruit and vegetables	apples, mushrooms, oranges, pears, sweet peppers
+    household electrical devices	clock, computer keyboard, lamp, telephone, television
+    household furniture	bed, chair, couch, table, wardrobe
+    insects	bee, beetle, butterfly, caterpillar, cockroach
+    large carnivores	bear, leopard, lion, tiger, wolf
+    large man-made outdoor things	bridge, castle, house, road, skyscraper
+    large natural outdoor scenes	cloud, forest, mountain, plain, sea
+    large omnivores and herbivores	camel, cattle, chimpanzee, elephant, kangaroo
+    medium-sized mammals	fox, porcupine, possum, raccoon, skunk
+    non-insect invertebrates	crab, lobster, snail, spider, worm
+    people	baby, boy, girl, man, woman
+    reptiles	crocodile, dinosaur, lizard, snake, turtle
+    small mammals	hamster, mouse, rabbit, shrew, squirrel
+    trees	maple, oak, palm, pine, willow
+    vehicles 1	bicycle, bus, motorcycle, pickup truck, train
+    vehicles 2	lawn-mower, rocket, streetcar, tank, tractor
+
+    Yes, I know mushrooms aren't really fruit or vegetables and bears aren't really carnivores. },
+  keywords  = {Dataset},
+  terms     = {}
+}
+
+@book{henisch1996photograph,
+  author    = {Henisch, Heinz K and Henisch, Bridget Ann},
+  title     = {{The painted photograph, 1839-1914 : origins, techniques, aspirations}},
+  publisher = {Pennsylvania State University Press},
+  year      = {1996}
+}
+
+@inproceedings {luan2007colorization,
+  booktitle = {Rendering Techniques},
+  editor    = {Jan Kautz and Sumanta Pattanaik},
+  title     = {{Natural Image Colorization}},
+  author    = {Luan, Qing and Wen, Fang and Cohen-Or, Daniel and Liang, Lin and Xu, Ying-Qing and Shum, Heung-Yeung},
+  year      = {2007},
+  publisher = {The Eurographics Association},
+  ISSN      = {1727-3463},
+  ISBN      = {978-3-905673-52-4},
+  DOI       = {10.2312/EGWR/EGSR07/309-320}
+}
+
+@inproceedings{charpiat2008colorization,
+  author    = {Charpiat, Guillaume and Hofmann, Matthias and Sch{\"o}lkopf, Bernhard},
+  editor    = {Forsyth, David and Torr, Philip and Zisserman, Andrew},
+  title     = {Automatic Image Colorization Via Multimodal Predictions},
+  booktitle = {Computer Vision -- ECCV 2008},
+  year      = {2008},
+  publisher = {Springer Berlin Heidelberg},
+  address   = {Berlin, Heidelberg},
+  pages     = {126--139},
+  abstract  = {We aim to color greyscale images automatically, without any manual intervention. The color proposition could then be interactively corrected by user-provided color landmarks if necessary. Automatic colorization is nontrivial since there is usually no one-to-one correspondence between color and local texture. The contribution of our framework is that we deal directly with multimodality and estimate, for each pixel of the image to be colored, the probability distribution of all possible colors, instead of choosing the most probable color at the local level. We also predict the expected variation of color at each pixel, thus defining a non-uniform spatial coherency criterion. We then use graph cuts to maximize the probability of the whole colored image at the global level. We work in the L-a-b color space in order to approximate the human perception of distances between colors, and we use machine learning tools to extract as much information as possible from a dataset of colored examples. The resulting algorithm is fast, designed to be more robust to texture noise, and is above all able to deal with ambiguity, in contrary to previous approaches.},
+  isbn      = {978-3-540-88690-7}
+}
+
+@inproceedings{cheng2015colorization,
+  author    = {Cheng, Zezhou and Yang, Qingxiong and Sheng, Bin},
+  title     = {Deep Colorization},
+  booktitle = {Proceedings of the IEEE International Conference on Computer Vision (ICCV)},
+  month     = {December},
+  year      = {2015}
+}
+
+@inproceedings{deng2009imagenet,
+  author    = {Deng, J. and Dong, W. and Socher, R. and Li, L.-J. and Li, K. and Fei-Fei, L.},
+  title     = {{ImageNet: A Large-Scale Hierarchical Image Database}},
+  booktitle = {CVPR09},
+  year      = {2009},
+  bibsource = "http://www.image-net.org/papers/imagenet_cvpr09.bib"
+}
+
+@manual{icc2004cielab,
+  organization  = {International Color Consortium"},
+  title         = {Image technology colour management — Architecture, profile format, and data structure},
+  number        = {ICC.1:2004-10},
+  year          = {2004},
+  note          = {Profile version 4.2.0.0},
+  url           = {https://www.color.org/icc1v42.pdf}
+}
+
+@misc{pan2019video,
+  title         = {Video Compression Coding via Colorization: A Generative Adversarial Network (GAN)-Based Approach}, 
+  author        = {Zhaoqing Pan and Feng Yuan and Jianjun Lei and Sam Kwong},
+  year          = {2019},
+  eprint        = {1912.10653},
+  archivePrefix = {arXiv},
+  primaryClass  = {eess.IV}
+}
+
+@misc{pang2021imagetoimage,
+  title         = {Image-to-Image Translation: Methods and Applications}, 
+  author        = {Yingxue Pang and Jianxin Lin and Tao Qin and Zhibo Chen},
+  year          = {2021},
+  eprint        = {2101.08629},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
 }

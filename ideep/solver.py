@@ -6,37 +6,12 @@ from torchvision.transforms import functional
 from colorful import cielab, encoders
 
 
-class Solver(module.Solver):
-    def __init__(self, network, config):
-        super(Solver, self).__init__(network, config)
-        self.loss = util.factory(self.derived_config['loss'])
-        # Loss function and re-balancing
+class GlobalHints:
+    def __init__(self):
         self.cielab = cielab.LABBins()
         self.encoder = encoders.HardEncoder(self.cielab)
 
-        if not self.derived_config["fine_tune_existing"]:
-            # Re-create optimizer, optimize only layers that have been added
-            optimizer_data = self.solver_config['optimizer']
-            optimizer_class = util.import_attr(optimizer_data['class'])
-            parameters = []
-            parameters.extend(self.network.conv3_8short.parameters())
-
-            parameters.extend(self.network.conv9up.parameters())
-            parameters.extend(self.network.conv9.parameters())
-            parameters.extend(self.network.conv9.parameters())
-
-            parameters.extend(self.network.conv10up.parameters())
-            parameters.extend(self.network.conv1_10short.parameters())
-            parameters.extend(self.network.conv10.parameters())
-
-            parameters.extend(self.network.global_hints.parameters())
-            parameters.extend(self.network.out.parameters())
-
-            self.optimizer = optimizer_class(parameters, **optimizer_data['args'])
-
-
-
-    def get_global(self, batch, random_saturation=False, random_histogram=False):
+    def get_global_hints(self, batch, random_saturation=False, random_histogram=False):
         b, n, w, h = batch.shape
         hints = torch.zeros((b, 316))
 
@@ -65,27 +40,48 @@ class Solver(module.Solver):
                 hints[i, 3:] = bins / torch.sum(bins)
         return hints
 
-    def display(self, l, ab):
-        l = l.cpu()
-        ab = ab.detach().cpu()
-        print(f"l {l.max()}/{l.min()}")
-        print(f"ab {ab.max()}/{ab.min()}")
+    def __call__(self, batch, random_saturation=False, random_histogram=False):
+        return self.get_global_hints(batch, random_saturation, random_histogram)
 
-        if l.max() <= 1:
-            l = l * 100
-        if ab.max() <= 1:
-            ab = ab * 110
-        img = torch.cat((l, ab))
-        img = img.permute(1, 2, 0)
-        util.display_lab(img)
+class Solver(module.Solver):
+    def __init__(self, network, config):
+        super(Solver, self).__init__(network, config)
+        self.loss_func = util.factory(self.derived_config['loss'])
+        self.global_hints = GlobalHints()
+
+        if not self.derived_config["fine_tune_existing"]:
+            # Re-create optimizer, optimize only layers that have been added
+            optimizer_data = self.solver_config['optimizer']
+            optimizer_class = util.import_attr(optimizer_data['class'])
+            parameters = []
+            parameters.extend(self.network.conv3_8short.parameters())
+
+            parameters.extend(self.network.conv9up.parameters())
+            parameters.extend(self.network.conv9.parameters())
+            parameters.extend(self.network.conv9.parameters())
+
+            parameters.extend(self.network.conv10up.parameters())
+            parameters.extend(self.network.conv1_10short.parameters())
+            parameters.extend(self.network.conv10.parameters())
+
+            parameters.extend(self.network.global_hints.parameters())
+            parameters.extend(self.network.out.parameters())
+
+            self.optimizer = optimizer_class(parameters, **optimizer_data['args'])
+
+    def get_global(self, batch, random_saturation=False, random_histogram=False):
+        return self.global_hints(batch, random_saturation, random_histogram)
 
     def calculate_loss(self, batch):
+        return self.loss(batch, True)
+
+    def loss(self, batch, random_hints):
         # Fetch input for the network
-        global_hints = self.get_global(batch, True, True).to(self.device)
+        global_hints = self.global_hints(batch, random_hints, random_hints).to(self.device)
         x = batch[:, :1, :, :].to(self.device)
         # Forward pass
         predicted = self.network(x, global_hints)
         # Fetch output and resize
         actual = self.network.normalize_ab(batch[:, 1:, :, :]).to(self.device)
         # Calculate loss
-        return self.loss(predicted, actual)
+        return self.loss_func(predicted, actual)
