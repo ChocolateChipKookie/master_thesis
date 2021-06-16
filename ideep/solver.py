@@ -14,6 +14,28 @@ class Solver(module.Solver):
         self.cielab = cielab.LABBins()
         self.encoder = encoders.HardEncoder(self.cielab)
 
+        if not self.derived_config["fine_tune_existing"]:
+            # Re-create optimizer, optimize only layers that have been added
+            optimizer_data = self.solver_config['optimizer']
+            optimizer_class = util.import_attr(optimizer_data['class'])
+            parameters = []
+            parameters.extend(self.network.conv3_8short.parameters())
+
+            parameters.extend(self.network.conv9up.parameters())
+            parameters.extend(self.network.conv9.parameters())
+            parameters.extend(self.network.conv9.parameters())
+
+            parameters.extend(self.network.conv10up.parameters())
+            parameters.extend(self.network.conv1_10short.parameters())
+            parameters.extend(self.network.conv10.parameters())
+
+            parameters.extend(self.network.global_hints.parameters())
+            parameters.extend(self.network.out.parameters())
+
+            self.optimizer = optimizer_class(parameters, **optimizer_data['args'])
+
+
+
     def get_global(self, batch, random_saturation=False, random_histogram=False):
         b, n, w, h = batch.shape
         hints = torch.zeros((b, 316))
@@ -42,6 +64,20 @@ class Solver(module.Solver):
                 bins = torch.bincount(encoded.view(-1), minlength=313)
                 hints[i, 3:] = bins / torch.sum(bins)
         return hints
+
+    def display(self, l, ab):
+        l = l.cpu()
+        ab = ab.detach().cpu()
+        print(f"l {l.max()}/{l.min()}")
+        print(f"ab {ab.max()}/{ab.min()}")
+
+        if l.max() <= 1:
+            l = l * 100
+        if ab.max() <= 1:
+            ab = ab * 110
+        img = torch.cat((l, ab))
+        img = img.permute(1, 2, 0)
+        util.display_lab(img)
 
     def calculate_loss(self, batch):
         # Fetch input for the network

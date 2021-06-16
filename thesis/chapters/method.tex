@@ -159,7 +159,7 @@ real full-color image.
 
 One of the reasons why perfect colorization is not possible has to do with the 
 fact that a grayscale photograph has less information than a colored photograph.
-Although it is sometimes possible to deduce colors from the shape or texture of
+Although it is sometimes possible to deduce exact colors from the shape or texture of
 an object, more often than not we cannot be sure of the original color.
 The problem becomes apperent when trying to colorize almost any painted object,
 like the three scooters seen in figure \ref{fig:multimodality_scooters}. Given the 
@@ -219,10 +219,10 @@ chosen by humans, and as humans like whole numbers, the chances of the pair bein
 $(1, 3)$ or $(2, 2)$ is much higher than for them to be $(3.141592, 0.858408)$. The posed
 problem is quite similar to the task of colorization where the sum is the weighted 
 average of the \textbf{R}, \textbf{G}, and \textbf{B} channels and the context is the 
-whole image. As seen in the above problem, there are several likely combinations
+whole image. As seen in the posed problem, there are several likely combinations
 among the sea of unlikely ones. That property, where we have several possible modes 
 or maxima is called multimodality, and it is the main problem when colorizing. It is
-troublesome as we cannot be sure which is the real solution, but we can provide one 
+troublesome as we cannot be sure what the real solution is, but we can provide one 
 of the multiple likely ones.
 
 \section{Artificial neural networks}
@@ -244,16 +244,16 @@ of the multiple likely ones.
 Artificial neural networks, or simply called neural networks in the context of 
 machine learning, are a class of highly versatile computational models used for 
 regression, classification, data processing, etc. As with many successful computational 
-systems artificial neural networks are vaguely inspired by real-world examples,
-in this case, biological neural networks as seen in figure \ref{fig:neuron}. 
+systems, artificial neural networks are vaguely inspired by real-world examples,
+in this case, biological neural networks, as seen in figure \ref{fig:neuron}. 
 
 In simple, single-layer neural networks like the one seen in figure \ref{fig:neuron}, 
 it is possible to understand how the model is working based on the weights it gives
 to different inputs for different outputs. With deep, multi-layer neural networks 
 we lose that \textit{interpretability}, as we give the neural network the possibility
 to divide the problem into several layers of understanding which are virtually 
-impossible to decypher. The learning part of machine learning takes place during the
-training process which is out of the scope of this thesis.
+impossible to decipher. The learning part of machine learning takes place during the
+training process, and is out of the scope of this thesis.
 
 \subsection{Convolutional neural networks}
 \label{sec:cnn}
@@ -264,31 +264,25 @@ organized \citep{fukushima1980neocognitron}. Instead of associating specific
 inputs with specific weights, with CNNs we train the network to learn filters 
 (or kernels) that we slide over features to get feature maps. When we stack
 several convolutional layers on top of each other we get a deep convolutional
-neural network (or DCNN). As with deep neural networks the stacking allows 
-the DCNNs to devide the problem into several layers of understanding. 
+neural network (or DCNN). As with deep neural networks, the stacking allows 
+the DCNNs to divide the problem into several layers of understanding. 
 
 Let's say we have a picture of nature and we want to detect trees. A potential 
-kernel would have the shape of a leaf, so when the kernel slides over a leaf on the
-the image, it activates. As the result of sliding over the whole image we would
-get a feature map where we know the positions of all leaves. In the next layer 
-the CNN could look for a canopy shaped cluster of leaves. When it slides
-over such a part the feature map, it activats. At that point we know the position
-of the canopy. In the next layer it could take the information about the position
-of the canopy and the information about the position of the tree trunk it deduced
-in a similar way, and in case the canopy is over the trunk it can safely mark the
-position of the tree.
+kernel would have the shape of a leaf, so when the kernel slides over a leaf on
+the image, it activates. As the result of sliding over the whole image, we would
+get a feature map where we know the positions of all leaves. In the next layer, 
+the CNN could look for a canopy-shaped cluster of leaves. When it slides
+over such a part of the feature map, it activates and at that point, we know the position
+of the canopy.
 
-Of course that explination is oversimplified, but it explains a possible way 
-that a CNN deduces where a tree is. In reality a leaf shaped kernel will almost
-certainly not happen, as kernels are usually much smaller in size (in the models
-described in this thesis use $3\times3$ and $4\times4$ kernels) just enough to detect
-
-
-
-and if we have lots of leaves next to 
-each other we could conclude that that is a tree.
-
-
+Of course, that explanation is oversimplified, but it explains a possible way 
+that a CNN deduces where a tree is. In reality, a leaf-shaped kernel will almost
+certainly not happen, as kernels are usually much smaller in size (models
+described in this thesis use $3\times3$ and $4\times4$ kernels), just enough to 
+detect edges. Using the information about the relative position of different edges
+from the first feature map, higher levels of abstraction should be achievable in 
+subsequent layers. So while a leaf detecting kernel is improbable, within a couple
+of layers the same level of \textit{understanding} can be achieved.
 
 \subsection{U-net architecture}
 \subsection{Generative adversarial networks}
