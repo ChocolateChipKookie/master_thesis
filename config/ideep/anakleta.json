@@ -23,9 +23,8 @@
 
       "val_path": "./imagenet/val",
       "val_mask": "./masks/imagenet_val.txt",
-      "val_data_size": 20000,
-
-
+      "val_data_size": 20,
+      
       "optimizer": {
         "class": "torch.optim.Adam",
         "args": {
@@ -76,9 +75,9 @@
           "args": {}
         },
         {
-          "class": "util.listener.Validator",
+          "class": "ideep.listener.GlobalHintsValidator",
           "args": {
-            "frequency": 1000,
+            "frequency": 10,
             "output": "./ideep/data/val.log",
             "save_every": 5,
             "snapshot_dir": "./ideep/data/snapshots"

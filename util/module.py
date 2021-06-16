@@ -149,7 +149,7 @@ class Solver(object):
     def train(self):
         self.network.train()
 
-        while self.iteration < self.iterations:
+        while self.iteration <= self.iterations:
             data_loader = DataLoader(
                 self.train_dataset,
                 batch_size=self.batch_size,
@@ -160,7 +160,7 @@ class Solver(object):
             for i, batch in enumerate(data_loader, self.iteration):
                 torch.cuda.empty_cache()
                 # Check if exit condition is satisfied
-                if self.iteration == self.iterations:
+                if self.iteration > self.iterations:
                     break
                 self.iteration += 1
                 # Reset the gradients

@@ -14,7 +14,6 @@ class GlobalHintsColorizeLogger(SolverListener):
         self.dataloader = DataLoader(self.dataset, batch_size=1, sampler=self.solver.shuffled_val_sampler)
         self.dataloader_iter = iter(self.dataloader)
         self.directory = directory
-        self.global_hints = self.solver.global_hints
 
     def get_image(self):
         try:
@@ -29,7 +28,7 @@ class GlobalHintsColorizeLogger(SolverListener):
             fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
 
             image = self.get_image()
-            global_hints = self.global_hints(image).to(self.solver.device)
+            global_hints = self.solver.global_hints(image).to(self.solver.device)
             image = image.to(self.solver.device)[0]
 
             l = image[:1, :, :]
