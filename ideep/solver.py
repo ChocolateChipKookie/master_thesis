@@ -48,6 +48,7 @@ class Solver(module.Solver):
         super(Solver, self).__init__(network, config)
         self.loss_func = util.factory(self.derived_config['loss'])
         self.global_hints = GlobalHints()
+        self.random_hints = self.derived_config["random_hints"]
 
         if not self.derived_config["fine_tune_existing"]:
             # Re-create optimizer, optimize only layers that have been added
@@ -73,7 +74,7 @@ class Solver(module.Solver):
         return self.global_hints(batch, random_saturation, random_histogram)
 
     def calculate_loss(self, batch):
-        return self.loss(batch, True)
+        return self.loss(batch, self.random_hints)
 
     def loss(self, batch, random_hints):
         # Fetch input for the network

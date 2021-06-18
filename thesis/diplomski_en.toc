@@ -1,13 +1,16 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}%
-\contentsline {chapter}{\numberline {2}Methods}{1}%
+\contentsline {chapter}{\numberline {2}Base}{1}%
 \contentsline {section}{\numberline {2.1}Color space}{2}%
 \contentsline {section}{\numberline {2.2}Task definition}{3}%
 \contentsline {subsection}{\numberline {2.2.1}Multimodality}{3}%
 \contentsline {section}{\numberline {2.3}Artificial neural networks}{4}%
 \contentsline {subsection}{\numberline {2.3.1}Convolutional neural networks}{5}%
 \contentsline {section}{\numberline {2.4}Dataset}{vi}%
-\contentsline {chapter}{\numberline {3}Results}{i}%
+\contentsline {chapter}{\numberline {3}Models}{i}%
+\contentsline {section}{\numberline {3.1}Colorful Image Colorization}{i}%
+\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{i}%
+\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{i}%
 \contentsline {chapter}{\numberline {4}Related work}{i}%
 \contentsline {section}{\numberline {4.1}Related work}{i}%
 \contentsline {chapter}{\numberline {5}Conclusion}{i}%

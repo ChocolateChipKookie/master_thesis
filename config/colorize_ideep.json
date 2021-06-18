@@ -9,5 +9,5 @@
       "bias": true
     }
   },
-  "state_dict": "ideep/data/state_dict.pth"
+  "state_dict": "ideep/data/backup_model.pth"
 }

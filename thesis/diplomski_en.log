@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.2.17)  16 JUN 2021 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.2.17)  17 JUN 2021 22:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -381,7 +381,7 @@ Package pdftex.def Info: ./graphics/img/colorization/house_colorized.jpg  used o
 (pdftex.def)             Requested size: 127.01514pt x 95.25407pt.
 [1
 
- <./graphics/img/hand_colored.jpg>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/method.tex [2 <./graphics/img/colorization/house_original.jpg> <./graphics/img/colorization/house_grayscale.jpg> <./graphics/img/colorization/house_colorized.jpg>]
+ <./graphics/img/hand_colored.jpg>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/base.tex [2 <./graphics/img/colorization/house_original.jpg> <./graphics/img/colorization/house_grayscale.jpg> <./graphics/img/colorization/house_colorized.jpg>]
 Chapter 2.
 <./graphics/img/alim_khan.jpg, id=36, 1027.84pt x 679.53876pt>
 File: ./graphics/img/alim_khan.jpg Graphic file (type jpg)
@@ -468,11 +468,31 @@ File: ./graphics/img/simple_nn.pdf Graphic file (type pdf)
 <use ./graphics/img/simple_nn.pdf>
 Package pdftex.def Info: ./graphics/img/simple_nn.pdf  used on input line 240.
 (pdftex.def)             Requested size: 149.73463pt x 112.37349pt.
- [4 <./graphics/img/multimodality/vespa_orig.jpg> <./graphics/img/multimodality/vespa_gs.jpg> <./graphics/img/multimodality/vespa_colorful.jpg> <./graphics/img/multimodality/sunset.jpg> <./graphics/img/multimodality/sunset_gs.png> <./graphics/img/multimodality/sunset_colorized.jpg>] [5 <./graphics/img/neuron.png> <./graphics/img/simple_nn.pdf>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/results.tex [6]
+ [4 <./graphics/img/multimodality/vespa_orig.jpg> <./graphics/img/multimodality/vespa_gs.jpg> <./graphics/img/multimodality/vespa_colorful.jpg> <./graphics/img/multimodality/sunset.jpg> <./graphics/img/multimodality/sunset_gs.png> <./graphics/img/multimodality/sunset_colorized.jpg>] [5 <./graphics/img/neuron.png> <./graphics/img/simple_nn.pdf>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/models.tex [6]
 Chapter 3.
+<./graphics/plot/lab_bins/20.png, id=95, 461.725pt x 461.725pt>
+File: ./graphics/plot/lab_bins/20.png Graphic file (type png)
+<use ./graphics/plot/lab_bins/20.png>
+Package pdftex.def Info: ./graphics/plot/lab_bins/20.png  used on input line 11.
+(pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
+<./graphics/plot/lab_bins/40.png, id=96, 461.725pt x 461.725pt>
+File: ./graphics/plot/lab_bins/40.png Graphic file (type png)
+<use ./graphics/plot/lab_bins/40.png>
+Package pdftex.def Info: ./graphics/plot/lab_bins/40.png  used on input line 15.
+(pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
+<./graphics/plot/lab_bins/60.png, id=97, 461.725pt x 461.725pt>
+File: ./graphics/plot/lab_bins/60.png Graphic file (type png)
+<use ./graphics/plot/lab_bins/60.png>
+Package pdftex.def Info: ./graphics/plot/lab_bins/60.png  used on input line 19.
+(pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
+<./graphics/plot/lab_bins/80.png, id=98, 461.725pt x 461.725pt>
+File: ./graphics/plot/lab_bins/80.png Graphic file (type png)
+<use ./graphics/plot/lab_bins/80.png>
+Package pdftex.def Info: ./graphics/plot/lab_bins/80.png  used on input line 23.
+(pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
 ) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/related.tex [1
 
-]
+ <./graphics/plot/lab_bins/20.png> <./graphics/plot/lab_bins/40.png> <./graphics/plot/lab_bins/60.png> <./graphics/plot/lab_bins/80.png>]
 Chapter 4.
 ) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/conclusion.tex [1
 
@@ -488,18 +508,18 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 ]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/abstract.tex [3]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/sazetak.tex) [4] (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.aux) ) 
 Here is how much of TeX's memory you used:
- 6391 strings out of 483107
- 95869 string characters out of 5964630
- 338776 words of memory out of 5000000
- 21229 multiletter control sequences out of 15000+600000
+ 6428 strings out of 483107
+ 96848 string characters out of 5964630
+ 338871 words of memory out of 5000000
+ 21263 multiletter control sequences out of 15000+600000
  599027 words of font info for 102 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  49i,8n,49p,433b,561s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf (18 pages, 9389153 bytes).
+Output written on /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf (18 pages, 9433525 bytes).
 PDF statistics:
- 161 PDF objects out of 1000 (max. 8388607)
+ 165 PDF objects out of 1000 (max. 8388607)
  100 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

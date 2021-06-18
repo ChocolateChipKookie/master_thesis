@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 
+import util.util
+
 
 def create_plot(l_=50., dim = 200):
 
@@ -92,8 +94,41 @@ def channels_lab(path, l):
     rgb = color.lab2rgb(lab) * 255
     cv2.imwrite(f"{dir}/{name}_color.png", rgb)
 
+def plot_lab(l_, padding=3):
+    from colorful import cielab
+    bins = cielab.LABBins()
+    shape = bins.ab_to_q.shape
+    bin_size = 10
+    a = np.zeros(shape, dtype=float)
+    b = np.zeros(shape, dtype=float)
+    l = np.ones_like(a, dtype=float) * l_
+
+    for x in range(shape[0]):
+        for y in range(shape[1]):
+            index = bins.ab_to_q[y, x]
+            if index < 0:
+                l[y, x] = 100
+                continue
+            ab = bins.q_to_ab[index]
+            a[y, x] = ab[0]
+            b[y, x] = ab[1]
+
+    a += 5
+    b += 5
+    lab = np.stack((l, a, b), 2)
+    plot = np.zeros((shape[0] + padding * 2, shape[1] + padding * 2, 3))
+    plot[:,:, 0] = 100
+    plot[padding:shape[0]+padding, padding:shape[1]+padding, :] = lab
+    plot = np.repeat(np.repeat(plot, bin_size, 0), bin_size, 1)
+    plot = color.lab2rgb(plot)
+    plt.title(f"L* = {l_}")
+    plt.imshow(plot, extent=[-plot.shape[0]//2, plot.shape[0]//2, -plot.shape[1]//2, plot.shape[1]//2])
+    plt.show()
+    plt.close()
+
 # channels_lab("thesis/graphics/img/lab_channels/san_g.png", 75)
-create_plot(20)
-create_plot(40)
-create_plot(60)
-create_plot(80)
+# create_plot(20)
+plot_lab(20)
+plot_lab(40)
+plot_lab(60)
+plot_lab(80)
