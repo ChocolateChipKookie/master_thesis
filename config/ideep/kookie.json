@@ -14,7 +14,7 @@
     "config": {
       "device": "cuda:0",
       "dtype": "torch.float32",
-      "iterations": 100000,
+      "iterations": 50000,
       "batch_size": 12,
       "dataloader_workers": 4,
 
@@ -77,16 +77,16 @@
         {
           "class": "ideep.listener.GlobalHintsValidator",
           "args": {
-            "frequency": 1000,
+            "frequency": 5000,
             "output": "./ideep/data/val.log",
-            "save_every": 5,
+            "save_every": 1,
             "snapshot_dir": "../snapshots/ideep"
           }
         },
         {
           "class": "util.listener.Backup",
           "args": {
-            "frequency": 500,
+            "frequency": 1000,
             "save_dir": "./ideep/data",
             "config_file": "backup_config.json",
             "save_file": "backup_model.pth"
@@ -103,8 +103,7 @@
     },
     "derived": {
       "loss": "torch.nn.HuberLoss",
-      "fine_tune_existing":false,
-      "random_hints": false
+      "random_hints": true
     }
   },
   "restore": false

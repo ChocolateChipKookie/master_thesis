@@ -71,6 +71,19 @@ class ListModule(torch.nn.Module):
         return len(self._modules)
 
 
+class MultiOptimizer:
+    def __init__(self, optimizers):
+        self.optimizers = optimizers
+
+    def zero_grad(self):
+        for optimizer in self.optimizers:
+            optimizer.zero_grad()
+
+    def step(self):
+        for optimizer in self.optimizers:
+            optimizer.step()
+
+
 class Solver(object):
     __metaclass__ = ABCMeta
 

@@ -103,7 +103,15 @@
     },
     "derived": {
       "loss": "torch.nn.HuberLoss",
-      "fine_tune_existing":false
+      "base_optimizer": {
+        "class": "torch.optim.Adam",
+        "args": {
+          "lr": 1e-6,
+          "weight_decay": 1e-3,
+          "betas": [0.5, 0.99]
+        }
+      },
+      "random_hints": true
     }
   },
   "restore": false

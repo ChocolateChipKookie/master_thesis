@@ -6,45 +6,45 @@ Database file #1: literatura.bib
 Warning--empty journal in krizhevskycifar
 Warning--empty year in krizhevskycifar
 Warning--empty year in krizhevskycifar
-You've used 15 entries,
+You've used 19 entries,
             2773 wiz_defined-function locations,
-            690 strings with 7902 characters,
-and the built_in function-call counts, 7480 in all, are:
-= -- 645
-> -- 505
-< -- 5
-+ -- 168
-- -- 153
-* -- 635
-:= -- 1161
-add.period$ -- 54
-call.type$ -- 15
-change.case$ -- 92
-chr.to.int$ -- 15
-cite$ -- 33
-duplicate$ -- 332
-empty$ -- 577
-format.name$ -- 171
-if$ -- 1564
+            712 strings with 8685 characters,
+and the built_in function-call counts, 9021 in all, are:
+= -- 779
+> -- 586
+< -- 9
++ -- 195
+- -- 176
+* -- 736
+:= -- 1405
+add.period$ -- 69
+call.type$ -- 19
+change.case$ -- 111
+chr.to.int$ -- 19
+cite$ -- 41
+duplicate$ -- 416
+empty$ -- 718
+format.name$ -- 204
+if$ -- 1892
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 14
-newline$ -- 89
-num.names$ -- 62
-pop$ -- 202
+missing$ -- 18
+newline$ -- 112
+num.names$ -- 80
+pop$ -- 242
 preamble$ -- 1
-purify$ -- 79
+purify$ -- 94
 quote$ -- 0
-skip$ -- 249
+skip$ -- 312
 stack$ -- 0
-substring$ -- 188
-swap$ -- 38
+substring$ -- 196
+swap$ -- 45
 text.length$ -- 2
 text.prefix$ -- 1
 top$ -- 0
-type$ -- 160
+type$ -- 204
 warning$ -- 3
-while$ -- 56
+while$ -- 69
 width$ -- 0
-write$ -- 209
+write$ -- 265
 (There were 3 warnings)

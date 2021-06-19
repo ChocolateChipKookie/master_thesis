@@ -1,10 +1,11 @@
+import torch
 from skimage import color
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 import os
-
-import util.util
+from util import util
+from torchvision.transforms import functional
 
 
 def create_plot(l_=50., dim = 200):
@@ -81,7 +82,6 @@ def create_plot(l_=50., dim = 200):
     plt.title(f"L* = {l_}")
     plt.show()
 
-
 def channels_lab(path, l):
     img = cv2.imread(path)
     dir, name = os.path.split(path)
@@ -126,9 +126,23 @@ def plot_lab(l_, padding=3):
     plt.show()
     plt.close()
 
-# channels_lab("thesis/graphics/img/lab_channels/san_g.png", 75)
+channels_lab("img/nature_4.png", 50)
+
+def down_up(path, factor):
+    path = "img/nature.png"
+    factor = 16
+    img = cv2.imread(path)
+    dir, name = os.path.split(path)
+    name = name.split(".")[0]
+    lab = torch.tensor(color.rgb2lab(img/255)).permute(2, 0, 1)
+    ab = lab[1:]
+    l = lab[:1]
+    ab = functional.resize(ab, [ab.shape[1]//factor, ab.shape[2]//factor])
+    ab = functional.resize(ab, [ab.shape[1]*factor, ab.shape[2]*factor])
+    l = functional.resize(l, [ab.shape[1], ab.shape[2]])
+    lab = torch.cat((l, ab))
+    rgb = color.lab2rgb(torch.cat((l, ab)).permute(1, 2, 0)) * 255
+    cv2.imwrite(f"{dir}/{name}_{factor}.png", rgb)
+
 # create_plot(20)
-plot_lab(20)
-plot_lab(40)
-plot_lab(60)
-plot_lab(80)
+# plot_lab(20)

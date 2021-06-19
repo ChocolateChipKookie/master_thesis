@@ -1,9 +1,15 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Agarap(2018)]{abien2018relu}
+Abien~Fred Agarap.
+\newblock Deep learning using rectified linear units (relu).
+\newblock \emph{CoRR}, abs/1803.08375, 2018.
+\newblock URL \url{http://arxiv.org/abs/1803.08375}.
 
 \bibitem[Charpiat et~al.(2008)Charpiat, Hofmann, and
   Sch{\"o}lkopf]{charpiat2008colorization}
@@ -55,6 +61,13 @@ Satoshi Iizuka, Edgar Simo-Serra, and Hiroshi Ishikawa.
 \newblock URL \url{https://www.color.org/icc1v42.pdf}.
 \newblock Profile version 4.2.0.0.
 
+\bibitem[Ioffe and Szegedy(2015)]{ioffe2015batchnorm}
+Sergey Ioffe and Christian Szegedy.
+\newblock Batch normalization: Accelerating deep network training by reducing
+  internal covariate shift.
+\newblock \emph{CoRR}, abs/1502.03167, 2015.
+\newblock URL \url{http://arxiv.org/abs/1502.03167}.
+
 \bibitem[Krizhevsky et~al.()Krizhevsky, Nair, and Hinton]{krizhevskycifar}
 Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton.
 \newblock Cifar-100 (canadian institute for advanced research).
@@ -93,6 +106,20 @@ E.~Reinhard, M.~Adhikhmin, B.~Gooch, and P.~Shirley.
 \newblock \emph{IEEE Computer Graphics and Applications}, 21\penalty0
   (5):\penalty0 34--41, 2001.
 \newblock \doi{10.1109/38.946629}.
+
+\bibitem[Simonyan and Zisserman(2015)]{simonyan2015vgg}
+Karen Simonyan and Andrew Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock In Yoshua Bengio and Yann LeCun, editors, \emph{3rd International
+  Conference on Learning Representations, {ICLR} 2015, San Diego, CA, USA, May
+  7-9, 2015, Conference Track Proceedings}, 2015.
+\newblock URL \url{http://arxiv.org/abs/1409.1556}.
+
+\bibitem[Yu and Koltun(2016)]{yu2016atrous}
+Fisher Yu and Vladlen Koltun.
+\newblock Multi-scale context aggregation by dilated convolutions.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, may 2016.
 
 \bibitem[Zhang et~al.(2016)Zhang, Isola, and Efros]{zhang2016colorful}
 Richard Zhang, Phillip Isola, and Alexei~A. Efros.

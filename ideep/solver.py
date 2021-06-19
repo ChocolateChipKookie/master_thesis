@@ -43,6 +43,7 @@ class GlobalHints:
     def __call__(self, batch, random_saturation=False, random_histogram=False):
         return self.get_global_hints(batch, random_saturation, random_histogram)
 
+
 class Solver(module.Solver):
     def __init__(self, network, config):
         super(Solver, self).__init__(network, config)
@@ -50,25 +51,45 @@ class Solver(module.Solver):
         self.global_hints = GlobalHints()
         self.random_hints = self.derived_config["random_hints"]
 
-        if not self.derived_config["fine_tune_existing"]:
-            # Re-create optimizer, optimize only layers that have been added
-            optimizer_data = self.solver_config['optimizer']
+        # Re-create optimizer, optimize only layers that have been added
+        optimizer_data = self.solver_config['optimizer']
+        optimizer_class = util.import_attr(optimizer_data['class'])
+        parameters = []
+        parameters.extend(self.network.conv3_8short.parameters())
+
+        parameters.extend(self.network.conv9up.parameters())
+        parameters.extend(self.network.conv2_9short.parameters())
+        parameters.extend(self.network.conv9.parameters())
+
+        parameters.extend(self.network.conv10up.parameters())
+        parameters.extend(self.network.conv1_10short.parameters())
+        parameters.extend(self.network.conv10.parameters())
+
+        parameters.extend(self.network.global_hints.parameters())
+        parameters.extend(self.network.out.parameters())
+
+        self.optimizer = optimizer_class(parameters, **optimizer_data['args'])
+
+        if "base_optimizer" in self.derived_config:
+            optimizer_data = self.derived_config['base_optimizer']
             optimizer_class = util.import_attr(optimizer_data['class'])
             parameters = []
-            parameters.extend(self.network.conv3_8short.parameters())
 
-            parameters.extend(self.network.conv9up.parameters())
-            parameters.extend(self.network.conv9.parameters())
-            parameters.extend(self.network.conv9.parameters())
+            parameters.extend(self.network.conv1.parameters())
+            parameters.extend(self.network.conv1_down.parameters())
+            parameters.extend(self.network.conv2.parameters())
+            parameters.extend(self.network.conv2_down.parameters())
+            parameters.extend(self.network.conv3.parameters())
+            parameters.extend(self.network.conv3_down.parameters())
+            parameters.extend(self.network.conv4.parameters())
+            parameters.extend(self.network.conv5.parameters())
+            parameters.extend(self.network.conv6.parameters())
+            parameters.extend(self.network.conv7.parameters())
+            parameters.extend(self.network.conv8up.parameters())
+            parameters.extend(self.network.conv8.parameters())
 
-            parameters.extend(self.network.conv10up.parameters())
-            parameters.extend(self.network.conv1_10short.parameters())
-            parameters.extend(self.network.conv10.parameters())
-
-            parameters.extend(self.network.global_hints.parameters())
-            parameters.extend(self.network.out.parameters())
-
-            self.optimizer = optimizer_class(parameters, **optimizer_data['args'])
+            optimizers = [self.optimizer, optimizer_class(parameters, **optimizer_data['args'])]
+            self.optimizer = module.MultiOptimizer(optimizers)
 
     def get_global(self, batch, random_saturation=False, random_histogram=False):
         return self.global_hints(batch, random_saturation, random_histogram)

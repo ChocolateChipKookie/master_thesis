@@ -2,7 +2,7 @@
   "colorizer": {
     "class": "colorful.model.Colorful",
     "args": {
-      "decoder_T": 0.2,
+      "decoder_T": 0.7,
       "input_min": 256
     }
   },

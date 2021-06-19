@@ -60,17 +60,33 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Dataset}{vi}\protected@file@percent }
 \newlabel{sec:dataset}{{2.4}{vi}}
 \citation{zhang2016colorful}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Models}{i}\protected@file@percent }
+\citation{simonyan2015vgg}
+\citation{abien2018relu}
+\citation{ioffe2015batchnorm}
+\citation{yu2016atrous}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Models}{1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Colorful Image Colorization}{i}\protected@file@percent }
-\newlabel{sec:colorful}{{3.1}{i}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Quantized \textbf  {a*b*} bins for different \textbf  {L*} values\relax }}{i}\protected@file@percent }
-\newlabel{fig:lab_bins}{{3.1}{i}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{i}\protected@file@percent }
-\newlabel{sec:gan}{{3.2}{i}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{i}\protected@file@percent }
-\newlabel{sec:ideep}{{3.3}{i}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Colorful Image Colorization}{1}\protected@file@percent }
+\newlabel{sec:colorful}{{3.1}{1}}
+\@writefile{toc}{\contentsline {subsubsection}{Architecture}{1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Quantized \textbf  {a*b*} bins for different \textbf  {L*} values\relax }}{1}\protected@file@percent }
+\newlabel{fig:lab_bins}{{3.1}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces The architecture of the \textit  {Colorful Image Colorization} model\relax }}{2}\protected@file@percent }
+\newlabel{fig:architecture_colorful}{{3.2}{2}}
+\@writefile{toc}{\contentsline {subsubsection}{Annealed mean}{2}\protected@file@percent }
+\newlabel{eq:annealed_mean}{{3.1}{2}}
+\newlabel{eq:weighed sum}{{3.2}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Colorization of an image using different values of $T$\relax }}{3}\protected@file@percent }
+\newlabel{fig:temperature}{{3.3}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Original image on the left, and the same image where the resolution of the \textbf  {a*} and \textbf  {b*} channels was reduced by a factor of four, on the right\relax }}{3}\protected@file@percent }
+\newlabel{fig:color4}{{3.4}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{Training}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Class rebalancing}{iv}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{iv}\protected@file@percent }
+\newlabel{sec:gan}{{3.2}{iv}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{iv}\protected@file@percent }
+\newlabel{sec:ideep}{{3.3}{iv}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Related work}{i}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -80,20 +96,24 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Possible improvements}{i}\protected@file@percent }
-\bibcite{charpiat2008colorization}{{1}{2008}{{Charpiat et~al.}}{{Charpiat, Hofmann, and Sch{\"o}lkopf}}}
-\bibcite{cheng2015colorization}{{2}{2015}{{Cheng et~al.}}{{Cheng, Yang, and Sheng}}}
-\bibcite{deng2009imagenet}{{3}{2009}{{Deng et~al.}}{{Deng, Dong, Socher, Li, Li, and Fei-Fei}}}
-\bibcite{fukushima1980neocognitron}{{4}{1980}{{Fukushima}}{{}}}
-\bibcite{henisch1996photograph}{{5}{1996}{{Henisch and Henisch}}{{}}}
-\bibcite{iizuka2016colorization}{{6}{2016}{{Iizuka et~al.}}{{Iizuka, Simo-Serra, and Ishikawa}}}
-\bibcite{icc2004cielab}{{7}{2004}{{Int}}{{}}}
-\bibcite{krizhevskycifar}{{8}{}{{Krizhevsky et~al.}}{{Krizhevsky, Nair, and Hinton}}}
-\bibcite{fei2004caltech}{{9}{2004}{{L.~Fei-Fei and Perona}}{{}}}
-\bibcite{levin2004colorization}{{10}{2004}{{Levin et~al.}}{{Levin, Lischinski, and Weiss}}}
+\bibcite{abien2018relu}{{1}{2018}{{Agarap}}{{}}}
+\bibcite{charpiat2008colorization}{{2}{2008}{{Charpiat et~al.}}{{Charpiat, Hofmann, and Sch{\"o}lkopf}}}
+\bibcite{cheng2015colorization}{{3}{2015}{{Cheng et~al.}}{{Cheng, Yang, and Sheng}}}
+\bibcite{deng2009imagenet}{{4}{2009}{{Deng et~al.}}{{Deng, Dong, Socher, Li, Li, and Fei-Fei}}}
+\bibcite{fukushima1980neocognitron}{{5}{1980}{{Fukushima}}{{}}}
+\bibcite{henisch1996photograph}{{6}{1996}{{Henisch and Henisch}}{{}}}
+\bibcite{iizuka2016colorization}{{7}{2016}{{Iizuka et~al.}}{{Iizuka, Simo-Serra, and Ishikawa}}}
+\bibcite{icc2004cielab}{{8}{2004}{{Int}}{{}}}
+\bibcite{ioffe2015batchnorm}{{9}{2015}{{Ioffe and Szegedy}}{{}}}
+\bibcite{krizhevskycifar}{{10}{}{{Krizhevsky et~al.}}{{Krizhevsky, Nair, and Hinton}}}
 \@writefile{toc}{\contentsline {chapter}{Bibliography}{ii}\protected@file@percent }
-\bibcite{luan2007colorization}{{11}{2007}{{Luan et~al.}}{{Luan, Wen, Cohen-Or, Liang, Xu, and Shum}}}
-\bibcite{pang2021imagetoimage}{{12}{2021}{{Pang et~al.}}{{Pang, Lin, Qin, and Chen}}}
-\bibcite{reinhard2001colorization}{{13}{2001}{{Reinhard et~al.}}{{Reinhard, Adhikhmin, Gooch, and Shirley}}}
-\bibcite{zhang2016colorful}{{14}{2016}{{Zhang et~al.}}{{Zhang, Isola, and Efros}}}
-\bibcite{zhou2017places}{{15}{2017}{{Zhou et~al.}}{{Zhou, Lapedriza, Khosla, Oliva, and Torralba}}}
+\bibcite{fei2004caltech}{{11}{2004}{{L.~Fei-Fei and Perona}}{{}}}
+\bibcite{levin2004colorization}{{12}{2004}{{Levin et~al.}}{{Levin, Lischinski, and Weiss}}}
+\bibcite{luan2007colorization}{{13}{2007}{{Luan et~al.}}{{Luan, Wen, Cohen-Or, Liang, Xu, and Shum}}}
+\bibcite{pang2021imagetoimage}{{14}{2021}{{Pang et~al.}}{{Pang, Lin, Qin, and Chen}}}
+\bibcite{reinhard2001colorization}{{15}{2001}{{Reinhard et~al.}}{{Reinhard, Adhikhmin, Gooch, and Shirley}}}
+\bibcite{simonyan2015vgg}{{16}{2015}{{Simonyan and Zisserman}}{{}}}
+\bibcite{yu2016atrous}{{17}{2016}{{Yu and Koltun}}{{}}}
+\bibcite{zhang2016colorful}{{18}{2016}{{Zhang et~al.}}{{Zhang, Isola, and Efros}}}
+\bibcite{zhou2017places}{{19}{2017}{{Zhou et~al.}}{{Zhou, Lapedriza, Khosla, Oliva, and Torralba}}}
 \bibstyle{plainnat}

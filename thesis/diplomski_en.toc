@@ -7,10 +7,14 @@
 \contentsline {section}{\numberline {2.3}Artificial neural networks}{4}%
 \contentsline {subsection}{\numberline {2.3.1}Convolutional neural networks}{5}%
 \contentsline {section}{\numberline {2.4}Dataset}{vi}%
-\contentsline {chapter}{\numberline {3}Models}{i}%
-\contentsline {section}{\numberline {3.1}Colorful Image Colorization}{i}%
-\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{i}%
-\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{i}%
+\contentsline {chapter}{\numberline {3}Models}{1}%
+\contentsline {section}{\numberline {3.1}Colorful Image Colorization}{1}%
+\contentsline {subsubsection}{Architecture}{1}%
+\contentsline {subsubsection}{Annealed mean}{2}%
+\contentsline {subsubsection}{Training}{3}%
+\contentsline {subsubsection}{Class rebalancing}{iv}%
+\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{iv}%
+\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{iv}%
 \contentsline {chapter}{\numberline {4}Related work}{i}%
 \contentsline {section}{\numberline {4.1}Related work}{i}%
 \contentsline {chapter}{\numberline {5}Conclusion}{i}%
