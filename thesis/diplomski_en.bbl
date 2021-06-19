@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{25}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -39,6 +39,16 @@ Kunihiko Fukushima.
 \newblock \emph{Biological Cybernetics}, 36\penalty0 (4):\penalty0
   193:1--202:9, 1980.
 
+\bibitem[Goodfellow(2017)]{goodfellow2017nips}
+Ian Goodfellow.
+\newblock Nips 2016 tutorial: Generative adversarial networks, 2017.
+
+\bibitem[Goodfellow et~al.(2014)Goodfellow, Pouget-Abadie, Mirza, Xu,
+  Warde-Farley, Ozair, Courville, and Bengio]{goodfellow2014generative}
+Ian~J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David
+  Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio.
+\newblock Generative adversarial networks, 2014.
+
 \bibitem[Henisch and Henisch(1996)]{henisch1996photograph}
 Heinz~K Henisch and Bridget~Ann Henisch.
 \newblock \emph{{The painted photograph, 1839-1914 : origins, techniques,
@@ -68,6 +78,19 @@ Sergey Ioffe and Christian Szegedy.
 \newblock \emph{CoRR}, abs/1502.03167, 2015.
 \newblock URL \url{http://arxiv.org/abs/1502.03167}.
 
+\bibitem[Isola et~al.(2017)Isola, Zhu, Zhou, and Efros]{isola2017pix2pix}
+Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei~A Efros.
+\newblock Image-to-image translation with conditional adversarial networks.
+\newblock \emph{CVPR}, 2017.
+
+\bibitem[Kingma and Ba(2015)]{diederik2015adam}
+Diederik~P. Kingma and Jimmy Ba.
+\newblock Adam: {A} method for stochastic optimization.
+\newblock In Yoshua Bengio and Yann LeCun, editors, \emph{3rd International
+  Conference on Learning Representations, {ICLR} 2015, San Diego, CA, USA, May
+  7-9, 2015, Conference Track Proceedings}, 2015.
+\newblock URL \url{http://arxiv.org/abs/1412.6980}.
+
 \bibitem[Krizhevsky et~al.()Krizhevsky, Nair, and Hinton]{krizhevskycifar}
 Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton.
 \newblock Cifar-100 (canadian institute for advanced research).
@@ -95,6 +118,12 @@ Qing Luan, Fang Wen, Daniel Cohen-Or, Lin Liang, Ying-Qing Xu, and Heung-Yeung
 \newblock ISBN 978-3-905673-52-4.
 \newblock \doi{10.2312/EGWR/EGSR07/309-320}.
 
+\bibitem[Nazeri and Ng(2018)]{nazeri2018gan}
+Kamyar Nazeri and Eric Ng.
+\newblock Image colorization with generative adversarial networks.
+\newblock \emph{CoRR}, abs/1803.05400, 2018.
+\newblock URL \url{http://arxiv.org/abs/1803.05400}.
+
 \bibitem[Pang et~al.(2021)Pang, Lin, Qin, and Chen]{pang2021imagetoimage}
 Yingxue Pang, Jianxin Lin, Tao Qin, and Zhibo Chen.
 \newblock Image-to-image translation: Methods and applications, 2021.
@@ -114,6 +143,15 @@ Karen Simonyan and Andrew Zisserman.
   Conference on Learning Representations, {ICLR} 2015, San Diego, CA, USA, May
   7-9, 2015, Conference Track Proceedings}, 2015.
 \newblock URL \url{http://arxiv.org/abs/1409.1556}.
+
+\bibitem[Tantithamthavorn et~al.(2020)Tantithamthavorn, Hassan, and
+  Matsumoto]{tantithamthavorn2020rebalancing}
+Chakkrit Tantithamthavorn, Ahmed~E. Hassan, and Kenichi Matsumoto.
+\newblock The impact of class rebalancing techniques on the performance and
+  interpretation of defect prediction models.
+\newblock \emph{IEEE Transactions on Software Engineering}, 46\penalty0
+  (11):\penalty0 1200--1219, 2020.
+\newblock \doi{10.1109/TSE.2018.2876537}.
 
 \bibitem[Yu and Koltun(2016)]{yu2016atrous}
 Fisher Yu and Vladlen Koltun.
