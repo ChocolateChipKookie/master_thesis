@@ -337,6 +337,9 @@ INPUT ./graphics/img/colorful/distribution.png
 INPUT ./graphics/img/colorful/distribution.png
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmrc8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/./graphics/img/gan/museum.pdf
+INPUT ./graphics/img/gan/museum.pdf
+INPUT ./graphics/img/gan/museum.pdf
 INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/related.tex
 INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/related.tex
 INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/conclusion.tex

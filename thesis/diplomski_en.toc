@@ -14,20 +14,20 @@
 \contentsline {subsection}{\numberline {3.1.2}Annealed mean}{2}%
 \contentsline {subsection}{\numberline {3.1.3}Training}{4}%
 \contentsline {subsection}{\numberline {3.1.4}Results}{6}%
-\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{6}%
-\contentsline {subsection}{\numberline {3.2.1}Architecture}{6}%
-\contentsline {subsubsection}{Generative adversarial networks}{6}%
-\contentsline {subsubsection}{Conditional GAN}{vii}%
-\contentsline {subsubsection}{Generator}{vii}%
-\contentsline {subsubsection}{Discriminator}{vii}%
-\contentsline {subsection}{\numberline {3.2.2}Training}{vii}%
-\contentsline {subsection}{\numberline {3.2.3}Results}{vii}%
-\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{vii}%
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{vii}%
-\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{vii}%
-\contentsline {subsection}{\numberline {3.3.3}Global hints}{viii}%
-\contentsline {subsection}{\numberline {3.3.4}Training}{viii}%
-\contentsline {subsection}{\numberline {3.3.5}Results}{viii}%
+\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{7}%
+\contentsline {subsection}{\numberline {3.2.1}Architecture}{7}%
+\contentsline {subsubsection}{Generative adversarial networks}{7}%
+\contentsline {subsubsection}{Conditional GAN}{viii}%
+\contentsline {subsubsection}{Generator}{viii}%
+\contentsline {subsubsection}{Discriminator}{viii}%
+\contentsline {subsection}{\numberline {3.2.2}Training}{viii}%
+\contentsline {subsection}{\numberline {3.2.3}Results}{viii}%
+\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{viii}%
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{viii}%
+\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{viii}%
+\contentsline {subsection}{\numberline {3.3.3}Global hints}{ix}%
+\contentsline {subsection}{\numberline {3.3.4}Training}{ix}%
+\contentsline {subsection}{\numberline {3.3.5}Results}{ix}%
 \contentsline {chapter}{\numberline {4}Related work}{i}%
 \contentsline {section}{\numberline {4.1}Related work}{i}%
 \contentsline {chapter}{\numberline {5}Conclusion}{i}%

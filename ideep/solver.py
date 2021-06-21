@@ -55,7 +55,9 @@ class Solver(module.Solver):
         optimizer_data = self.solver_config['optimizer']
         optimizer_class = util.import_attr(optimizer_data['class'])
         parameters = []
+        parameters.extend(self.network.conv8up.parameters())
         parameters.extend(self.network.conv3_8short.parameters())
+        parameters.extend(self.network.conv8.parameters())
 
         parameters.extend(self.network.conv9up.parameters())
         parameters.extend(self.network.conv2_9short.parameters())
@@ -85,8 +87,6 @@ class Solver(module.Solver):
             parameters.extend(self.network.conv5.parameters())
             parameters.extend(self.network.conv6.parameters())
             parameters.extend(self.network.conv7.parameters())
-            parameters.extend(self.network.conv8up.parameters())
-            parameters.extend(self.network.conv8.parameters())
 
             optimizers = [self.optimizer, optimizer_class(parameters, **optimizer_data['args'])]
             self.optimizer = module.MultiOptimizer(optimizers)

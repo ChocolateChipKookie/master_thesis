@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex diplomski_en"] 1624124723 "diplomski_en.aux" "diplomski_en.bbl" "diplomski_en" 1624125260
+["bibtex diplomski_en"] 1624277528 "diplomski_en.aux" "diplomski_en.bbl" "diplomski_en" 1624277678
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "diplomski_en.aux" 1624125260 12046 cf13772020dbcd4fb23a6edd40eb7292 "pdflatex"
+  "diplomski_en.aux" 1624277678 12220 aba8b6fa6ddc37d94ad251bb9d769db9 "pdflatex"
   "literatura.bib" 1624115533 16265 d1638ad10e4942a50ce4d84bd5a69dea ""
   (generated)
   "diplomski_en.blg"
   "diplomski_en.bbl"
-["pdflatex"] 1624125259 "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.tex" "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf" "diplomski_en" 1624125260
+["pdflatex"] 1624277677 "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.tex" "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf" "diplomski_en" 1624277678
   "/etc/texmf/web2c/texmf.cnf" 1613585358 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.aux" 1624125260 12046 cf13772020dbcd4fb23a6edd40eb7292 ""
+  "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.aux" 1624277678 12220 aba8b6fa6ddc37d94ad251bb9d769db9 ""
   "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.tex" 1624100157 1041 06f243e3e1232800e38ee667707fe24e ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -138,14 +138,14 @@
   "chapters/base.tex" 1624121447 17957 f49af699d810af5d20ab92a4a3b890cd ""
   "chapters/conclusion.tex" 1623398416 143 e0ad105f10818408db1240fef8ab4f89 ""
   "chapters/introduction.tex" 1623744260 3804 0ca550face0670d90ce33d75f164cf58 ""
-  "chapters/models.tex" 1624125258 15236 bcb320e6dc4ccb9778ffe01c554c8dfa ""
+  "chapters/models.tex" 1624277676 15876 493be11fc19d31cffdf3069d97a5ebb4 ""
   "chapters/related.tex" 1622293554 252 0b21bad004328aa230dbc456c15956a9 ""
   "chapters/sazetak.tex" 1620926814 177 87d772dd53e3deb731284f55663e5535 ""
   "chapters/thanks.tex" 1620926814 24 87765f1cef95e126b1c07b98ca2e68cd ""
-  "diplomski_en.aux" 1624125260 12046 cf13772020dbcd4fb23a6edd40eb7292 "pdflatex"
-  "diplomski_en.bbl" 1624124723 7894 748823f48b5d76748a1d065643fa2af1 "bibtex diplomski_en"
+  "diplomski_en.aux" 1624277678 12220 aba8b6fa6ddc37d94ad251bb9d769db9 "pdflatex"
+  "diplomski_en.bbl" 1624277528 7894 748823f48b5d76748a1d065643fa2af1 "bibtex diplomski_en"
   "diplomski_en.tex" 1624100157 1041 06f243e3e1232800e38ee667707fe24e ""
-  "diplomski_en.toc" 1624125260 2143 984d07b20039316fe4aca033dd35d459 "pdflatex"
+  "diplomski_en.toc" 1624277678 2145 333c467f7a7a8266ad633256bf6be7f8 "pdflatex"
   "fer.cls" 1620926814 14351 1a98f36679782dc10fb012ecb7c9e879 ""
   "graphics/architecture/colorful.pdf" 1624019040 326964 cfd553b535d651d8d7790e2dbbf20ec9 ""
   "graphics/architecture/unet.pdf" 1624004164 45346 df97d72e1da66721f50efc91a043114f ""
@@ -161,6 +161,7 @@
   "graphics/img/colorization/house_colorized.jpg" 1622221654 593951 6a9669cf7e14bc8968312dbbbba4dd96 ""
   "graphics/img/colorization/house_grayscale.jpg" 1622214297 588875 7de6ac3f8b595c0c8d485f39e64ebb16 ""
   "graphics/img/colorization/house_original.jpg" 1622214107 661165 2f39a0b4953cb81e8c08571b926412ac ""
+  "graphics/img/gan/museum.pdf" 1624277629 82423 bb0052326e1abf9c6c840223697165c8 ""
   "graphics/img/hand_colored.jpg" 1621952938 15632 45d8e34eda0f13ff1e37ff20ed3b275a ""
   "graphics/img/lab_channels/nature.png" 1624032424 1518882 79807de614930e1dd8f7a2e37f71fb4c ""
   "graphics/img/lab_channels/nature_4.png" 1624033361 1497312 574691aaa9638ae267ae4b6d3fa77abb ""
@@ -184,9 +185,9 @@
   "graphics/plot/lab_bins/60.png" 1623959939 10765 6852a6b2979e3b414700d08161506495 ""
   "graphics/plot/lab_bins/80.png" 1623959945 10693 3acb60b3946d726c09ce680556e119c0 ""
   (generated)
-  "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf"
   "diplomski_en.toc"
   "diplomski_en.aux"
   "diplomski_en.pdf"
   "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.log"
+  "/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf"
   "diplomski_en.log"
