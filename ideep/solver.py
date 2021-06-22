@@ -70,6 +70,12 @@ class Solver(module.Solver):
         parameters.extend(self.network.global_hints.parameters())
         parameters.extend(self.network.out.parameters())
 
+        if self.derived_config["optimize_bottleneck"]:
+            parameters.extend(self.network.conv4.parameters())
+            parameters.extend(self.network.conv5.parameters())
+            parameters.extend(self.network.conv6.parameters())
+            parameters.extend(self.network.conv7.parameters())
+
         self.optimizer = optimizer_class(parameters, **optimizer_data['args'])
 
         if "base_optimizer" in self.derived_config:

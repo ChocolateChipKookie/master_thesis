@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{27}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -102,6 +102,10 @@ R.~Fergus L.~Fei-Fei and P.~Perona.
   incremental Bayesian approach tested on 101 object categories}.
 \newblock \emph{IEEE. CVPR 2004}, 2004.
 
+\bibitem[LeCun and Cortes()]{lecun2010mnist}
+Yann LeCun and Corinna Cortes.
+\newblock Mnist handwritten digit database.
+
 \bibitem[Levin et~al.(2004)Levin, Lischinski, and Weiss]{levin2004colorization}
 Anat Levin, Dani Lischinski, and Yair Weiss.
 \newblock Colorization using optimization.
@@ -118,11 +122,11 @@ Qing Luan, Fang Wen, Daniel Cohen-Or, Lin Liang, Ying-Qing Xu, and Heung-Yeung
 \newblock ISBN 978-3-905673-52-4.
 \newblock \doi{10.2312/EGWR/EGSR07/309-320}.
 
-\bibitem[Nazeri and Ng(2018)]{nazeri2018gan}
-Kamyar Nazeri and Eric Ng.
-\newblock Image colorization with generative adversarial networks.
-\newblock \emph{CoRR}, abs/1803.05400, 2018.
-\newblock URL \url{http://arxiv.org/abs/1803.05400}.
+\bibitem[Mirza and Osindero(2014)]{mirza2014cgan}
+Mehdi Mirza and Simon Osindero.
+\newblock Conditional generative adversarial nets.
+\newblock \emph{CoRR}, abs/1411.1784, 2014.
+\newblock URL \url{http://arxiv.org/abs/1411.1784}.
 
 \bibitem[Pang et~al.(2021)Pang, Lin, Qin, and Chen]{pang2021imagetoimage}
 Yingxue Pang, Jianxin Lin, Tao Qin, and Zhibo Chen.
@@ -135,6 +139,14 @@ E.~Reinhard, M.~Adhikhmin, B.~Gooch, and P.~Shirley.
 \newblock \emph{IEEE Computer Graphics and Applications}, 21\penalty0
   (5):\penalty0 34--41, 2001.
 \newblock \doi{10.1109/38.946629}.
+
+\bibitem[Salimans et~al.(2016)Salimans, Goodfellow, Zaremba, Cheung, Radford,
+  and Chen]{salimans2016improved_gans}
+Tim Salimans, Ian~J. Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford,
+  and Xi~Chen.
+\newblock Improved techniques for training gans.
+\newblock \emph{CoRR}, abs/1606.03498, 2016.
+\newblock URL \url{http://arxiv.org/abs/1606.03498}.
 
 \bibitem[Simonyan and Zisserman(2015)]{simonyan2015vgg}
 Karen Simonyan and Andrew Zisserman.

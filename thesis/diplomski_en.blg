@@ -6,45 +6,48 @@ Database file #1: literatura.bib
 Warning--empty journal in krizhevskycifar
 Warning--empty year in krizhevskycifar
 Warning--empty year in krizhevskycifar
-You've used 25 entries,
+Warning--empty journal in lecun2010mnist
+Warning--empty year in lecun2010mnist
+Warning--empty year in lecun2010mnist
+You've used 27 entries,
             2773 wiz_defined-function locations,
-            740 strings with 9636 characters,
-and the built_in function-call counts, 11773 in all, are:
-= -- 1005
-> -- 790
-< -- 12
-+ -- 263
-- -- 238
-* -- 959
-:= -- 1842
-add.period$ -- 88
-call.type$ -- 25
-change.case$ -- 149
-chr.to.int$ -- 25
-cite$ -- 53
-duplicate$ -- 530
-empty$ -- 928
-format.name$ -- 276
-if$ -- 2461
+            749 strings with 9941 characters,
+and the built_in function-call counts, 12715 in all, are:
+= -- 1081
+> -- 868
+< -- 13
++ -- 289
+- -- 262
+* -- 1041
+:= -- 1995
+add.period$ -- 94
+call.type$ -- 27
+change.case$ -- 163
+chr.to.int$ -- 27
+cite$ -- 60
+duplicate$ -- 569
+empty$ -- 989
+format.name$ -- 304
+if$ -- 2649
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 22
-newline$ -- 143
-num.names$ -- 106
-pop$ -- 324
+missing$ -- 24
+newline$ -- 153
+num.names$ -- 114
+pop$ -- 355
 preamble$ -- 1
-purify$ -- 126
+purify$ -- 138
 quote$ -- 0
-skip$ -- 412
+skip$ -- 444
 stack$ -- 0
-substring$ -- 235
-swap$ -- 52
+substring$ -- 239
+swap$ -- 53
 text.length$ -- 2
 text.prefix$ -- 1
 top$ -- 0
-type$ -- 270
-warning$ -- 3
-while$ -- 89
+type$ -- 292
+warning$ -- 6
+while$ -- 95
 width$ -- 0
-write$ -- 341
-(There were 3 warnings)
+write$ -- 365
+(There were 6 warnings)

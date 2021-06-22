@@ -151,6 +151,6 @@ def plot_gan():
     plt.show()
 
 if __name__ == "__main__":
-    plot_colorful()
+    plot_gan()
 
 

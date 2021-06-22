@@ -86,6 +86,7 @@
 \newlabel{fig:color4}{{3.4}{3}}
 \citation{diederik2015adam}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Training}{4}\protected@file@percent }
+\newlabel{sec:colorful_training}{{3.1.3}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces  The image is first resized to a size where the shorter of the two sides is $256$ pixels in length, afterwards a $256\times 256$ square is randomly cropped out of the resized image\relax }}{4}\protected@file@percent }
 \newlabel{fig:crop}{{3.5}{4}}
 \citation{zhang2016colorful}
@@ -97,28 +98,44 @@
 \citation{tantithamthavorn2020rebalancing}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Results}{6}\protected@file@percent }
 \citation{goodfellow2014generative}
-\citation{nazeri2018gan}
-\citation{isola2017pix2pix}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{7}\protected@file@percent }
 \newlabel{sec:gan}{{3.2}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Architecture}{7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Generative adversarial networks}{7}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Analogy for the way GANs work\relax }}{7}\protected@file@percent }
 \newlabel{fig:museum}{{3.7}{7}}
-\citation{goodfellow2017nips}
+\citation{mirza2014cgan}
+\citation{lecun2010mnist}
 \citation{goodfellow2014generative}
-\@writefile{toc}{\contentsline {subsubsection}{Conditional GAN}{viii}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Generator}{viii}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Discriminator}{viii}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Training}{viii}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Results}{viii}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{viii}\protected@file@percent }
-\newlabel{sec:ideep}{{3.3}{viii}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Architecture}{viii}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{viii}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Global hints}{ix}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Training}{ix}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Results}{ix}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces A successful result of a GAN trained on the MNIST dataset on the left, and an unsuccessful attempt that ended up in mode collapse on the right\relax }}{8}\protected@file@percent }
+\newlabel{fig:gan_mnist}{{3.8}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{Conditional GAN}{8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Generating fake hand-written digits based on the MNIST dataset using the cGAN framework. Digits in the same row are generated using the same latent vector (seed), and demonstrate similar characteristics\relax }}{9}\protected@file@percent }
+\newlabel{fig:cgan_mnist}{{3.9}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{Generator}{9}\protected@file@percent }
+\citation{isola2017pix2pix}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces The U-Net architecture of the model used for the generator, the short connection is done by concatenating the features from the encoder to the de-convoluted features of the previous layer in the decoder.\relax }}{10}\protected@file@percent }
+\newlabel{fig:architecture_gan}{{3.10}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{Discriminator}{10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces The patch-GAN discriminator architecture\relax }}{10}\protected@file@percent }
+\newlabel{fig:architecture_gan_discriminator}{{3.11}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces The patch-GAN discriminator architecture\relax }}{11}\protected@file@percent }
+\newlabel{fig:architecture_gan_full}{{3.12}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Training}{11}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Training step for the \textit  {Colorful Image Colorization} model\relax }}{11}\protected@file@percent }
+\newlabel{alg:gan}{{2}{11}}
+\citation{goodfellow2017nips}
+\citation{salimans2016improved_gans}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Healthy back and forth between the generator and the discriminator. Discriminator error on real samples in red, and on fake samples in blue.\relax }}{12}\protected@file@percent }
+\newlabel{fig:gan_plot}{{3.13}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Results}{xiii}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{xiii}\protected@file@percent }
+\newlabel{sec:ideep}{{3.3}{xiii}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Architecture}{xiii}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{xiii}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Global hints}{xiii}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Training}{xiii}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Results}{xiii}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Related work}{i}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -144,14 +161,16 @@
 \bibcite{diederik2015adam}{{13}{2015}{{Kingma and Ba}}{{}}}
 \bibcite{krizhevskycifar}{{14}{}{{Krizhevsky et~al.}}{{Krizhevsky, Nair, and Hinton}}}
 \bibcite{fei2004caltech}{{15}{2004}{{L.~Fei-Fei and Perona}}{{}}}
-\bibcite{levin2004colorization}{{16}{2004}{{Levin et~al.}}{{Levin, Lischinski, and Weiss}}}
-\bibcite{luan2007colorization}{{17}{2007}{{Luan et~al.}}{{Luan, Wen, Cohen-Or, Liang, Xu, and Shum}}}
-\bibcite{nazeri2018gan}{{18}{2018}{{Nazeri and Ng}}{{}}}
-\bibcite{pang2021imagetoimage}{{19}{2021}{{Pang et~al.}}{{Pang, Lin, Qin, and Chen}}}
-\bibcite{reinhard2001colorization}{{20}{2001}{{Reinhard et~al.}}{{Reinhard, Adhikhmin, Gooch, and Shirley}}}
-\bibcite{simonyan2015vgg}{{21}{2015}{{Simonyan and Zisserman}}{{}}}
-\bibcite{tantithamthavorn2020rebalancing}{{22}{2020}{{Tantithamthavorn et~al.}}{{Tantithamthavorn, Hassan, and Matsumoto}}}
-\bibcite{yu2016atrous}{{23}{2016}{{Yu and Koltun}}{{}}}
-\bibcite{zhang2016colorful}{{24}{2016}{{Zhang et~al.}}{{Zhang, Isola, and Efros}}}
-\bibcite{zhou2017places}{{25}{2017}{{Zhou et~al.}}{{Zhou, Lapedriza, Khosla, Oliva, and Torralba}}}
+\bibcite{lecun2010mnist}{{16}{}{{LeCun and Cortes}}{{}}}
+\bibcite{levin2004colorization}{{17}{2004}{{Levin et~al.}}{{Levin, Lischinski, and Weiss}}}
+\bibcite{luan2007colorization}{{18}{2007}{{Luan et~al.}}{{Luan, Wen, Cohen-Or, Liang, Xu, and Shum}}}
+\bibcite{mirza2014cgan}{{19}{2014}{{Mirza and Osindero}}{{}}}
+\bibcite{pang2021imagetoimage}{{20}{2021}{{Pang et~al.}}{{Pang, Lin, Qin, and Chen}}}
+\bibcite{reinhard2001colorization}{{21}{2001}{{Reinhard et~al.}}{{Reinhard, Adhikhmin, Gooch, and Shirley}}}
+\bibcite{salimans2016improved_gans}{{22}{2016}{{Salimans et~al.}}{{Salimans, Goodfellow, Zaremba, Cheung, Radford, and Chen}}}
+\bibcite{simonyan2015vgg}{{23}{2015}{{Simonyan and Zisserman}}{{}}}
+\bibcite{tantithamthavorn2020rebalancing}{{24}{2020}{{Tantithamthavorn et~al.}}{{Tantithamthavorn, Hassan, and Matsumoto}}}
+\bibcite{yu2016atrous}{{25}{2016}{{Yu and Koltun}}{{}}}
+\bibcite{zhang2016colorful}{{26}{2016}{{Zhang et~al.}}{{Zhang, Isola, and Efros}}}
+\bibcite{zhou2017places}{{27}{2017}{{Zhou et~al.}}{{Zhou, Lapedriza, Khosla, Oliva, and Torralba}}}
 \bibstyle{plainnat}

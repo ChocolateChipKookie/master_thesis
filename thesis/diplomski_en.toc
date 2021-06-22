@@ -17,17 +17,17 @@
 \contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{7}%
 \contentsline {subsection}{\numberline {3.2.1}Architecture}{7}%
 \contentsline {subsubsection}{Generative adversarial networks}{7}%
-\contentsline {subsubsection}{Conditional GAN}{viii}%
-\contentsline {subsubsection}{Generator}{viii}%
-\contentsline {subsubsection}{Discriminator}{viii}%
-\contentsline {subsection}{\numberline {3.2.2}Training}{viii}%
-\contentsline {subsection}{\numberline {3.2.3}Results}{viii}%
-\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{viii}%
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{viii}%
-\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{viii}%
-\contentsline {subsection}{\numberline {3.3.3}Global hints}{ix}%
-\contentsline {subsection}{\numberline {3.3.4}Training}{ix}%
-\contentsline {subsection}{\numberline {3.3.5}Results}{ix}%
+\contentsline {subsubsection}{Conditional GAN}{8}%
+\contentsline {subsubsection}{Generator}{9}%
+\contentsline {subsubsection}{Discriminator}{10}%
+\contentsline {subsection}{\numberline {3.2.2}Training}{11}%
+\contentsline {subsection}{\numberline {3.2.3}Results}{xiii}%
+\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{xiii}%
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{xiii}%
+\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{xiii}%
+\contentsline {subsection}{\numberline {3.3.3}Global hints}{xiii}%
+\contentsline {subsection}{\numberline {3.3.4}Training}{xiii}%
+\contentsline {subsection}{\numberline {3.3.5}Results}{xiii}%
 \contentsline {chapter}{\numberline {4}Related work}{i}%
 \contentsline {section}{\numberline {4.1}Related work}{i}%
 \contentsline {chapter}{\numberline {5}Conclusion}{i}%

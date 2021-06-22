@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.2.17)  21 JUN 2021 14:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.2.17)  22 JUN 2021 15:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -269,35 +269,252 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip57
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks30
+\pgfutil@tempdima=\dimen177
+\pgfutil@tempdimb=\dimen178
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box50
+ (/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
+))
+Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks33
+))
+\pgf@x=\dimen179
+\pgf@y=\dimen180
+\pgf@xa=\dimen181
+\pgf@ya=\dimen182
+\pgf@xb=\dimen183
+\pgf@yb=\dimen184
+\pgf@xc=\dimen185
+\pgf@yc=\dimen186
+\pgf@xd=\dimen187
+\pgf@yd=\dimen188
+\w@pgf@writea=\write3
+\r@pgf@reada=\read4
+\c@pgf@counta=\count277
+\c@pgf@countb=\count278
+\c@pgf@countc=\count279
+\c@pgf@countd=\count280
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
+\pgf@sys@id@count=\count281
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2020/01/08 v3.1.5b (3.1.5b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfsyssoftpath@smallbuffer@items=\count282
+\pgfsyssoftpath@bigbuffer@items=\count283
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen189
+\pgfmath@count=\count284
+\pgfmath@box=\box51
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count285
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@picminx=\dimen190
+\pgf@picmaxx=\dimen191
+\pgf@picminy=\dimen192
+\pgf@picmaxy=\dimen193
+\pgf@pathminx=\dimen194
+\pgf@pathmaxx=\dimen195
+\pgf@pathminy=\dimen196
+\pgf@pathmaxy=\dimen197
+\pgf@xx=\dimen198
+\pgf@xy=\dimen199
+\pgf@yx=\dimen256
+\pgf@yy=\dimen257
+\pgf@zx=\dimen258
+\pgf@zy=\dimen259
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@path@lastx=\dimen260
+\pgf@path@lasty=\dimen261
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@shorten@end@additional=\dimen262
+\pgf@shorten@start@additional=\dimen263
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfpic=\box52
+\pgf@hbox=\box53
+\pgf@layerbox@main=\box54
+\pgf@picture@serial@count=\count286
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgflinewidth=\dimen264
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@pt@x=\dimen265
+\pgf@pt@y=\dimen266
+\pgf@pt@temp=\dimen267
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowsep=\dimen268
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@max=\dimen269
+\pgf@sys@shading@range@num=\count287
+\pgf@shadingcount=\count288
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfexternal@startupbox=\box55
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodeparttextbox=\box56
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@nodesepstart=\dimen270
+\pgf@nodesepend=\dimen271
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen272
+\pgffor@skip=\dimen273
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@plot@mark@count=\count289
+\pgfplotmarksize=\dimen274
+)
+\tikz@lastx=\dimen275
+\tikz@lasty=\dimen276
+\tikz@lastxsaved=\dimen277
+\tikz@lastysaved=\dimen278
+\tikz@lastmovetox=\dimen279
+\tikz@lastmovetoy=\dimen280
+\tikzleveldistance=\dimen281
+\tikzsiblingdistance=\dimen282
+\tikz@figbox=\box57
+\tikz@figbox@bg=\box58
+\tikz@tempbox=\box59
+\tikz@tempbox@bg=\box60
+\tikztreelevel=\count290
+\tikznumberofchildren=\count291
+\tikznumberofcurrentchild=\count292
+\tikz@fig@count=\count293
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfmatrixcurrentrow=\count294
+\pgfmatrixcurrentcolumn=\count295
+\pgf@matrix@numberofcolumns=\count296
+)
+\tikz@expandcount=\count297
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count298
+\lst@gtempboxa=\box61
+\lst@token=\toks42
+\lst@length=\count299
+\lst@currlwidth=\dimen283
+\lst@column=\count300
+\lst@pos=\count301
+\lst@lostspace=\dimen284
+\lst@width=\dimen285
+\lst@newlines=\count302
+\lst@lineno=\count303
+\lst@maxwidth=\dimen286
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+\c@lstnumber=\count304
+\lst@skipnumbers=\count305
+\lst@framebox=\box62
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2019/09/10 1.8c listings configuration
+))
+Package: listings 2019/09/10 1.8c (Carsten Heinz)
+ (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
-\c@subfigure=\count277
-\c@subtable=\count278
+\c@subfigure=\count306
+\c@subtable=\count307
 ) (/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.sty
 Package: subfiles 2020/02/14 v1.6 Multi-file projects (package)
  (/usr/share/texlive/texmf-dist/tex/latex/import/import.sty
 Package: import 2009/03/23  v 5.1
 )) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count279
-\l__pdf_internal_box=\box50
+\l__kernel_color_stack_int=\count308
+\l__pdf_internal_box=\box63
 ) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.aux)
 \openout1 = `diplomski_en.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -335,17 +552,17 @@ LaTeX Font Info:    ... okay on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count280
-\scratchdimen=\dimen177
-\scratchbox=\box51
-\nofMPsegments=\count281
-\nofMParguments=\count282
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count283
-\MPscratchDim=\dimen178
-\MPnumerator=\count284
-\makeMPintoPDFobject=\count285
-\everyMPtoPDFconversion=\toks31
+\scratchcounter=\count309
+\scratchdimen=\dimen287
+\scratchbox=\box64
+\nofMPsegments=\count310
+\nofMParguments=\count311
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count312
+\MPscratchDim=\dimen288
+\MPnumerator=\count313
+\makeMPintoPDFobject=\count314
+\everyMPtoPDFconversion=\toks44
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -354,50 +571,53 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 29.
+ ABD: EveryShipout initializing macros
+\c@lstlisting=\count315
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 31.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<./graphics/assignment.pdf, id=8, 597.23125pt x 845.1575pt>
+<./graphics/assignment.pdf, id=11, 597.23125pt x 845.1575pt>
 File: ./graphics/assignment.pdf Graphic file (type pdf)
 <use ./graphics/assignment.pdf>
-Package pdftex.def Info: ./graphics/assignment.pdf  used on input line 34.
+Package pdftex.def Info: ./graphics/assignment.pdf  used on input line 36.
 (pdftex.def)             Requested size: 441.01773pt x 624.10426pt.
  (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/thanks.tex [1 <./graphics/assignment.pdf>]) [4] (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.toc [5
 
 ])
-\tf@toc=\write3
-\openout3 = `diplomski_en.toc'.
+\tf@toc=\write4
+\openout4 = `diplomski_en.toc'.
 
  (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/introduction.tex [6]
 Chapter 1.
-<./graphics/img/hand_colored.jpg, id=29, 321.2pt x 255.95625pt>
+<./graphics/img/hand_colored.jpg, id=32, 321.2pt x 255.95625pt>
 File: ./graphics/img/hand_colored.jpg Graphic file (type jpg)
 <use ./graphics/img/hand_colored.jpg>
 Package pdftex.def Info: ./graphics/img/hand_colored.jpg  used on input line 31.
 (pdftex.def)             Requested size: 238.1466pt x 189.77959pt.
-<./graphics/img/colorization/house_original.jpg, id=30, 2055.68pt x 1541.76pt>
+<./graphics/img/colorization/house_original.jpg, id=33, 2055.68pt x 1541.76pt>
 File: ./graphics/img/colorization/house_original.jpg Graphic file (type jpg)
 <use ./graphics/img/colorization/house_original.jpg>
 Package pdftex.def Info: ./graphics/img/colorization/house_original.jpg  used on input line 48.
 (pdftex.def)             Requested size: 127.01514pt x 95.25407pt.
-<./graphics/img/colorization/house_grayscale.jpg, id=31, 2055.68pt x 1541.76pt>
+<./graphics/img/colorization/house_grayscale.jpg, id=34, 2055.68pt x 1541.76pt>
 File: ./graphics/img/colorization/house_grayscale.jpg Graphic file (type jpg)
 <use ./graphics/img/colorization/house_grayscale.jpg>
 Package pdftex.def Info: ./graphics/img/colorization/house_grayscale.jpg  used on input line 54.
 (pdftex.def)             Requested size: 127.01514pt x 95.25407pt.
-<./graphics/img/colorization/house_colorized.jpg, id=32, 2055.68pt x 1541.76pt>
+<./graphics/img/colorization/house_colorized.jpg, id=35, 2055.68pt x 1541.76pt>
 File: ./graphics/img/colorization/house_colorized.jpg Graphic file (type jpg)
 <use ./graphics/img/colorization/house_colorized.jpg>
 Package pdftex.def Info: ./graphics/img/colorization/house_colorized.jpg  used on input line 60.
@@ -406,7 +626,7 @@ Package pdftex.def Info: ./graphics/img/colorization/house_colorized.jpg  used o
 
  <./graphics/img/hand_colored.jpg>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/base.tex [2 <./graphics/img/colorization/house_original.jpg> <./graphics/img/colorization/house_grayscale.jpg> <./graphics/img/colorization/house_colorized.jpg>]
 Chapter 2.
-<./graphics/img/alim_khan.jpg, id=40, 1027.84pt x 679.53876pt>
+<./graphics/img/alim_khan.jpg, id=43, 1027.84pt x 679.53876pt>
 File: ./graphics/img/alim_khan.jpg Graphic file (type jpg)
 <use ./graphics/img/alim_khan.jpg>
 Package pdftex.def Info: ./graphics/img/alim_khan.jpg  used on input line 33.
@@ -414,112 +634,112 @@ Package pdftex.def Info: ./graphics/img/alim_khan.jpg  used on input line 33.
 [1
 
  <./graphics/img/alim_khan.jpg>]
-<./graphics/plot/lab/20.png, id=52, 642.4pt x 481.8pt>
+<./graphics/plot/lab/20.png, id=55, 642.4pt x 481.8pt>
 File: ./graphics/plot/lab/20.png Graphic file (type png)
 <use ./graphics/plot/lab/20.png>
 Package pdftex.def Info: ./graphics/plot/lab/20.png  used on input line 80.
 (pdftex.def)             Requested size: 105.84666pt x 79.38329pt.
-<./graphics/plot/lab/40.png, id=53, 642.4pt x 481.8pt>
+<./graphics/plot/lab/40.png, id=56, 642.4pt x 481.8pt>
 File: ./graphics/plot/lab/40.png Graphic file (type png)
 <use ./graphics/plot/lab/40.png>
 Package pdftex.def Info: ./graphics/plot/lab/40.png  used on input line 84.
 (pdftex.def)             Requested size: 105.84666pt x 79.38329pt.
-<./graphics/plot/lab/60.png, id=54, 642.4pt x 481.8pt>
+<./graphics/plot/lab/60.png, id=57, 642.4pt x 481.8pt>
 File: ./graphics/plot/lab/60.png Graphic file (type png)
 <use ./graphics/plot/lab/60.png>
 Package pdftex.def Info: ./graphics/plot/lab/60.png  used on input line 88.
 (pdftex.def)             Requested size: 105.84666pt x 79.38329pt.
-<./graphics/plot/lab/80.png, id=55, 642.4pt x 481.8pt>
+<./graphics/plot/lab/80.png, id=58, 642.4pt x 481.8pt>
 File: ./graphics/plot/lab/80.png Graphic file (type png)
 <use ./graphics/plot/lab/80.png>
 Package pdftex.def Info: ./graphics/plot/lab/80.png  used on input line 92.
 (pdftex.def)             Requested size: 105.84666pt x 79.38329pt.
-<./graphics/img/lab_channels/san_g.png, id=56, 803.0pt x 602.25pt>
+<./graphics/img/lab_channels/san_g.png, id=59, 803.0pt x 602.25pt>
 File: ./graphics/img/lab_channels/san_g.png Graphic file (type png)
 <use ./graphics/img/lab_channels/san_g.png>
 Package pdftex.def Info: ./graphics/img/lab_channels/san_g.png  used on input line 110.
 (pdftex.def)             Requested size: 132.30666pt x 99.22911pt.
-<./graphics/img/lab_channels/san_g_gs.png, id=57, 803.0pt x 602.25pt>
+<./graphics/img/lab_channels/san_g_gs.png, id=60, 803.0pt x 602.25pt>
 File: ./graphics/img/lab_channels/san_g_gs.png Graphic file (type png)
 <use ./graphics/img/lab_channels/san_g_gs.png>
 Package pdftex.def Info: ./graphics/img/lab_channels/san_g_gs.png  used on input line 115.
 (pdftex.def)             Requested size: 132.30666pt x 99.22911pt.
-<./graphics/img/lab_channels/san_g_color.png, id=58, 803.0pt x 602.25pt>
+<./graphics/img/lab_channels/san_g_color.png, id=61, 803.0pt x 602.25pt>
 File: ./graphics/img/lab_channels/san_g_color.png Graphic file (type png)
 <use ./graphics/img/lab_channels/san_g_color.png>
 Package pdftex.def Info: ./graphics/img/lab_channels/san_g_color.png  used on input line 120.
 (pdftex.def)             Requested size: 132.30666pt x 99.22911pt.
  [2 <./graphics/plot/lab/20.png (PNG copy)> <./graphics/plot/lab/40.png (PNG copy)> <./graphics/plot/lab/60.png (PNG copy)> <./graphics/plot/lab/80.png (PNG copy)> <./graphics/img/lab_channels/san_g.png (PNG copy)> <./graphics/img/lab_channels/san_g_gs.png (PNG copy)> <./graphics/img/lab_channels/san_g_color.png (PNG copy)>]
-<./graphics/img/multimodality/vespa_orig.jpg, id=62, 2022.55624pt x 2429.075pt>
+<./graphics/img/multimodality/vespa_orig.jpg, id=65, 2022.55624pt x 2429.075pt>
 File: ./graphics/img/multimodality/vespa_orig.jpg Graphic file (type jpg)
 <use ./graphics/img/multimodality/vespa_orig.jpg>
 Package pdftex.def Info: ./graphics/img/multimodality/vespa_orig.jpg  used on input line 182.
 (pdftex.def)             Requested size: 141.12889pt x 169.45958pt.
-<./graphics/img/multimodality/vespa_gs.jpg, id=63, 2022.55624pt x 2429.075pt>
+<./graphics/img/multimodality/vespa_gs.jpg, id=66, 2022.55624pt x 2429.075pt>
 File: ./graphics/img/multimodality/vespa_gs.jpg Graphic file (type jpg)
 <use ./graphics/img/multimodality/vespa_gs.jpg>
 Package pdftex.def Info: ./graphics/img/multimodality/vespa_gs.jpg  used on input line 186.
 (pdftex.def)             Requested size: 141.12889pt x 169.45958pt.
-<./graphics/img/multimodality/vespa_colorful.jpg, id=64, 2022.55624pt x 2429.075pt>
+<./graphics/img/multimodality/vespa_colorful.jpg, id=67, 2022.55624pt x 2429.075pt>
 File: ./graphics/img/multimodality/vespa_colorful.jpg Graphic file (type jpg)
 <use ./graphics/img/multimodality/vespa_colorful.jpg>
 Package pdftex.def Info: ./graphics/img/multimodality/vespa_colorful.jpg  used on input line 190.
 (pdftex.def)             Requested size: 141.12889pt x 169.45958pt.
-<./graphics/img/multimodality/sunset.jpg, id=65, 1710.39pt x 1134.48843pt>
+<./graphics/img/multimodality/sunset.jpg, id=68, 1710.39pt x 1134.48843pt>
 File: ./graphics/img/multimodality/sunset.jpg Graphic file (type jpg)
 <use ./graphics/img/multimodality/sunset.jpg>
 Package pdftex.def Info: ./graphics/img/multimodality/sunset.jpg  used on input line 200.
 (pdftex.def)             Requested size: 141.12889pt x 93.59991pt.
-<./graphics/img/multimodality/sunset_gs.png, id=66, 1710.39pt x 1134.48843pt>
+<./graphics/img/multimodality/sunset_gs.png, id=69, 1710.39pt x 1134.48843pt>
 File: ./graphics/img/multimodality/sunset_gs.png Graphic file (type png)
 <use ./graphics/img/multimodality/sunset_gs.png>
 Package pdftex.def Info: ./graphics/img/multimodality/sunset_gs.png  used on input line 204.
 (pdftex.def)             Requested size: 141.12889pt x 93.59991pt.
-<./graphics/img/multimodality/sunset_colorized.jpg, id=67, 2280.52pt x 1512.65125pt>
+<./graphics/img/multimodality/sunset_colorized.jpg, id=70, 2280.52pt x 1512.65125pt>
 File: ./graphics/img/multimodality/sunset_colorized.jpg Graphic file (type jpg)
 <use ./graphics/img/multimodality/sunset_colorized.jpg>
 Package pdftex.def Info: ./graphics/img/multimodality/sunset_colorized.jpg  used on input line 208.
 (pdftex.def)             Requested size: 141.12889pt x 93.59413pt.
  [3]
-<./graphics/img/neuron.png, id=71, 313.17pt x 164.615pt>
+<./graphics/img/neuron.png, id=74, 313.17pt x 164.615pt>
 File: ./graphics/img/neuron.png Graphic file (type png)
 <use ./graphics/img/neuron.png>
 Package pdftex.def Info: ./graphics/img/neuron.png  used on input line 236.
 (pdftex.def)             Requested size: 213.78902pt x 112.37349pt.
-<./graphics/img/simple_nn.pdf, id=73, 409.96964pt x 307.66505pt>
+<./graphics/img/simple_nn.pdf, id=76, 409.96964pt x 307.66505pt>
 File: ./graphics/img/simple_nn.pdf Graphic file (type pdf)
 <use ./graphics/img/simple_nn.pdf>
 Package pdftex.def Info: ./graphics/img/simple_nn.pdf  used on input line 240.
 (pdftex.def)             Requested size: 149.73463pt x 112.37349pt.
  [4 <./graphics/img/multimodality/vespa_orig.jpg> <./graphics/img/multimodality/vespa_gs.jpg> <./graphics/img/multimodality/vespa_colorful.jpg> <./graphics/img/multimodality/sunset.jpg> <./graphics/img/multimodality/sunset_gs.png> <./graphics/img/multimodality/sunset_colorized.jpg>] [5 <./graphics/img/neuron.png> <./graphics/img/simple_nn.pdf>]
-<./graphics/architecture/unet.pdf, id=95, 1131.3065pt x 1066.88492pt>
+<./graphics/architecture/unet.pdf, id=98, 1131.3065pt x 1066.88492pt>
 File: ./graphics/architecture/unet.pdf Graphic file (type pdf)
 <use ./graphics/architecture/unet.pdf>
 Package pdftex.def Info: ./graphics/architecture/unet.pdf  used on input line 293.
 (pdftex.def)             Requested size: 286.65883pt x 270.33458pt.
  [6 <./graphics/architecture/unet.pdf>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/models.tex [7]
 Chapter 3.
-<./graphics/plot/lab_bins/20.png, id=126, 461.725pt x 461.725pt>
+<./graphics/plot/lab_bins/20.png, id=129, 461.725pt x 461.725pt>
 File: ./graphics/plot/lab_bins/20.png Graphic file (type png)
 <use ./graphics/plot/lab_bins/20.png>
 Package pdftex.def Info: ./graphics/plot/lab_bins/20.png  used on input line 23.
 (pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
-<./graphics/plot/lab_bins/40.png, id=127, 461.725pt x 461.725pt>
+<./graphics/plot/lab_bins/40.png, id=130, 461.725pt x 461.725pt>
 File: ./graphics/plot/lab_bins/40.png Graphic file (type png)
 <use ./graphics/plot/lab_bins/40.png>
 Package pdftex.def Info: ./graphics/plot/lab_bins/40.png  used on input line 27.
 (pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
-<./graphics/plot/lab_bins/60.png, id=128, 461.725pt x 461.725pt>
+<./graphics/plot/lab_bins/60.png, id=131, 461.725pt x 461.725pt>
 File: ./graphics/plot/lab_bins/60.png Graphic file (type png)
 <use ./graphics/plot/lab_bins/60.png>
 Package pdftex.def Info: ./graphics/plot/lab_bins/60.png  used on input line 31.
 (pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
-<./graphics/plot/lab_bins/80.png, id=129, 461.725pt x 461.725pt>
+<./graphics/plot/lab_bins/80.png, id=132, 461.725pt x 461.725pt>
 File: ./graphics/plot/lab_bins/80.png Graphic file (type png)
 <use ./graphics/plot/lab_bins/80.png>
 Package pdftex.def Info: ./graphics/plot/lab_bins/80.png  used on input line 35.
 (pdftex.def)             Requested size: 105.84666pt x 105.84224pt.
-<./graphics/architecture/colorful.pdf, id=130, 1088.4996pt x 386.75491pt>
+<./graphics/architecture/colorful.pdf, id=133, 1088.4996pt x 386.75491pt>
 File: ./graphics/architecture/colorful.pdf Graphic file (type pdf)
 <use ./graphics/architecture/colorful.pdf>
 Package pdftex.def Info: ./graphics/architecture/colorful.pdf  used on input line 49.
@@ -527,62 +747,101 @@ Package pdftex.def Info: ./graphics/architecture/colorful.pdf  used on input lin
 [1
 
  <./graphics/plot/lab_bins/20.png> <./graphics/plot/lab_bins/40.png> <./graphics/plot/lab_bins/60.png> <./graphics/plot/lab_bins/80.png>] [2 <./graphics/architecture/colorful.pdf>]
-<./graphics/img/colorful/temperature/100.jpeg, id=151, 1204.5pt x 1606.0pt>
+<./graphics/img/colorful/temperature/100.jpeg, id=154, 1204.5pt x 1606.0pt>
 File: ./graphics/img/colorful/temperature/100.jpeg Graphic file (type jpg)
 <use ./graphics/img/colorful/temperature/100.jpeg>
 Package pdftex.def Info: ./graphics/img/colorful/temperature/100.jpeg  used on input line 116.
 (pdftex.def)             Requested size: 83.79443pt x 111.72083pt.
-<./graphics/img/colorful/temperature/70.jpeg, id=152, 1204.5pt x 1606.0pt>
+<./graphics/img/colorful/temperature/70.jpeg, id=155, 1204.5pt x 1606.0pt>
 File: ./graphics/img/colorful/temperature/70.jpeg Graphic file (type jpg)
 <use ./graphics/img/colorful/temperature/70.jpeg>
 Package pdftex.def Info: ./graphics/img/colorful/temperature/70.jpeg  used on input line 121.
 (pdftex.def)             Requested size: 83.79443pt x 111.72083pt.
-<./graphics/img/colorful/temperature/40.jpeg, id=153, 1204.5pt x 1606.0pt>
+<./graphics/img/colorful/temperature/40.jpeg, id=156, 1204.5pt x 1606.0pt>
 File: ./graphics/img/colorful/temperature/40.jpeg Graphic file (type jpg)
 <use ./graphics/img/colorful/temperature/40.jpeg>
 Package pdftex.def Info: ./graphics/img/colorful/temperature/40.jpeg  used on input line 126.
 (pdftex.def)             Requested size: 83.79443pt x 111.72083pt.
-<./graphics/img/colorful/temperature/20.jpeg, id=154, 1204.5pt x 1606.0pt>
+<./graphics/img/colorful/temperature/20.jpeg, id=157, 1204.5pt x 1606.0pt>
 File: ./graphics/img/colorful/temperature/20.jpeg Graphic file (type jpg)
 <use ./graphics/img/colorful/temperature/20.jpeg>
 Package pdftex.def Info: ./graphics/img/colorful/temperature/20.jpeg  used on input line 131.
 (pdftex.def)             Requested size: 83.79443pt x 111.72083pt.
-<./graphics/img/colorful/temperature/0.jpeg, id=155, 1204.5pt x 1606.0pt>
+<./graphics/img/colorful/temperature/0.jpeg, id=158, 1204.5pt x 1606.0pt>
 File: ./graphics/img/colorful/temperature/0.jpeg Graphic file (type jpg)
 <use ./graphics/img/colorful/temperature/0.jpeg>
 Package pdftex.def Info: ./graphics/img/colorful/temperature/0.jpeg  used on input line 136.
 (pdftex.def)             Requested size: 83.79443pt x 111.72083pt.
-<./graphics/img/lab_channels/nature.png, id=156, 1003.75pt x 667.49374pt>
+<./graphics/img/lab_channels/nature.png, id=159, 1003.75pt x 667.49374pt>
 File: ./graphics/img/lab_channels/nature.png Graphic file (type png)
 <use ./graphics/img/lab_channels/nature.png>
 Package pdftex.def Info: ./graphics/img/lab_channels/nature.png  used on input line 154.
 (pdftex.def)             Requested size: 216.1011pt x 143.70187pt.
-<./graphics/img/lab_channels/nature_4.png, id=157, 1003.75pt x 666.49pt>
+<./graphics/img/lab_channels/nature_4.png, id=160, 1003.75pt x 666.49pt>
 File: ./graphics/img/lab_channels/nature_4.png Graphic file (type png)
 <use ./graphics/img/lab_channels/nature_4.png>
 Package pdftex.def Info: ./graphics/img/lab_channels/nature_4.png  used on input line 158.
 (pdftex.def)             Requested size: 216.1011pt x 143.48578pt.
  [3 <./graphics/img/colorful/temperature/100.jpeg> <./graphics/img/colorful/temperature/70.jpeg> <./graphics/img/colorful/temperature/40.jpeg> <./graphics/img/colorful/temperature/20.jpeg> <./graphics/img/colorful/temperature/0.jpeg> <./graphics/img/lab_channels/nature.png (PNG copy)> <./graphics/img/lab_channels/nature_4.png (PNG copy)>]
-<./graphics/img/colorful/bitmap.png, id=163, 1504.6614pt x 741.4902pt>
-File: ./graphics/img/colorful/bitmap.png Graphic file (type png)
-<use ./graphics/img/colorful/bitmap.png>
-Package pdftex.def Info: ./graphics/img/colorful/bitmap.png  used on input line 182.
+<./graphics/img/colorful/resize.png, id=166, 1504.6614pt x 741.4902pt>
+File: ./graphics/img/colorful/resize.png Graphic file (type png)
+<use ./graphics/img/colorful/resize.png>
+Package pdftex.def Info: ./graphics/img/colorful/resize.png  used on input line 183.
 (pdftex.def)             Requested size: 352.81552pt x 173.86554pt.
- [4 <./graphics/img/colorful/bitmap.png>]
-<./graphics/img/colorful/distribution.png, id=168, 718.685pt x 719.68875pt>
+ [4 <./graphics/img/colorful/resize.png>]
+<./graphics/img/colorful/distribution.png, id=171, 718.685pt x 719.68875pt>
 File: ./graphics/img/colorful/distribution.png Graphic file (type png)
 <use ./graphics/img/colorful/distribution.png>
-Package pdftex.def Info: ./graphics/img/colorful/distribution.png  used on input line 235.
+Package pdftex.def Info: ./graphics/img/colorful/distribution.png  used on input line 236.
 (pdftex.def)             Requested size: 220.50887pt x 220.81705pt.
  [5 <./graphics/img/colorful/distribution.png>] [6]
-<./graphics/img/gan/museum.pdf, id=177, 950.80212pt x 548.04744pt>
+<./graphics/img/gan/museum.pdf, id=180, 950.80212pt x 548.04744pt>
 File: ./graphics/img/gan/museum.pdf Graphic file (type pdf)
 <use ./graphics/img/gan/museum.pdf>
 Package pdftex.def Info: ./graphics/img/gan/museum.pdf  used on input line 295.
 (pdftex.def)             Requested size: 308.71106pt x 177.94604pt.
  [7
 
- <./graphics/img/gan/museum.pdf>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/related.tex [8] [9]
+ <./graphics/img/gan/museum.pdf>]
+<./graphics/img/gan/mnist.png, id=224, 642.4pt x 481.8pt>
+File: ./graphics/img/gan/mnist.png Graphic file (type png)
+<use ./graphics/img/gan/mnist.png>
+Package pdftex.def Info: ./graphics/img/gan/mnist.png  used on input line 330.
+(pdftex.def)             Requested size: 216.1011pt x 162.07483pt.
+<./graphics/img/gan/mnist_collapsed.png, id=225, 642.4pt x 481.8pt>
+File: ./graphics/img/gan/mnist_collapsed.png Graphic file (type png)
+<use ./graphics/img/gan/mnist_collapsed.png>
+Package pdftex.def Info: ./graphics/img/gan/mnist_collapsed.png  used on input line 334.
+(pdftex.def)             Requested size: 216.1011pt x 162.07483pt.
+<./graphics/img/gan/mnist_cgan.png, id=226, 1606.0pt x 1606.0pt>
+File: ./graphics/img/gan/mnist_cgan.png Graphic file (type png)
+<use ./graphics/img/gan/mnist_cgan.png>
+Package pdftex.def Info: ./graphics/img/gan/mnist_cgan.png  used on input line 353.
+(pdftex.def)             Requested size: 220.50887pt x 220.50098pt.
+ [8 <./graphics/img/gan/mnist.png (PNG copy)> <./graphics/img/gan/mnist_collapsed.png (PNG copy)>]
+<./graphics/architecture/gan_generator.pdf, id=230, 1006.84254pt x 403.54865pt>
+File: ./graphics/architecture/gan_generator.pdf Graphic file (type pdf)
+<use ./graphics/architecture/gan_generator.pdf>
+Package pdftex.def Info: ./graphics/architecture/gan_generator.pdf  used on input line 381.
+(pdftex.def)             Requested size: 441.01773pt x 176.76144pt.
+<./graphics/architecture/gan_discriminator.pdf, id=231, 405.47687pt x 386.7499pt>
+File: ./graphics/architecture/gan_discriminator.pdf Graphic file (type pdf)
+<use ./graphics/architecture/gan_discriminator.pdf>
+Package pdftex.def Info: ./graphics/architecture/gan_discriminator.pdf  used on input line 402.
+(pdftex.def)             Requested size: 220.50887pt x 210.32306pt.
+ [9 <./graphics/img/gan/mnist_cgan.png (PNG copy)>]
+<./graphics/architecture/gan_full.pdf, id=235, 1423.22511pt x 460.45123pt>
+File: ./graphics/architecture/gan_full.pdf Graphic file (type pdf)
+<use ./graphics/architecture/gan_full.pdf>
+Package pdftex.def Info: ./graphics/architecture/gan_full.pdf  used on input line 416.
+(pdftex.def)             Requested size: 441.01773pt x 142.67517pt.
+ [10 <./graphics/architecture/gan_generator.pdf> <./graphics/architecture/gan_discriminator.pdf>] [11 <./graphics/architecture/gan_full.pdf>]
+<./graphics/img/gan/gan_plot.png, id=288, 557.08125pt x 205.76875pt>
+File: ./graphics/img/gan/gan_plot.png Graphic file (type png)
+<use ./graphics/img/gan/gan_plot.png>
+Package pdftex.def Info: ./graphics/img/gan/gan_plot.png  used on input line 482.
+(pdftex.def)             Requested size: 441.01773pt x 162.9009pt.
+ [12 <./graphics/img/gan/gan_plot.png>]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/related.tex [13]
 Chapter 4.
 ) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/conclusion.tex [1
 
@@ -598,18 +857,18 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 ] [3]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/abstract.tex [4]) (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/sazetak.tex) [5] (/home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.aux) ) 
 Here is how much of TeX's memory you used:
- 7108 strings out of 483107
- 109306 string characters out of 5964630
- 347374 words of memory out of 5000000
- 21906 multiletter control sequences out of 15000+600000
- 610591 words of font info for 114 fonts, out of 8000000 for 9000
+ 18754 strings out of 483107
+ 348495 string characters out of 5964630
+ 562469 words of memory out of 5000000
+ 33312 multiletter control sequences out of 15000+600000
+ 611639 words of font info for 117 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 49i,8n,53p,467b,561s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf (29 pages, 16414282 bytes).
+ 60i,8n,60p,473b,577s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/diplomski_en.pdf (33 pages, 19954147 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
- 189 compressed objects within 2 object streams
+ 381 PDF objects out of 1000 (max. 8388607)
+ 241 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 
