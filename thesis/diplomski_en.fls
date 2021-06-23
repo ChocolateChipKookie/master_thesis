@@ -465,6 +465,9 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/./graphics/img/gan/gan_plot.png
 INPUT ./graphics/img/gan/gan_plot.png
 INPUT ./graphics/img/gan/gan_plot.png
+INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/./graphics/architecture/ideep.pdf
+INPUT ./graphics/architecture/ideep.pdf
+INPUT ./graphics/architecture/ideep.pdf
 INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/related.tex
 INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/related.tex
 INPUT /home/kookie/Documents/Faks/diplomski/master_thesis/thesis/chapters/conclusion.tex

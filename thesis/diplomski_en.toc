@@ -21,13 +21,13 @@
 \contentsline {subsubsection}{Generator}{9}%
 \contentsline {subsubsection}{Discriminator}{10}%
 \contentsline {subsection}{\numberline {3.2.2}Training}{11}%
-\contentsline {subsection}{\numberline {3.2.3}Results}{xiii}%
-\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{xiii}%
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{xiii}%
-\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{xiii}%
-\contentsline {subsection}{\numberline {3.3.3}Global hints}{xiii}%
-\contentsline {subsection}{\numberline {3.3.4}Training}{xiii}%
-\contentsline {subsection}{\numberline {3.3.5}Results}{xiii}%
+\contentsline {subsection}{\numberline {3.2.3}Results}{12}%
+\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{13}%
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{13}%
+\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{xv}%
+\contentsline {subsection}{\numberline {3.3.3}Global hints}{xv}%
+\contentsline {subsection}{\numberline {3.3.4}Training}{xv}%
+\contentsline {subsection}{\numberline {3.3.5}Results}{xv}%
 \contentsline {chapter}{\numberline {4}Related work}{i}%
 \contentsline {section}{\numberline {4.1}Related work}{i}%
 \contentsline {chapter}{\numberline {5}Conclusion}{i}%

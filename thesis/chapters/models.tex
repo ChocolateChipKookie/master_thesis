@@ -10,6 +10,7 @@ the architecture described by Zhang et al. in their paper \textit{Colorful Image
 address the inherent problem of multimodality described in section \ref{sec:multimodality}.
 
 \subsection{Architecture}
+\label{sec:colorful_architecture}
 
 The architecture of this model was specifically built to address the problem
 of multimodality we encounter when colorizing. The authors tackled that problem 
@@ -496,19 +497,54 @@ the discriminator, but they generally stay at the same level.
 
 \subsection{Results}
 
+\clearpage
 \section{Interactive Deep Colorization}
 \label{sec:ideep}
 
-- By the same autors as the first model
-- One of 2 models proposed, global hints
-- Nadogradnja prvog modela
-Not fully automated
-- Idea to give the operator a chance to influence the colorization of the image
+The last of the three models analyzed is the \textit{Interactive Deep Colorization}
+model proposed by Zhang et al. in 2017, and it builds on the model described 
+in section \ref{sec:colorful}. It differs from the \textit{Colorful Image Colorization}
+and the GAN-based model in that it is semi-automated. It can work as a fully-automated model, 
+but in general much better results are acheived when the model is operated by a human. 
+
+In the paper two models were proposed, out of which only one was analyzed for this thesis. 
+The selected model gets additional information about the desired colorization in the 
+shape of so-called global hints described in section \ref{sec:global}.
 
 \subsection{Architecture}
-- the first model converted to u net
-- As can be seen from the diagram the first 8 layers are the same
-- additional 2 expansive layers + skip connections and skip convolutions
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\linewidth]{architecture/ideep}
+    \caption{The architecture of the \textit{Interactive Deep Colorization} network. 
+	The base \textit{Colorful Image Colorization} network is highlighted in red, the new 
+	layers are yellow, and the global hints network is colored purple.}
+	\label{fig:architecture_ideep}
+\end{figure}
+
+The architecture of the first model can be seen in the figure \ref{fig:architecture_ideep}, 
+and it is an extended version of the model described in section \ref{sec:colorful_architecture}. 
+In the figure, the \textit{Colorful Image Colorization} model is colored in red, while 
+the new elements are colored yellow/purple. The yellow blocks are the new convolutional 
+blocks, while the purple block is the global hints network that will be further described
+in section \ref{sec:global}.
+
+The model was extended with two convolutional blocks that further upscale the resolution 
+of the output. The problem of the bottleneck, which arose from the information loss in the 
+first three layers, was solved by adding three skip connections between first and last three
+blocks. By adding the skip connections, we essentially converted the VGG-style model to a
+U-Net.
+
+
+Although it is not visible in the diagram, the skip connections were not realized by 
+simply concatenating the output features of the first layers to the inputs of the 
+last layer, but instead the feture transfer was done by addition. But, before adding 
+up the shorted connections, they were first forwarded through a convolutional layer.
+
+
+
+\clearpage
+- additional 2 expansive layers + skip connections and skip convolutions + global hints
 
 \subsection{Transfer learning}
 
@@ -519,7 +555,7 @@ Not fully automated
 - The weights of the trained first model, in the end crucial as the model could not colorize without the initial push
 
 \subsection{Global hints}
-
+\label{sec:global}
 
 
 \subsection{Training}

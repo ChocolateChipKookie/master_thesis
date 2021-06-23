@@ -103,6 +103,7 @@
     },
     "derived": {
       "loss": "torch.nn.HuberLoss",
+      "optimize_bottleneck": false,
       "random_hints": true
     }
   },

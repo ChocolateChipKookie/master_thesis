@@ -7,11 +7,46 @@ from colorful import cielab, encoders
 
 
 class GlobalHints:
-    def __init__(self):
+    def __init__(self, soft=True):
         self.cielab = cielab.LABBins()
-        self.encoder = encoders.HardEncoder(self.cielab)
 
-    def get_global_hints(self, batch, random_saturation=False, random_histogram=False):
+        if soft:
+            self.encoder = encoders.SoftEncoder(self.cielab)
+            self.encode = self.soft_encoded
+        else:
+            self.encoder = encoders.HardEncoder(self.cielab)
+            self.encode = self.hard_encoded
+
+    def soft_encoded(self, batch, random_saturation=False, random_histogram=False):
+        b, n, w, h = batch.shape
+        hints = torch.zeros((b, 316))
+
+        hints[:, :2] = 1
+        if random_saturation:
+            hints[:, 0] = torch.round(torch.rand(b))
+        if random_histogram:
+            hints[:, 1] = torch.round(torch.rand(b))
+
+        for i in range(b):
+            # Skip if both flags are false
+            if hints[i, 0] == 0 and hints[i, 1] == 0:
+                continue
+
+            img = functional.resize(batch[i], [w//4, h//4])
+            if hints[i, 0] > 0.5:
+                rgb = color.lab2rgb(img.permute(1, 2, 0))
+                hsv = color.rgb2hsv(rgb)
+                saturation = hsv[:, :, 1].mean()
+                hints[i, 2] = saturation.item()
+            if hints[i, 1] > 0.5:
+                # Calculate histogram
+                ab = torch.unsqueeze(img[1:], 0)
+                encoded = self.encoder(ab)
+                histogram = torch.sum(encoded, dim=(0, 2, 3))
+                hints[i, 3:] = histogram / torch.sum(histogram)
+        return hints
+
+    def hard_encoded(self, batch, random_saturation=False, random_histogram=False):
         b, n, w, h = batch.shape
         hints = torch.zeros((b, 316))
 
@@ -39,6 +74,9 @@ class GlobalHints:
                 bins = torch.bincount(encoded.view(-1), minlength=313)
                 hints[i, 3:] = bins / torch.sum(bins)
         return hints
+
+    def get_global_hints(self, batch, random_saturation=False, random_histogram=False):
+        return self.encode(batch, random_saturation, random_histogram)
 
     def __call__(self, batch, random_saturation=False, random_histogram=False):
         return self.get_global_hints(batch, random_saturation, random_histogram)
