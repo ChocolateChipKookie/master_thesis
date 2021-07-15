@@ -1,8 +1,147 @@
 \chapter{Conclusion}
-Conclusion.
 
-\section{Possible improvements}
+All the results showcased in this thesis should be taken with a grain of salt, 
+both in the negative, but also in the positive direction. Namely, the training was 
+done with less time and resources than the authors of the referenced papers had.
+So all the trained models probably produce worse results than their original counterparts.
 
-- Add noise to input images when training 
-- Better way to filter dataset
-- 
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/fail/undercolored}
+        \caption{Unsaturated colorization}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/fail/nashville}
+        \caption{Overconfident colorization}
+    \end{subfigure}
+    \caption{Colorization failure cases}
+    \label{fig:fail}
+\end{figure}
+
+On the other hand, in the galleries of the trained models only good examples were 
+showcased. Generally, good colorization with these models is achieved on roughly 50\%
+of the input images. While in most failure cases the output image is is either uncolored 
+or unsaturated, sometimes the colorizer is overconfident in a bad colorization as seen 
+in figure \ref{fig:fail}.
+
+In general two improvements to the training process could be made for all models.
+The first improvement has to do with the dataset. A better dataset could be 
+constructed specifically for this task. It should not contain any monochrome images, 
+and desaturated/oversaturated images should be filtered out as well. 
+
+The second improvement has to do with the preprocessing of the training images. 
+As colorization models usually find the most use in colorizing old photographs, 
+the models should be immune to the slight noise/graininess of the old images. 
+The models trained as a part of this thesis performed worse on old and grainy images
+as they were trained mostly on images taken with digital cameras that had almost no 
+noise. This could simply be fixed by artificially adding noise while preprocessing
+the input training images.
+
+\section{Result Comparison}
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/bw/flag}
+	\end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/colorful/flag}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/gan/flag}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/ideep/flag}
+    \end{subfigure}
+	\begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/bw/jazz}
+	\end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/colorful/jazz}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/gan/jazz}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/ideep/jazz}
+    \end{subfigure}
+	\begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/bw/lumber}
+	\end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/colorful/lumber}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/gan/lumber}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/ideep/lumber}
+    \end{subfigure}
+	\begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/bw/mlk}
+	\end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/colorful/mlk}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/gan/mlk}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/ideep/mlk}
+    \end{subfigure}
+	\begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/bw/nashville}
+	\end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/colorful/nashville}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/gan/nashville}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/ideep/nashville}
+    \end{subfigure}
+	\begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/bw/whitman}
+		\caption{Original grayscale image}
+	\end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/colorful/whitman}
+		\caption{Colorful Image Colorization}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/gan/whitman}
+		\caption{Generative Adversarial Network}
+    \end{subfigure}
+    \begin{subfigure}{.23\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{img/comparison/ideep/whitman}
+		\caption{Interactive Deep Colorization}
+    \end{subfigure}
+\end{figure}

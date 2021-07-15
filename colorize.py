@@ -31,6 +31,8 @@ if __name__ == "__main__":
         config = json.load(file)
 
     device = torch.device("cpu")
+    if torch.cuda.is_available():
+        device = torch.device("cuda:0")
 
     # Create model and load parameters
     model = util.factory(config["colorizer"])
@@ -81,3 +83,6 @@ if __name__ == "__main__":
             rgb = color.lab2rgb(predicted.cpu())
             img = Image.fromarray(np.uint8(rgb*255))
             img.save(save_path)
+
+1394059959
+331411

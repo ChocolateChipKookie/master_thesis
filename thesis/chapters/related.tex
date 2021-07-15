@@ -1,10 +1,31 @@
 \chapter{Related work}
 
+The field of automatic image colorization traces its roots to the early 2000s
+when the first attempts at computer-assisted colorization were made. The paper
+by Reinhard et al. \citep{reinhard2001colorization} suggested a color transfer method
+based on color matching. Not long after, inspired by the paper by Reinhard et al., 
+Welsh et al. proposed a color transfer method that used texture synthesis as the main
+colorization mechanism \citep{welsh2002colorization}. 
 
-\section{Related work}
-    
-- Beginning statistical models
-- Convolutional networks
-- Generative Adversarial networks
-- In the last few years novel approaches: Transformers, cINN
-- Specialized approaches for different use cases
+In 2004 a new approach to colorization was described by Levin et al. 
+\citep{levin2004colorization}. In their paper, the authors described a method of 
+colorization with colored strokes as user inputs. With less than a dozen user inputs the
+algorithm was able to produce plausible images. Until the end of the decade, several 
+new methods of colorization were proposed, but they just refined the already 
+existing algorithms \citep{luan2007colorization}\citep{charpiat2008colorization}.
+
+A common feature among all the mentioned colorization algorithms is that 
+they were data-driven, statistical methods. In the 2010s, with the rapid development 
+of neural networks (and CNNs in particular) that changed, and the focus shifted
+to parametric methods trained on large datasets 
+\citep{cheng2015colorization}\citep{deshpande2015colorization}. The user-guided methods
+no longer needed strokes of color, as points of color became sufficient to nudge 
+the models in the right direction \citep{zhang2017ideep}.
+
+Although user-guided colorization plateaued with the aforementioned CNN 
+models, fully automatic colorization has seen significant progress in the 
+last couple of years. Novel parametric approaches like the 
+\textit{PixColor: Recursive Pixel Colorization} \citep{guadarrama2017colorization},
+generative adversarial networks based models \citep{nazeri2018gan}, and the \textit{Colorization 
+Transformer} \citep{kumar2021colorization}, all attempt to solve the unsolvable by using creative 
+ideas.

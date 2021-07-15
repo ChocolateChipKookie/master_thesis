@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -32,6 +32,14 @@ J.~Deng, W.~Dong, R.~Socher, L.-J. Li, K.~Li, and L.~Fei-Fei.
 \newblock {ImageNet: A Large-Scale Hierarchical Image Database}.
 \newblock In \emph{CVPR09}, 2009.
 
+\bibitem[Deshpande et~al.(2015)Deshpande, Rock, and
+  Forsyth]{deshpande2015colorization}
+Aditya Deshpande, Jason Rock, and David Forsyth.
+\newblock Learning large-scale automatic image colorization.
+\newblock In \emph{2015 IEEE International Conference on Computer Vision
+  (ICCV)}, pages 567--575, 2015.
+\newblock \doi{10.1109/ICCV.2015.72}.
+
 \bibitem[Fukushima(1980)]{fukushima1980neocognitron}
 Kunihiko Fukushima.
 \newblock {Neocognitron: A Self-organizing Neural Network Model for a Mechanism
@@ -48,6 +56,14 @@ Ian Goodfellow.
 Ian~J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David
   Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio.
 \newblock Generative adversarial networks, 2014.
+
+\bibitem[Guadarrama et~al.(2017)Guadarrama, Dahl, Bieber, Norouzi, Shlens, and
+  Murphy]{guadarrama2017colorization}
+Sergio Guadarrama, Ryan Dahl, David Bieber, Mohammad Norouzi, Jonathon Shlens,
+  and Kevin Murphy.
+\newblock Pixcolor: Pixel recursive colorization.
+\newblock \emph{CoRR}, abs/1705.07208, 2017.
+\newblock URL \url{http://arxiv.org/abs/1705.07208}.
 
 \bibitem[Henisch and Henisch(1996)]{henisch1996photograph}
 Heinz~K Henisch and Bridget~Ann Henisch.
@@ -96,6 +112,13 @@ Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton.
 \newblock Cifar-100 (canadian institute for advanced research).
 \newblock URL \url{http://www.cs.toronto.edu/~kriz/cifar.html}.
 
+\bibitem[Kumar et~al.(2021)Kumar, Weissenborn, and
+  Kalchbrenner]{kumar2021colorization}
+Manoj Kumar, Dirk Weissenborn, and Nal Kalchbrenner.
+\newblock Colorization transformer.
+\newblock \emph{CoRR}, abs/2102.04432, 2021.
+\newblock URL \url{https://arxiv.org/abs/2102.04432}.
+
 \bibitem[L.~Fei-Fei and Perona(2004)]{fei2004caltech}
 R.~Fergus L.~Fei-Fei and P.~Perona.
 \newblock {Learning generative visual models from few training examples: an
@@ -127,6 +150,12 @@ Mehdi Mirza and Simon Osindero.
 \newblock Conditional generative adversarial nets.
 \newblock \emph{CoRR}, abs/1411.1784, 2014.
 \newblock URL \url{http://arxiv.org/abs/1411.1784}.
+
+\bibitem[Nazeri and Ng(2018)]{nazeri2018gan}
+Kamyar Nazeri and Eric Ng.
+\newblock Image colorization with generative adversarial networks.
+\newblock \emph{CoRR}, abs/1803.05400, 2018.
+\newblock URL \url{http://arxiv.org/abs/1803.05400}.
 
 \bibitem[Pang et~al.(2021)Pang, Lin, Qin, and Chen]{pang2021imagetoimage}
 Yingxue Pang, Jianxin Lin, Tao Qin, and Zhibo Chen.
@@ -165,6 +194,13 @@ Chakkrit Tantithamthavorn, Ahmed~E. Hassan, and Kenichi Matsumoto.
   (11):\penalty0 1200--1219, 2020.
 \newblock \doi{10.1109/TSE.2018.2876537}.
 
+\bibitem[Welsh et~al.(2002)Welsh, Ashikhmin, and
+  Mueller]{welsh2002colorization}
+Tomihisa Welsh, Michael Ashikhmin, and Klaus Mueller.
+\newblock Transferring color to greyscale images.
+\newblock \emph{ACM Trans. Graph.}, 21:\penalty0 277--280, 07 2002.
+\newblock \doi{10.1145/566570.566576}.
+
 \bibitem[Yu and Koltun(2016)]{yu2016atrous}
 Fisher Yu and Vladlen Koltun.
 \newblock Multi-scale context aggregation by dilated convolutions.
@@ -178,6 +214,14 @@ Richard Zhang, Phillip Isola, and Alexei~A. Efros.
   \emph{Computer Vision -- ECCV 2016}, pages 649--666, Cham, 2016. Springer
   International Publishing.
 \newblock ISBN 978-3-319-46487-9.
+
+\bibitem[Zhang et~al.(2017)Zhang, Zhu, Isola, Geng, Lin, Yu, and
+  Efros]{zhang2017ideep}
+Richard Zhang, Jun{-}Yan Zhu, Phillip Isola, Xinyang Geng, Angela~S. Lin,
+  Tianhe Yu, and Alexei~A. Efros.
+\newblock Real-time user-guided image colorization with learned deep priors.
+\newblock \emph{CoRR}, abs/1705.02999, 2017.
+\newblock URL \url{http://arxiv.org/abs/1705.02999}.
 
 \bibitem[Zhou et~al.(2017)Zhou, Lapedriza, Khosla, Oliva, and
   Torralba]{zhou2017places}

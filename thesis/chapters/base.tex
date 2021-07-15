@@ -1,20 +1,3 @@
-\begin{comment}
-    Use cases
-    Multimodality
-
-    Neural networks:
-        Basics
-        CNN
-        U-NET
-
-    Dataset
-
-    Implementations:
-        Colorful image colorization
-        GAN/pix2pix
-        IDeep
-\end{comment}
-
 \chapter{Base}
 \label{ch:base}
 
@@ -56,7 +39,7 @@ and $\mathbf{Y}$ is the colored output.
 $\mathcal{F}$ is the function that maps the domain $\mathbf{X}$ to the codomain 
 $\mathbf{Y}$, which in our case represents the colorizer.
 
-\section{Color space}
+\section{Color Space}
 \label{sec:colorspace}
 
 Even though automatic colorization can be accomplished using any color space, 
@@ -101,7 +84,7 @@ white, respectively. The \textbf{a*} and \textbf{b*} channels, on the other hand
 express the \textit{color}. Both color channels are unbounded, which allows the 
 CIELAB color space to express the whole human gamut\footnote{The complete range 
 or scope of something}. The RGB color space fits in the CIELAB color space 
-as show in the figure \ref{fig:rgb_in_lab}.
+as shown in figure \ref{fig:rgb_in_lab}.
 
 \begin{figure}[!h]
 	\centering
@@ -120,7 +103,7 @@ as show in the figure \ref{fig:rgb_in_lab}.
 		\includegraphics[width=\linewidth]{img/lab_channels/san_g_color}
         \caption{\textbf{a*} and \textbf{b*} channels (\textbf{L*} = 75)}
 	\end{subfigure}
-    \caption{Image with seperated channels of the CIELAB color space}
+    \caption{Image with separated channels of the CIELAB color space}
 	\label{fig:lab_channels}
 \end{figure}
 
@@ -135,17 +118,17 @@ That said, we can update the equation \ref{eq:colorization} to:
 \end{equation}    
 as the colorizer only has to suggest two channels.
 
-\section{Task definition}
+\section{Task Definition}
 \label{sec:task}
 
 In the 2000s many algorithms for colorization were developed \citep{levin2004colorization}\citep{luan2007colorization}\citep{charpiat2008colorization}\citep{reinhard2001colorization} 
-fueled by the ever growing computational capacaties of the modern world. Those were mostly 
+fueled by the ever-growing computational capacities of the modern world. Those were mostly 
 statistical methods that relied on extensive user input to get a viable colorization. 
-Nevertheless they offered a method for somewhat easy colorization that gave good results, 
-but the problem of fully-automated image colorization still remained unsolved. A decade later 
+Nevertheless, they offered a method for somewhat easy colorization that gave good results, 
+but the problem of fully automated image colorization remained unsolved. A decade later 
 first models \citep{cheng2015colorization}\citep{iizuka2016colorization} using the CNN
-architecture started popping up, paveing the way for a fully-automated colorization process.
-In this thesis three approaches to image colorization will lined out, all of which are using 
+architecture started popping up, paving the way for a fully-automated colorization process.
+In this thesis, three approaches to image colorization will be lined out, all of which are using 
 convolutional neural networks described in section \ref{sec:cnn}.
 
 
@@ -153,7 +136,7 @@ The goal for each of the models is to hallucinate a viable colorization for a gr
 input image. The colorizer has to propose the values for the \textbf{a*} and \textbf{b*}
 channels, while the \textbf{L*} channel is the same as the input image. As noted in chapter \ref{ch:introduction}
 perfect colorization is sometimes possible but highly unlikely, the goal is rather to 
-produce a probable colorization which is able to fool human observers into thinking it is a 
+produce a probable colorization that can fool human observers into thinking it is a 
 real full-color image.
 
 \subsection{Multimodality}
@@ -163,15 +146,15 @@ One of the reasons why perfect colorization is not possible has to do with the
 fact that a grayscale photograph has less information than a colored photograph.
 Although it is sometimes possible to deduce exact colors from the shape or texture of
 an object, more often than not we cannot be sure of the original color.
-The problem becomes apperent when trying to colorize almost any painted object,
+The problem becomes apparent when trying to colorize almost any painted object,
 like the three scooters seen in figure \ref{fig:multimodality_scooters}. Given the 
-grayscale image of the scooters one could assume that all of them are the same
+grayscale image of the scooters, one could assume that all of them are the same
 color, which our colorizer did, or that they are all different colors, as seen 
 in the original image. 
 
-That fenomenon is not exclusive to human-made objects, 
-but it also extends to the natural world as seen in the figure 
-\ref{fig:multimodality_sunset}. In the grayscale image there is no clue to the 
+That phenomenon is not exclusive to human-made objects, 
+but it also extends to the natural world as seen in figure 
+\ref{fig:multimodality_sunset}. In the grayscale image, there is no clue to the 
 fact that the picture was taken during a sunset, so the best the colorizer
 was able to do was to colorize it as if it was an image of a stormy sea.
 
@@ -207,7 +190,7 @@ was able to do was to colorize it as if it was an image of a stormy sea.
 		\centering
 		\includegraphics[width=\linewidth]{img/multimodality/sunset_colorized}
 	\end{subfigure}
-    \caption{Image of sea taken during a sunset, colorizer input, and possible colorization}
+    \caption{Image of the sea taken during sunset, colorizer input, and possible colorization}
 	\label{fig:multimodality_sunset}
 \end{figure}
 
@@ -227,7 +210,7 @@ or maxima is called multimodality, and it is the main problem when colorizing. I
 troublesome as we cannot be sure what the real solution is, but we can provide one 
 of the multiple likely ones.
 
-\section{Artificial neural networks}
+\section{Artificial Neural Networks}
 
 \begin{figure}
 	\centering
@@ -239,12 +222,12 @@ of the multiple likely ones.
 		\centering
 		\includegraphics[height=.52\linewidth]{img/simple_nn}
 	\end{subfigure}
-    \caption{Comparison of biological and artificial neuron (stronger colors indicate higher weights)}
+    \caption{Comparison of biological neuron and artificial neurons (stronger colors indicate higher weights)}
 	\label{fig:neuron}
 \end{figure}
 
-Artificial neural networks, or simply called neural networks in the context of 
-machine learning, are a class of highly versatile computational models used for 
+Artificial neural networks or simply called neural networks in the context of 
+machine learning are a class of highly versatile computational models used for 
 regression, classification, data processing, etc. As with many successful computational 
 systems, artificial neural networks are vaguely inspired by real-world examples,
 in this case, biological neural networks, as seen in figure \ref{fig:neuron}. 
@@ -255,15 +238,15 @@ to different inputs for different outputs. With deep, multi-layer neural network
 we lose that \textit{interpretability}, as we give the neural network the possibility
 to divide the problem into several layers of understanding which are virtually 
 impossible to decipher. The learning part of machine learning takes place during the
-training process, and is out of the scope of this thesis.
+training process and is out of the scope of this thesis.
 
-\subsection{Convolutional neural networks}
+\subsection{Convolutional Neural Networks}
 \label{sec:cnn}
 
 Like neural networks, convolutional neural networks (or CNNs) were originally 
 nature-inspired, specifically by the way that the animal visual cortex is 
 organized \citep{fukushima1980neocognitron}. Instead of associating specific
-inputs with specific weights, with CNNs we train the network to learn filters 
+inputs with specific weights, with CNNs, we train the network to learn filters 
 (or kernels) that we slide over features to get feature maps. When we stack
 several convolutional layers on top of each other we get a deep convolutional
 neural network (or DCNN). As with deep neural networks, the stacking allows 
@@ -292,7 +275,7 @@ of layers the same level of \textit{understanding} can be achieved.
 	\centering
 	\includegraphics[width=0.65\linewidth]{architecture/unet}
     \caption{Example of a U-Net with four downsampling and four upsampling blocks 
-	where the skip-connection is accomplished by concatinating outputs of the 
+	where the skip-connection is accomplished by concatenating outputs of the 
 	encoder to the upsampled features of the decoder}
 	\label{fig:unet}
 \end{figure}
@@ -312,7 +295,7 @@ of the system. Although there is loads of information, if we upsampled at that
 point only using the features available in the bottleneck, the decoder might
 not have some clues that were lost while downsampling. That problem is 
 solved by adding skip connections from convolutional blocks in the encoder to
-the corresponding blocks in the decoder as seen in the diagram \ref{fig:unet}. 
+the corresponding blocks in the decoder as seen in diagram \ref{fig:unet}. 
 There are different ways of implementing skip connections, with the default one
 being simple concatenation. 
 
@@ -335,7 +318,7 @@ as many different things as it is possible, as it cannot know how to colorize so
 it has not come in contact with.
 
 Any large collection of images, such as the Caltech 101 \citep{fei2004caltech}, 
-Places \citep{zhou2017places}, or Cifar100\citep{krizhevskycifar} dataset, 
+Places \citep{zhou2017places}, or Cifar100\citep{krizhevskycifar} dataset 
 could have been used for training the models. We do not need a specialized dataset, 
 as we can create our input grayscale images using the original colored images.
 The only requirement is that the dataset covers a large spectrum of different

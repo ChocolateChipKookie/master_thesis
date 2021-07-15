@@ -40,7 +40,7 @@ usual approach was to treat it as a regression problem.
 \end{figure}
 
 Instead of predicting the exact \textbf{a*} and \textbf{b*} channel values 
-for each pixel, this model outputs a probability distribution over 313 seperate classes. 
+for each pixel, this model outputs a probability distribution over 313 separate classes. 
 Each class represents one quantized \textbf{a*b*} bin. 
 The $Q$-bins, each $10\times10$ in size, cover the whole \textbf{a*b*} gamut as seen
 in figure \ref{fig:lab_bins}.
@@ -66,7 +66,7 @@ The convolutional layers are all padded and have a kernel of size $3\times3$. Th
 no pooling layers in the network, the downsampling in the first three convolutional blocks 
 is done by setting the stride in the last convolutional layer to $2$ instead.
 To further increase the receptive field of each output distribution, à trous convolution
-\citep{yu2016atrous} is used in the fifth and sixth layer, with the dilation set to $2$. 
+\citep{yu2016atrous} is used in the fifth and sixth layers, with the dilation set to $2$. 
 Looking at the architecture of the network in figure \ref{fig:architecture_colorful},
 we can see that the features are getting upsampled in the eighth block. The upsampling
 is done by replacing the first layer of the block with a transposed convolution layer.
@@ -79,7 +79,7 @@ To obtain the value of the \textbf{a*} and \textbf{b*} channels we could
 simply select the most likely color suggested by the colorizer On 
 the other hand, we could calculate the weighted average over all the classes.
 Somewhere in the middle of the two approaches lies the method proposed by 
-the authors, they suggest a softmax-like calculation they named the annealed mean.
+the authors. They suggest a softmax-like calculation they named the annealed mean.
 Using the annealed mean allows us to regulate how much we want to emphasize the 
 most likely colors, or how close we want the result to be to the weighted 
 average of the distribution.
@@ -92,7 +92,7 @@ Using the formula:
 
 we calculate the adjusted weights, where $p$ is the associated 
 probability of a bin being the proposed color. $T$, which stands 
-for temperature, is a hyperparameter of the function and it is used to 
+for temperature, is a hyperparameter of the function, and it is used to 
 adjust how drastically we want the colorization to be. When $T$ is set $1$
 the weight is not adjusted and is equal to the probability $p$. On
 the other hand, $T=0$ is an edge case where only the most probable bin 
@@ -165,7 +165,7 @@ lower overall saturation, while lower values yield crispier, but also more error
 In the end, the size of the output is 4 times smaller than the size of the input. 
 Because of that, we upscale the output by a factor of 4 in the final step. That might
 seem like a problem at first, but looking at figure \ref{fig:color4} we can see
-that the \textbf{L*} channel is responsible for conveying most of the information, and
+that the \textbf{L*} channel is responsible for conveying most of the information and
 that the lower resolution of the \textbf{a*} and \textbf{b*} channels does not impact
 the quality too much.
 
@@ -174,8 +174,8 @@ the quality too much.
 
 The network was trained on the ImageNet dataset that, when filtered, contains
 1.1 million photographs of different shapes and sizes. Before training, we first
-have to do a little preprocessing to make the process of training easier. It is 
-preferable that all the inputs are of the same size, as training batches on 
+have to do a little preprocessing to make the process of training easier. All the inputs
+should be of the same size, as training batches on 
 different-sized images cannot be done efficiently, hence all the images were 
 converted to a uniform size. 
 
@@ -229,7 +229,7 @@ is the input, and \textbf{a*} and \textbf{b*} are wanted outputs. Next,
 we carry out a forward pass through the network and get the proposed color 
 distribution for the images. At this point, we cannot calculate the loss of the
 colorization as the \textbf{a*} and \textbf{b*} have to be encoded into 313 bins.
-After the encoding we calculate the cross-entropy, calculate the gradients, and 
+After the encoding, we calculate the cross-entropy, calculate the gradients, and 
 update the model.
 
 \begin{figure}[!ht]
@@ -237,14 +237,14 @@ update the model.
 	\includegraphics[width=0.5\linewidth]{img/colorful/distribution}
     \caption{Graph borrowed from the original paper \citep{zhang2016colorful}, 
 	showing the overall distribution of color channel values in the ImageNet
-	dataset, using a logarithmic scale (red indicates high, and blue low occurance)}
+	dataset, using a logarithmic scale (red indicates high, and blue low occurrence)}
 	\label{fig:distribution}
 \end{figure}
 
 The encoding of \textbf{a*} and \textbf{b*} could be done by finding the 
 closest $Q$-bin and creating a one-hot vector representing that color. The 
 problem with that representation is that we cannot express if the color
-was somewhere in between of two bins. That's why the authors of the 
+was somewhere in between two bins. That's why the authors of the 
 paper proposed encoding the color by applying a Gaussian kernel. That way
 the closer the color is to the center of the bin the higher the associated
 value of the class is. Another useful property of this encoding is that this way
@@ -258,13 +258,90 @@ the purpose of training this model we have to implement a custom multinomial
 cross-entropy loss.
 
 Looking at figure \ref{fig:distribution} we can see that the colors are not 
-equally distributed over the \textbf{L*a*b*} color space, on the contrary
+equally distributed over the \textbf{L*a*b*} color space, on the contrary,
 the neutral colors (the ones closer to the center of the graph) are represented
 at a much higher rate than marginal colors. To counter that disparity we can
 rebalance the classes \citep{tantithamthavorn2020rebalancing}, giving the 
 underrepresented classes an equal chance to get selected.
 
-\subsection{Results}
+\subsection{Conclusion and gallery}
+
+This model was one of the first colorization models in the new wave of 
+colorization that started around the middle of the 2010s. It addresses
+the problem of multimodality in a novel way, but it also has its downsides.
+The first problem arises from the fact that the custom, soft-encoding is 
+very resource-intensive and it alone consumes a lot of the time spent training. 
+The second problem has to do with the lower resolution of the \textbf{a*} and \textbf{b*}
+channels that are the output of the model. Although the colorized images 
+generally look good, upon taking a closer look we can notice that the 
+edges tend to be smudged. 
+
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/bw/02}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/color/02}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/bw/09}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/color/09}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/bw/15}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/color/15}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/bw/20}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/color/20}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/bw/luciano}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/color/luciano}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/bw/ladybug}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/colorful/results/color/ladybug}
+    \end{subfigure}
+\end{figure}
 
 \clearpage
 \section{Generative Adversarial Networks for Colorization}
@@ -272,14 +349,14 @@ underrepresented classes an equal chance to get selected.
 
 The second approach to colorization analyzed in this thesis comes in the form
 of a generative adversarial network (abbr. \textit{GAN}) \citep{goodfellow2014generative}.
-The main motivation for using GANs in this scenario is beacause of the 
+The main motivation for using GANs in this scenario is because of the 
 generator-discriminator schema which has proven its usefulness in generating 
 convincing data. The paper by Nazeri et al. was used as the main reference, 
 but the paper by Isola et al. strongly influenced some training choices.
 
 \subsection{Architecture}
 
-The architecture of this model was ispired by the \textit{pix2pix} model proposed
+The architecture of this model was inspired by the \textit{pix2pix} model proposed
 by Isola et al. in 2017 for image-to-image translation tasks. Image colorization
 was mentioned as one of many potential use cases for their model.
 
@@ -354,7 +431,7 @@ in reproducing the existing answer.
 	\includegraphics[width=0.5\linewidth]{img/gan/mnist_cgan}
     \caption{Generating fake hand-written digits based on the MNIST dataset 
 	using the cGAN framework. Digits in the same row are generated using 
-	the same latent vector (seed), and demonstrate similar characteristics}
+	the same latent vector (seed) and demonstrate similar characteristics}
 	\label{fig:cgan_mnist}
 \end{figure}
 
@@ -369,7 +446,7 @@ of a certain class which sometimes ended up in mode collapse. That problem can b
 solved using cGANs by adding a conditional variable to the generator and 
 discriminator. That way the generator had the information on what digit to create, 
 while the discriminator knew which digit was supposed to be on the input. An 
-example of the output of a trained cGAN model can be seen in the figure \ref{fig:cgan_mnist}.
+example of the output of a trained cGAN model can be seen in figure \ref{fig:cgan_mnist}.
 
 In the case of colorization, the conditional variable is the grayscale input, 
 that way the generator knows what it has to colorize, while the discriminator
@@ -394,7 +471,7 @@ is almost perfectly symmetrical, except for the fact that the input dimensions f
 the transposed convolutions are double the size. The reason for the doubled input
 size is because the short connections are achieved by concatenating the features
 from the encoder with the features from the last transposed convolution. The architecture
-of the network is depicted in the diagram \ref{fig:architecture_gan}.
+of the network is depicted in diagram \ref{fig:architecture_gan}.
 
 \subsubsection{Discriminator}
 
@@ -425,7 +502,7 @@ be seen in \ref{fig:architecture_gan_full}
 
 \subsection{Training}
 
-Although the loss function for traing the generative adversarial networks can be neatly 
+Although the loss function for training the generative adversarial networks can be neatly 
 written down as a minimax game between the generator $G(\mathbf{l};\theta_G)$ and the 
 discriminator $D(\mathbf{l, ab};\theta_D)$:
 \begin{equation}
@@ -474,7 +551,7 @@ being mistaken results in a non-saturated game between the two networks.
 In addition to the modified loss function, one-sided label smoothing was used 
 \citep{salimans2016improved_gans}. With label smoothing, the label for the \textit{false} and 
 \textit{true} value is not set to 0 and 1, but to a slightly higher/lower value (eg. 0.1, 0.9). 
-One-sided smoothing is a half-way approach, where the \textit{false} label remains 0, but the 
+One-sided smoothing is a halfway approach, where the \textit{false} label remains 0, but the 
 true label is smoothed. Using label smoothing was shown to reduce the vulnerability of 
 neural networks to adversarial examples.
 
@@ -482,7 +559,7 @@ neural networks to adversarial examples.
 	\centering
 	\includegraphics[width=\linewidth]{img/gan/gan_plot}
     \caption{Healthy back and forth between the generator and the discriminator. 
-	Discriminator error on real samples in red, and on fake samples in blue.}
+	Discriminator error on real samples in red, and fake samples in blue.}
 	\label{fig:gan_plot}
 \end{figure}
 
@@ -495,7 +572,84 @@ the generator and the discriminator should look like. The losses of the real and
 samples fluctuate up and down as a result of the game between the generator and 
 the discriminator, but they generally stay at the same level.
 
-\subsection{Results}
+\subsection{Conclusion and gallery}
+
+While this model gives promising results, it is still far from perfect. 
+A big problem with the model is that when it does not recognize an object
+in a given image, it tends to leave the object uncolored as it is 
+generally the average best solution. The first possible improvement to the
+model would be reducing the total depth of the U-Net but increasing the
+depths of the blocks. Additionally increasing the capacity of the discriminator
+might be beneficial, as a small discriminator cannot recognize if the image 
+was artificially colored. If that is the case, at one point the generator 
+won't have the initiative to learn anymore. 
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/bw/25}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/color/25}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/bw/26}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/color/26}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/bw/nogomet}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/color/nogomet}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/bw/39}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/color/39}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/bw/67}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/color/67}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/bw/kukoc2}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/gan/results/color/kukoc2}
+    \end{subfigure}
+\end{figure}
 
 \clearpage
 \section{Interactive Deep Colorization}
@@ -504,14 +658,15 @@ the discriminator, but they generally stay at the same level.
 The last of the three models analyzed is the \textit{Interactive Deep Colorization}
 model proposed by Zhang et al. in 2017, and it builds on the model described 
 in section \ref{sec:colorful}. It differs from the \textit{Colorful Image Colorization}
-and the GAN-based model in that it is semi-automated. It can work as a fully-automated model, 
-but in general much better results are acheived when the model is operated by a human. 
+and the GAN-based model in that it is semi-automated. It can work as a fully automated model, 
+but in general, much better results are achieved when the model is operated by a human. 
 
-In the paper two models were proposed, out of which only one was analyzed for this thesis. 
+In the paper, two models were proposed, out of which only one was analyzed for this thesis. 
 The selected model gets additional information about the desired colorization in the 
 shape of so-called global hints described in section \ref{sec:global}.
 
 \subsection{Architecture}
+\label{sec:ideep_architecture}
 
 \begin{figure}[!ht]
 	\centering
@@ -522,7 +677,7 @@ shape of so-called global hints described in section \ref{sec:global}.
 	\label{fig:architecture_ideep}
 \end{figure}
 
-The architecture of the first model can be seen in the figure \ref{fig:architecture_ideep}, 
+The architecture of the first model can be seen in figure \ref{fig:architecture_ideep}, 
 and it is an extended version of the model described in section \ref{sec:colorful_architecture}. 
 In the figure, the \textit{Colorful Image Colorization} model is colored in red, while 
 the new elements are colored yellow/purple. The yellow blocks are the new convolutional 
@@ -531,33 +686,119 @@ in section \ref{sec:global}.
 
 The model was extended with two convolutional blocks that further upscale the resolution 
 of the output. The problem of the bottleneck, which arose from the information loss in the 
-first three layers, was solved by adding three skip connections between first and last three
-blocks. By adding the skip connections, we essentially converted the VGG-style model to a
-U-Net.
+first three layers, was solved by adding three skip connections between the first and last
+three blocks. By adding the skip connections, we essentially converted the VGG-style model
+to a U-Net.
 
-
-Although it is not visible in the diagram, the skip connections were not realized by 
-simply concatenating the output features of the first layers to the inputs of the 
-last layer, but instead the feture transfer was done by addition. But, before adding 
-up the shorted connections, they were first forwarded through a convolutional layer.
-
-
-
-\clearpage
-- additional 2 expansive layers + skip connections and skip convolutions + global hints
-
-\subsection{Transfer learning}
-
-- What is transfer learning:
-	Dogradivanje
-	- Training one model and applying the learned knowledge on another model
-	
-- The weights of the trained first model, in the end crucial as the model could not colorize without the initial push
+As shown in the diagram, the skip connections were not realized by simply concatenating
+the output features of the first layers to the inputs of the last layer. Instead, 
+the features were first forwarded through a skip convolutional layer and then inserted
+in the expansive path by simple addition.
 
 \subsection{Global hints}
 \label{sec:global}
 
+As an additional input, we supply global statistics about the image to the network. The 
+information included is the global histogram over 313 quantized \textbf{a*b*} bins 
+described in section \ref{sec:colorful_architecture}, and the global image saturation. 
+The histogram is calculated by first encoding the image into the 313 $Q$-bins and taking 
+the mean of the bin values. The saturation is calculated similarly, by first 
+encoding the original image in the HSV color space, and then calculating the mean of the
+saturation channel. In addition to the 314 values, two flags are added to indicate 
+if the global saturation or histogram were supplied. In the end, the input to the 
+global hints branch is a 316 element vector, that is forwarded through four 
+conv-ReLU pairs. Afterward, it is spatially repeated to be the same size as the input
+to the fourth convolutional block and then merged with the features from the third
+block by addition.
 
 \subsection{Training}
 
-\subsection{Results}
+As mentioned in section \ref{sec:ideep_architecture}, a large part of the network 
+is the same as the \textit{Colorful Image Colorization} network. The fact that the 
+networks share the same structure, and that they are trained to do the same job, allows 
+us to use the pre-trained weights from the first network to accelerate the training of 
+the new model. That way the model has to learn the weights of the new blocks, while 
+the weights of the core network only have to be slightly adjusted. This method is 
+called \textit{transfer learning}, and without the weight transfer, the training 
+process would be difficult, if not impossible.
+
+Due to the lack of information in the paper, the process of training had to be 
+found with educated guesses, and trial and error. The network was trained in two phases. 
+In the first phase, only the new layers were trained, and in the second phase, the whole 
+network was fine-tuned. The fine-tuning of the core network was not done from the beginning, 
+as the learning rate was too high and that way, the pre-learned weights would just get smudged.
+
+The model was trained on mini-batches of size 12 with the Adam optimizer that had the 
+$\beta$ parameters set to $(0.5, 0.99)$. The first phase lasted 150,000 
+iterations, only the new layers were trained with the learning rate being updated 
+every 50,000 iterations. The initial learning rate was set to $1\times10^{-4}$ and
+it was reduced by roughly a factor of three, twice ($3\times10^{-5}$, $1\times10^{-5}$). 
+
+In the second phase, all the layers (old and new) were fine-tuned for 200,000 iterations.
+The initial learning rate was set to $3\times10^{-6}$ and it was updated after 100,000
+iterations to $1\times10^{-6}$. The training process was finished after 350,000 iterations.
+
+\subsection{Conclusion and gallery}
+
+Generally, this model gives good colorizations and is an improvement 
+to the original model in that it follows the edges of the image better, 
+and the training process is easier. The main problem with the paper is that
+the training process was not described at all, hence it was difficult to 
+recreate the results the authors got with their model. Furthermore, the model 
+did not learn how to interactively colorize when given the global hints. 
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/bw/23}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/color/23}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/bw/51}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/color/51}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/bw/57}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/color/57}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/bw/60}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/color/60}
+    \end{subfigure}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/bw/sandro}
+	\end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{img/ideep/results/color/sandro}
+    \end{subfigure}
+\end{figure}

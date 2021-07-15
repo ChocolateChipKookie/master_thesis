@@ -1,19 +1,18 @@
 \documentclass[times, utf8, diplomski, english]{fer}
-\usepackage{booktabs}
-\usepackage{verbatim}
-\usepackage{amssymb}
-\usepackage{algorithm}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{tikz}
-\usepackage{listings}
-
 \usepackage{float}
+\usepackage{subfiles}
 \usepackage{graphicx}
 \usepackage{subcaption}
-\graphicspath{{./graphics/}}
 
-\usepackage{subfiles}
+\usepackage{fncychap}
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]{\normalfont\Huge\bfseries}{}{0pt}{}
+
+\graphicspath{{./graphics/}}
+\pagenumbering{arabic}
 \setcitestyle{numbers}
 \setcitestyle{square}
 
@@ -22,15 +21,9 @@
 % TODO: Broj rada. Pitati Marinu
 \thesisnumber{000}
 
-% Naslov rada
 \title{Image Colorization Methods}
-
-% Ime i prezime
 \author{Adi Čaušević}
-
 \maketitle
-
-% Ispis diplomskog zadatka
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.\linewidth]{assignment}
@@ -39,14 +32,13 @@
 % Zahvala
 \subfile{chapters/thanks}
 
-% Table of contents
 \tableofcontents
 
 % Chapters
 \subfile{chapters/introduction}
+\subfile{chapters/related}
 \subfile{chapters/base}
 \subfile{chapters/models}
-\subfile{chapters/related}
 \subfile{chapters/conclusion}
 
 % Bibliography

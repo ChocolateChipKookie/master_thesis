@@ -5,9 +5,9 @@
       "colorful_path": "ideep/data/colorful_state_dict.pth",
       "dim_in": 1,
       "dim_out": 2,
-      "input_min":256,
+      "input_min": 512,
       "bias": true
     }
   },
-  "state_dict": "ideep/data/backup_model.pth"
+  "state_dict": "ideep/data/06_17-80000.pth"
 }

@@ -1,35 +1,33 @@
 \babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Introduction}{1}%
-\contentsline {chapter}{\numberline {2}Base}{1}%
-\contentsline {section}{\numberline {2.1}Color space}{2}%
-\contentsline {section}{\numberline {2.2}Task definition}{3}%
-\contentsline {subsection}{\numberline {2.2.1}Multimodality}{3}%
-\contentsline {section}{\numberline {2.3}Artificial neural networks}{4}%
-\contentsline {subsection}{\numberline {2.3.1}Convolutional neural networks}{5}%
-\contentsline {subsection}{\numberline {2.3.2}U-net}{6}%
-\contentsline {section}{\numberline {2.4}Dataset}{vii}%
-\contentsline {chapter}{\numberline {3}Models}{1}%
-\contentsline {section}{\numberline {3.1}Colorful Image Colorization}{1}%
-\contentsline {subsection}{\numberline {3.1.1}Architecture}{1}%
-\contentsline {subsection}{\numberline {3.1.2}Annealed mean}{2}%
-\contentsline {subsection}{\numberline {3.1.3}Training}{4}%
-\contentsline {subsection}{\numberline {3.1.4}Results}{6}%
-\contentsline {section}{\numberline {3.2}Generative Adversarial Networks for Colorization}{7}%
-\contentsline {subsection}{\numberline {3.2.1}Architecture}{7}%
-\contentsline {subsubsection}{Generative adversarial networks}{7}%
-\contentsline {subsubsection}{Conditional GAN}{8}%
-\contentsline {subsubsection}{Generator}{9}%
-\contentsline {subsubsection}{Discriminator}{10}%
-\contentsline {subsection}{\numberline {3.2.2}Training}{11}%
-\contentsline {subsection}{\numberline {3.2.3}Results}{12}%
-\contentsline {section}{\numberline {3.3}Interactive Deep Colorization}{13}%
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{13}%
-\contentsline {subsection}{\numberline {3.3.2}Transfer learning}{xv}%
-\contentsline {subsection}{\numberline {3.3.3}Global hints}{xv}%
-\contentsline {subsection}{\numberline {3.3.4}Training}{xv}%
-\contentsline {subsection}{\numberline {3.3.5}Results}{xv}%
-\contentsline {chapter}{\numberline {4}Related work}{i}%
-\contentsline {section}{\numberline {4.1}Related work}{i}%
-\contentsline {chapter}{\numberline {5}Conclusion}{i}%
-\contentsline {section}{\numberline {5.1}Possible improvements}{i}%
-\contentsline {chapter}{Bibliography}{ii}%
+\contentsline {chapter}{\numberline {1}Introduction}{7}%
+\contentsline {chapter}{\numberline {2}Related work}{9}%
+\contentsline {chapter}{\numberline {3}Base}{10}%
+\contentsline {section}{\numberline {3.1}Color Space}{11}%
+\contentsline {section}{\numberline {3.2}Task Definition}{12}%
+\contentsline {subsection}{\numberline {3.2.1}Multimodality}{12}%
+\contentsline {section}{\numberline {3.3}Artificial Neural Networks}{14}%
+\contentsline {subsection}{\numberline {3.3.1}Convolutional Neural Networks}{14}%
+\contentsline {subsection}{\numberline {3.3.2}U-net}{15}%
+\contentsline {section}{\numberline {3.4}Dataset}{16}%
+\contentsline {chapter}{\numberline {4}Models}{17}%
+\contentsline {section}{\numberline {4.1}Colorful Image Colorization}{17}%
+\contentsline {subsection}{\numberline {4.1.1}Architecture}{17}%
+\contentsline {subsection}{\numberline {4.1.2}Annealed mean}{18}%
+\contentsline {subsection}{\numberline {4.1.3}Training}{19}%
+\contentsline {subsection}{\numberline {4.1.4}Conclusion and gallery}{22}%
+\contentsline {section}{\numberline {4.2}Generative Adversarial Networks for Colorization}{24}%
+\contentsline {subsection}{\numberline {4.2.1}Architecture}{24}%
+\contentsline {subsubsection}{Generative adversarial networks}{24}%
+\contentsline {subsubsection}{Conditional GAN}{25}%
+\contentsline {subsubsection}{Generator}{26}%
+\contentsline {subsubsection}{Discriminator}{27}%
+\contentsline {subsection}{\numberline {4.2.2}Training}{28}%
+\contentsline {subsection}{\numberline {4.2.3}Conclusion and gallery}{30}%
+\contentsline {section}{\numberline {4.3}Interactive Deep Colorization}{32}%
+\contentsline {subsection}{\numberline {4.3.1}Architecture}{32}%
+\contentsline {subsection}{\numberline {4.3.2}Global hints}{33}%
+\contentsline {subsection}{\numberline {4.3.3}Training}{33}%
+\contentsline {subsection}{\numberline {4.3.4}Conclusion and gallery}{34}%
+\contentsline {chapter}{\numberline {5}Conclusion}{36}%
+\contentsline {section}{\numberline {5.1}Result Comparison}{37}%
+\contentsline {chapter}{Bibliography}{38}%
